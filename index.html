@@ -35,17 +35,81 @@
     /* Mobile menu button */
     .menu-btn{display:none;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:#fff}
 
-    /* Hero */
-    .hero{position:relative}
-    .hero-img{width:100%;height:52vh;min-height:380px;object-fit:cover;display:block;filter:contrast(1.05) brightness(.9)}
-    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.2),rgba(2,6,23,.45))}
-    .hero .content{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:20px}
-    .hero h1{font-size:clamp(30px,4.6vw,56px);letter-spacing:.5px;margin:0 0 12px}
-    .hero p{max-width:800px;margin:0 auto 18px;color:#e5e7eb;font-size:clamp(16px,2.4vw,20px)}
-    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid rgba(255,255,255,.7);color:#fff}
-    .btn.primary{background:var(--brand-2);border-color:var(--brand-2)}
-    .btn.ghost{background:transparent}
+   /* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Use the background image instead of <img> for perfect fit */
+  background-image: url("images/backgroundvilla.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100svh; /* full viewport height, handles mobile URL bar */
+  min-height: 480px;
+}
+
+@supports not (height: 100svh) {
+  .hero { height: 100vh; } /* fallback for older browsers */
+}
+
+/* Overlay */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2,6,23,.2), rgba(2,6,23,.45));
+}
+
+/* Text content */
+.hero .content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Headings and text */
+.hero h1 {
+  font-size: clamp(30px, 4.6vw, 56px);
+  letter-spacing: 0.5px;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  max-width: 800px;
+  margin: 0 auto 18px;
+  color: #e5e7eb;
+  font-size: clamp(16px, 2.4vw, 20px);
+}
+
+/* Buttons */
+.btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+
+.btn.primary {
+  background: var(--brand-2);
+  border-color: var(--brand-2);
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
 
     section{padding:var(--section-pad) 0}
     h2{color:#0f263f;font-size:clamp(24px,3vw,34px);margin:0 0 12px;text-align:center}
@@ -139,7 +203,7 @@
 
   <!-- HERO -->
   <section id="home" class="hero" aria-label="Sunny Hill Solutions — Property management">
-    <img class="hero-img" src="images/backgroundvilla.png" alt="Ligurian coast at sunset" />
+
     <div class="overlay" aria-hidden="true"></div>
     <div class="content">
       <div class="container">

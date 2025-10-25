@@ -39,17 +39,16 @@
 .hero {
   position: relative;
   overflow: hidden;
-  /* Use the background image instead of <img> for perfect fit */
   background-image: url("images/backgroundvilla.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100svh; /* full viewport height, handles mobile URL bar */
+  height: 100svh;
   min-height: 480px;
 }
 
 @supports not (height: 100svh) {
-  .hero { height: 100vh; } /* fallback for older browsers */
+  .hero { height: 100vh; }
 }
 
 /* Overlay */
@@ -150,6 +149,28 @@
     .mobile-panel .links{display:grid;gap:10px;padding:14px 20px}
     .mobile-panel a{padding:10px 8px;border-radius:10px}
     .mobile-open .mobile-panel{display:block}
+
+    /* ---- Mobile menu positioning fixes ---- */
+    @media (max-width: 900px){
+      /* Move hamburger button left a bit */
+      .menu-btn{
+        margin-right: 12px; /* increase to 16 or 20 for more space */
+      }
+
+      /* Make dropdown panel centered and even */
+      .mobile-panel{
+        left: 0;
+        right: 0;
+      }
+      .mobile-panel .container{
+        max-width: none;
+        padding-inline: 16px; /* equal left/right padding */
+      }
+      .mobile-panel .links{
+        padding: 14px 0; /* cleaner inside spacing */
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -179,7 +200,6 @@
         <a href="#services">Our Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <!-- IMPORTANT: static file for now -->
         <a class="login" href="login.html" title="Client & Staff Login (CRM)">Login</a>
       </nav>
 
@@ -203,7 +223,6 @@
 
   <!-- HERO -->
   <section id="home" class="hero" aria-label="Sunny Hill Solutions — Property management">
-
     <div class="overlay" aria-hidden="true"></div>
     <div class="content">
       <div class="container">
@@ -235,7 +254,7 @@
 
       <div class="card">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f4c81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4l8 8a2 2 0 0 0 2.8-2.8l-8-8z"></path><path d="M8.6 5.4L5 2 2 5l3.4 3.6"></path></svg>
-        <h3>Servises</h3>
+        <h3>Services</h3>
         <ul class="list">
           <li><span class="tick">✓</span><span>Maintenance coordination (HVAC, pumps, boiler)</span></li>
           <li><span class="tick">✓</span><span>Trusted electricians & plumbers</span></li>
@@ -265,46 +284,4 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="container">
-    <h2>ABOUT</h2>
-    <p style="max-width:800px;margin:0 auto;text-align:center;color:var(--muted)">We’re a Swiss-registered company operating in Imperia (Liguria). Our philosophy combines Swiss reliability with local expertise so your property is always guest-ready.</p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="container">
-    <h2>CONTACT</h2>
-    <div class="contact">
-      <form action="mailto:contact@sunnyhillsolutions.com" method="post" enctype="text/plain" onsubmit="alert('Your email app will open to send the details.');">
-        <input name="Name" placeholder="Your name" required>
-        <input type="email" name="Email" placeholder="Your email" required>
-        <textarea name="Message" placeholder="Tell us about your property (location, size, needs)" required></textarea>
-        <button type="submit" class="btn submit">Send message</button>
-      </form>
-      <div class="card">
-        <h3>Direct contacts</h3>
-        <p><strong>Email</strong><br><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></p>
-        <p><strong>Phone</strong><br><a href="tel:+41000000000">+41 00 000 00 00</a></p>
-        <p><strong>Address</strong><br>Imperia, Liguria — Italy</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="y"></span> Sunny Hill Solutions</div>
-      <a href="#home">Back to top ↑</a>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const btn = document.getElementById('menuBtn');
-    btn?.addEventListener('click', () => {
-      const open = document.body.classList.toggle('mobile-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    function closeMenu(){ document.body.classList.remove('mobile-open'); btn?.setAttribute('aria-expanded','false'); }
-    window.closeMenu = closeMenu;
-  </script>
-</body>
-</html>
+  <section id="about" class="container

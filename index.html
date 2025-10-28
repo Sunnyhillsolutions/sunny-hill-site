@@ -6,21 +6,33 @@
   <title>Sunny Hill Solutions — Property Management in Liguria</title>
   <meta name="description" content="Sunny Hill Solutions — Property management in Liguria (Imperia): inspections, maintenance, concierge, guest preparation, pool & garden care." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --brand:#0f4c81;--brand-2:#0ea5e9;--ink:#0f172a;--text:#334155;--muted:#64748b;
       --line:#e2e8f0;--bg:#ffffff;--topbar:#177706;--topbar-text:#e2e8f0;
       --radius:16px;--shadow:0 10px 30px rgba(15,23,42,.08);--container:1100px;--section-pad:56px;
       --glow:0 18px 42px rgba(15,76,129,.18);
+      --nav-h: 96px; /* header height for sticky nav + anchor offsets */
     }
+
     *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
     a{text-decoration:none;color:inherit}
     .container{max-width:var(--container);margin-inline:auto;padding-inline:20px}
 
-    /* Header / Nav */
-    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);backdrop-filter:saturate(140%) blur(6px)}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    /* Make anchor jumps stop below sticky header */
+    [id]{scroll-margin-top: calc(var(--nav-h) + 16px);}
+
+    /* Header / Nav — only thing that stays sticky */
+    header{
+      position:sticky; top:0;
+      z-index:9999;                /* keep header above everything */
+      background:#fff; border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(140%) blur(6px);
+      isolation:isolate;           /* own stacking context */
+    }
+    header .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;min-height:var(--nav-h);position:relative;z-index:1}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
     .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#fde68a)}
     .logo { height: 80px; width: auto; display: block; }
@@ -31,13 +43,14 @@
     /* Mobile menu button */
     .menu-btn{display:none;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:#fff}
 
-    /* Hero */
-    .hero {
-      position: relative; overflow: hidden;
+    /* HERO — scrolls away (NOT sticky) */
+    .hero{
+      position: relative;
       background-image: url("images/backgroundvilla.png");
       background-size: cover; background-position: center; background-repeat: no-repeat;
       height: 100svh; min-height: 480px;
       will-change: background-position;
+      z-index: 0; /* sits under the header while visible */
     }
     @supports not (height: 100svh){ .hero{height:100vh;} }
     .hero .overlay { position:absolute; inset:0;
@@ -50,10 +63,10 @@
     .btn.primary{ background:var(--brand-2); border-color:var(--brand-2) }
     .btn.ghost{ background:transparent }
 
-    section{padding:var(--section-pad) 0}
+    section{padding:var(--section-pad) 0; position:relative; z-index:0;} /* ensure sections sit below header */
     h2{color:#0f263f;font-size:clamp(24px,3vw,34px);margin:0 0 12px;text-align:center}
 
-    /* Services (luxury grid + motion) */
+    /* Services (legacy grid — safe to keep or remove if unused) */
     .services .lead{max-width:720px;margin:0 auto 22px;text-align:center;color:var(--muted)}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
     .card{
@@ -67,17 +80,9 @@
       opacity:.8;
     }
     .card:hover{ transform: translateY(-4px); box-shadow: var(--glow); border-color:#dbe3ee; background:#f9fbfd }
-
     .card h3{margin:0 0 8px;color:var(--ink)}
     .card .intro{color:var(--muted); margin:4px 0 12px; font-size:15.5px}
-
-    /* Icon badge */
-    .badge{
-      width:46px;height:46px;min-width:46px;border-radius:14px;display:grid;place-items:center;
-      background: radial-gradient(120% 120% at 20% 0%, rgba(14,165,233,.15), rgba(15,76,129,.10));
-      border:1px solid rgba(14,165,233,.28); margin-bottom:8px;
-    }
-
+    .badge{width:46px;height:46px;min-width:46px;border-radius:14px;display:grid;place-items:center;background: radial-gradient(120% 120% at 20% 0%, rgba(14,165,233,.15), rgba(15,76,129,.10));border:1px solid rgba(14,165,233,.28); margin-bottom:8px}
     .list{display:grid;gap:10px;margin:12px 0 0;padding:0}
     .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
     .tick{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.35);color:#0369a1;font-weight:800}
@@ -87,7 +92,7 @@
     .cta-wrap{max-width:760px;margin:0 auto;text-align:center}
     .cta-wrap p{color:var(--muted)}
 
-    /* Contact (kept) */
+    /* Contact */
     .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
     form{display:grid;gap:10px}
     input, textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline:0}
@@ -103,29 +108,27 @@
 
     /* Mobile */
     @media (max-width: 900px){
+      :root{ --nav-h: 72px; } /* smaller header on mobile */
+      .logo{ height:64px; }
       .nav-links{display:none}
       .menu-btn{display:flex}
       .cards{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
     }
 
-    .mobile-panel{position:fixed;inset:0 0 auto 0;top:56px;background:#fff;border-bottom:1px solid var(--line);display:none}
+    /* Mobile panel */
+    .mobile-panel{
+      position:fixed;left:0;right:0;top:var(--nav-h);
+      background:#fff;border-bottom:1px solid var(--line);display:none;z-index:70;
+    }
     .mobile-panel .links{display:grid;gap:10px;padding:14px 20px}
     .mobile-panel a{padding:10px 8px;border-radius:10px}
     .mobile-open .mobile-panel{display:block}
-
-    /* Extra mobile panel polish */
-    @media (max-width: 900px){
-      .menu-btn{ margin-right:12px; }
-      .mobile-panel{ left:0; right:0; }
-      .mobile-panel .container{ max-width:none; padding-inline:16px; }
-      .mobile-panel .links{ padding:14px 0; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Header / Nav -->
+  <!-- Header / Nav (STAYS) -->
   <header>
     <div class="container nav">
       <a href="#home" class="brand" aria-label="Sunny Hill Solutions">
@@ -158,7 +161,7 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO (SCROLLS AWAY) -->
   <section id="home" class="hero" aria-label="Sunny Hill Solutions — Property management">
     <div class="overlay" aria-hidden="true"></div>
     <div class="content">
@@ -175,270 +178,239 @@
     </div>
   </section>
 
-<!-- SERVICES -->
-<section id="services" class="services">
-  <div class="sv-wrap">
-    <header class="sv-head">
-      <h2>Services</h2>
-      <p>Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
-    </header>
+  <!-- PAGE CONTENT -->
+  <main id="page">
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="sv-wrap">
+        <header class="sv-head">
+          <h2>Services</h2>
+          <p>Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
+        </header>
 
-    <div class="sv-grid">
-      <!-- Management -->
-      <article class="sv-card">
-        <div class="sv-ico" aria-hidden="true">
-          <!-- briefcase icon -->
-          <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
-            <rect x="3" y="7" width="18" height="13" rx="2"></rect>
-            <path d="M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"></path>
-            <path d="M3 12h18"></path>
-          </svg>
+        <div class="sv-grid">
+          <!-- Management -->
+          <article class="sv-card">
+            <div class="sv-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                <path d="M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"></path>
+                <path d="M3 12h18"></path>
+              </svg>
+            </div>
+            <h3>Management</h3>
+            <p class="sv-tagline">Smooth handling of all administrative aspects.</p>
+            <ul class="sv-list">
+              <li>IMU & TARI coordination</li>
+              <li>Utilities & bill oversight</li>
+              <li>Tax return liaison (IRPEF)</li>
+            </ul>
+          </article>
+
+          <!-- Property Care -->
+          <article class="sv-card">
+            <div class="sv-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
+                <path d="M3 10.5 12 3l9 7.5"></path>
+                <path d="M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"></path>
+                <path d="M9.5 14.5c2.5-3 6-2.5 7.5-1-1.5 1.5-5 2-7.5 1Z"></path>
+              </svg>
+            </div>
+            <h3>Property Care</h3>
+            <p class="sv-tagline">Your home in excellent condition, year-round.</p>
+            <ul class="sv-list">
+              <li>Regular inspections</li>
+              <li>Cleaning & maintenance</li>
+              <li>Boiler, garden & pool care</li>
+            </ul>
+          </article>
+
+          <!-- Construction & Renovation -->
+          <article class="sv-card">
+            <div class="sv-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
+                <path d="M14 7l-9 9 3 3 9-9"></path>
+                <path d="M16 5l3 3"></path>
+                <path d="M20 7a4 4 0 0 0-6-3l2 2-9 9-2-2a4 4 0 0 0 3 6"></path>
+              </svg>
+            </div>
+            <h3>Construction & Renovation</h3>
+            <p class="sv-tagline">From concept to completion with clear oversight.</p>
+            <ul class="sv-list">
+              <li>Transparent, itemized quotes</li>
+              <li>Contractor coordination</li>
+              <li>On-site supervision & updates</li>
+            </ul>
+          </article>
+
+          <!-- Concierge & Assistance -->
+          <article class="sv-card">
+            <div class="sv-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+              </svg>
+            </div>
+            <h3>Concierge & Assistance</h3>
+            <p class="sv-tagline">Effortless comfort for you and your guests.</p>
+            <ul class="sv-list">
+              <li>Arrival preparation</li>
+              <li>Grocery provisioning & housekeeping</li>
+              <li>Transfers, car rentals & bookings</li>
+            </ul>
+          </article>
         </div>
-        <h3>Management</h3>
-        <p class="sv-tagline">Smooth handling of all administrative aspects.</p>
-        <ul class="sv-list">
-          <li>IMU & TARI coordination</li>
-          <li>Utilities & bill oversight</li>
-          <li>Tax return liaison (IRPEF)</li>
-        </ul>
-      </article>
-
-      <!-- Property Care -->
-      <article class="sv-card">
-        <div class="sv-ico" aria-hidden="true">
-          <!-- home/leaf icon -->
-          <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
-            <path d="M3 10.5 12 3l9 7.5"></path>
-            <path d="M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"></path>
-            <path d="M9.5 14.5c2.5-3 6-2.5 7.5-1-1.5 1.5-5 2-7.5 1Z"></path>
-          </svg>
-        </div>
-        <h3>Property Care</h3>
-        <p class="sv-tagline">Your home in excellent condition, year-round.</p>
-        <ul class="sv-list">
-          <li>Regular inspections</li>
-          <li>Cleaning & maintenance</li>
-          <li>Boiler, garden & pool care</li>
-        </ul>
-      </article>
-
-      <!-- Construction & Renovation -->
-      <article class="sv-card">
-        <div class="sv-ico" aria-hidden="true">
-          <!-- tools icon -->
-          <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
-            <path d="M14 7l-9 9 3 3 9-9"></path>
-            <path d="M16 5l3 3"></path>
-            <path d="M20 7a4 4 0 0 0-6-3l2 2-9 9-2-2a4 4 0 0 0 3 6"></path>
-          </svg>
-        </div>
-        <h3>Construction & Renovation</h3>
-        <p class="sv-tagline">From concept to completion with clear oversight.</p>
-        <ul class="sv-list">
-          <li>Transparent, itemized quotes</li>
-          <li>Contractor coordination</li>
-          <li>On-site supervision & updates</li>
-        </ul>
-      </article>
-
-      <!-- Concierge & Assistance -->
-      <article class="sv-card">
-        <div class="sv-ico" aria-hidden="true">
-          <!-- concierge/star icon -->
-          <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.6">
-            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-          </svg>
-        </div>
-        <h3>Concierge & Assistance</h3>
-        <p class="sv-tagline">Effortless comfort for you and your guests.</p>
-        <ul class="sv-list">
-          <li>Arrival preparation</li>
-          <li>Grocery provisioning & housekeeping</li>
-          <li>Transfers, car rentals & bookings</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* --- Services (Modern) --- */
-  .services{
-    position: relative;
-    padding: clamp(40px, 6vw, 90px) 20px;
-    background:
-      radial-gradient(1200px 500px at 15% -10%, rgba(14,165,233,.08), transparent 50%),
-      radial-gradient(1000px 500px at 85% 110%, rgba(15,76,129,.08), transparent 55%),
-      var(--bg, #ffffff);
-    border-top: 1px solid var(--line, #e2e8f0);
-  }
-  .sv-wrap{max-width: 1100px; margin: 0 auto;}
-  .sv-head{max-width: 780px; margin: 0 auto 28px; text-align: center}
-  .sv-head h2{
-    margin: 0 0 8px;
-    font-size: clamp(26px, 3.6vw, 36px);
-    color: var(--ink, #0f172a);
-    letter-spacing: .2px;
-  }
-  .sv-head p{
-    margin: 0;
-    font-size: clamp(15px, 2.1vw, 18px);
-    color: var(--muted, #64748b);
-    line-height: 1.7;
-  }
-
-  .sv-grid{
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(1, minmax(0,1fr));
-  }
-  @media (min-width: 720px){
-    .sv-grid{grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px;}
-  }
-  @media (min-width: 1040px){
-    .sv-grid{grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px;}
-  }
-
-  .sv-card{
-    position: relative;
-    border-radius: var(--radius, 14px);
-    background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
-    border: 1px solid var(--line, #e2e8f0);
-    box-shadow: 0 8px 24px rgba(2,6,23,.06);
-    padding: 18px 16px;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    will-change: transform;
-    backdrop-filter: saturate(1.05) blur(2px);
-  }
-  .sv-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 14px 34px rgba(2,6,23,.10);
-    border-color: rgba(14,165,233,.35);
-  }
-
-  .sv-ico{
-    width: 44px; height: 44px; border-radius: 12px;
-    display: grid; place-items: center;
-    color: var(--brand, #0f4c81);
-    background: linear-gradient(180deg, rgba(14,165,233,.12), rgba(14,165,233,.06));
-    margin-bottom: 12px;
-  }
-
-  .sv-card h3{
-    margin: 0 0 6px;
-    font-size: clamp(17px, 2.2vw, 18px);
-    color: var(--ink, #0f172a);
-    letter-spacing: .2px;
-  }
-  .sv-tagline{
-    margin: 0 0 12px;
-    color: var(--text, #334155);
-    font-size: clamp(14px, 2vw, 16px);
-    line-height: 1.6;
-  }
-  .sv-list{
-    margin: 0; padding: 0; list-style: none;
-    display: grid; gap: 6px;
-  }
-  .sv-list li{
-    position: relative;
-    padding-left: 20px;
-    color: var(--muted, #64748b);
-    font-size: clamp(13.5px, 1.9vw, 15px);
-    line-height: 1.6;
-  }
-  .sv-list li::before{
-    content: "";
-    position: absolute; left: 0; top: .6em;
-    width: 8px; height: 8px; border-radius: 999px;
-    background: var(--brand-2, #0ea5e9);
-    opacity: .9;
-  }
-
-  /* Motion safety */
-  @media (prefers-reduced-motion: reduce){
-    .sv-card{transition: none}
-    .sv-card:hover{transform: none}
-  }
-</style>
-
-  <!-- CTA BAND -->
-  <section class="cta-band">
-    <div class="container cta-wrap">
-      <h2 class="reveal">GET IN TOUCH</h2>
-      <p class="reveal" style="transition-delay:.06s">Contact us today to learn more about our services.</p>
-      <p class="reveal" style="transition-delay:.12s;margin-top:10px">
-        <strong>Email:</strong> <a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a>
-        &nbsp;•&nbsp;
-        <strong>Phone:</strong> <a href="tel:+393394496037">+39 339 449 60 37</a>
-      </p>
-    </div>
-  </section>
-
-<!-- ABOUT SECTION -->
-<section class="about" id="about">
-  <div class="about-wrap">
-    <h2>About Us</h2>
-    <p>
-      Sunny Hill Solutions provides reliable property management for homeowners in Liguria.
-      We are dedicated to delivering seamless, worry-free ownership experiences through
-      professionalism, transparency, and genuine attention to detail.
-    </p>
-    <p>
-      Our approach combines local knowledge with organized management to keep every home
-      perfectly cared for, all year round.
-    </p>
-  </div>
-</section>
-
-<style>
-  .about{
-    background: var(--bg, #fff);
-    color: var(--text, #334155);
-    padding: clamp(36px, 6vw, 72px) 20px;
-    border-top: 1px solid var(--line, #e2e8f0);
-    border-bottom: 1px solid var(--line, #e2e8f0);
-  }
-  .about-wrap{
-    max-width: 980px;
-    margin: 0 auto;
-  }
-  .about h2{
-    color: var(--ink, #0f172a);
-    font-size: clamp(24px, 3.4vw, 34px);
-    line-height: 1.2;
-    margin: 0 0 12px;
-    letter-spacing: .2px;
-  }
-  .about p{
-    margin: 0 0 12px;
-    font-size: clamp(16px, 2.1vw, 18px);
-    line-height: 1.7;
-    color: var(--text, #334155);
-  }
-</style>
-
-  <!-- CONTACT (placeholder so nav works) -->
-  <section id="contact" class="container">
-    <h2 class="reveal">CONTACT</h2>
-    <div class="contact reveal" style="transition-delay:.06s">
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="How can we help?" required></textarea>
-        <button class="btn submit" type="submit">Send message</button>
-      </form>
-      <div>
-        <p><strong>Email</strong><br><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></p>
-        <p><strong>Phone</strong><br><a href="tel:+393394496037">+39 339 449 60 37</a></p>
-        <p><strong>Area</strong><br>Liguria (Imperia) & surroundings</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="container">© <span id="year"></span> Sunny Hill Solutions — Property Management & Care</div>
-  </footer>
+    <style>
+      /* --- Services (Modern) --- */
+      .services{
+        position: relative;
+        padding: clamp(40px, 6vw, 90px) 20px;
+        background:
+          radial-gradient(1200px 500px at 15% -10%, rgba(14,165,233,.08), transparent 50%),
+          radial-gradient(1000px 500px at 85% 110%, rgba(15,76,129,.08), transparent 55%),
+          var(--bg, #ffffff);
+        border-top: 1px solid var(--line, #e2e8f0);
+      }
+      .sv-wrap{max-width: 1100px; margin: 0 auto;}
+      .sv-head{max-width: 780px; margin: 0 auto 28px; text-align: center}
+      .sv-head h2{
+        margin: 0 0 8px;
+        font-size: clamp(26px, 3.6vw, 36px);
+        color: var(--ink, #0f172a);
+        letter-spacing: .2px;
+      }
+      .sv-head p{
+        margin: 0;
+        font-size: clamp(15px, 2.1vw, 18px);
+        color: var(--muted, #64748b);
+        line-height: 1.7;
+      }
+
+      .sv-grid{ display: grid; gap: 16px; grid-template-columns: repeat(1, minmax(0,1fr)); }
+      @media (min-width: 720px){ .sv-grid{grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px;} }
+      @media (min-width: 1040px){ .sv-grid{grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px;} }
+
+      .sv-card{
+        position: relative;
+        border-radius: var(--radius, 14px);
+        background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
+        border: 1px solid var(--line, #e2e8f0);
+        box-shadow: 0 8px 24px rgba(2,6,23,.06);
+        padding: 18px 16px;
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        will-change: transform;
+        backdrop-filter: saturate(1.05) blur(2px);
+        z-index: 0; /* never above header */
+      }
+      .sv-card:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 14px 34px rgba(2,6,23,.10);
+        border-color: rgba(14,165,233,.35);
+        z-index: 1; /* still below header (9999) */
+      }
+
+      .sv-ico{
+        width: 44px; height: 44px; border-radius: 12px;
+        display: grid; place-items: center;
+        color: var(--brand, #0f4c81);
+        background: linear-gradient(180deg, rgba(14,165,233,.12), rgba(14,165,233,.06));
+        margin-bottom: 12px;
+      }
+
+      .sv-card h3{ margin: 0 0 6px; font-size: clamp(17px, 2.2vw, 18px); color: var(--ink, #0f172a); letter-spacing: .2px; }
+      .sv-tagline{ margin: 0 0 12px; color: var(--text, #334155); font-size: clamp(14px, 2vw, 16px); line-height: 1.6; }
+      .sv-list{ margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+      .sv-list li{
+        position: relative; padding-left: 20px; color: var(--muted, #64748b);
+        font-size: clamp(13.5px, 1.9vw, 15px); line-height: 1.6;
+      }
+      .sv-list li::before{
+        content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 999px;
+        background: var(--brand-2, #0ea5e9); opacity: .9;
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .sv-card{transition: none}
+        .sv-card:hover{transform: none}
+      }
+    </style>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="container cta-wrap">
+        <h2 class="reveal">GET IN TOUCH</h2>
+        <p class="reveal" style="transition-delay:.06s">Contact us today to learn more about our services.</p>
+        <p class="reveal" style="transition-delay:.12s;margin-top:10px">
+          <strong>Email:</strong> <a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a>
+          &nbsp;•&nbsp;
+          <strong>Phone:</strong> <a href="tel:+393394496037">+39 339 449 60 37</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-wrap">
+        <h2>About Us</h2>
+        <p>
+          Sunny Hill Solutions provides reliable property management for homeowners in Liguria.
+          We are dedicated to delivering seamless, worry-free ownership experiences through
+          professionalism, transparency, and genuine attention to detail.
+        </p>
+        <p>
+          Our approach combines local knowledge with organized management to keep every home
+          perfectly cared for, all year round.
+        </p>
+      </div>
+    </section>
+
+    <style>
+      .about{
+        background: var(--bg, #fff);
+        color: var(--text, #334155);
+        padding: clamp(36px, 6vw, 72px) 20px;
+        border-top: 1px solid var(--line, #e2e8f0);
+        border-bottom: 1px solid var(--line, #e2e8f0);
+      }
+      .about-wrap{ max-width: 980px; margin: 0 auto; }
+      .about h2{
+        color: var(--ink, #0f172a);
+        font-size: clamp(24px, 3.4vw, 34px);
+        line-height: 1.2;
+        margin: 0 0 12px; letter-spacing: .2px;
+      }
+      .about p{
+        margin: 0 0 12px;
+        font-size: clamp(16px, 2.1vw, 18px);
+        line-height: 1.7;
+        color: var(--text, #334155);
+      }
+    </style>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <h2 class="reveal">CONTACT</h2>
+      <div class="contact reveal" style="transition-delay:.06s">
+        <form action="#" method="post">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="How can we help?" required></textarea>
+          <button class="btn submit" type="submit">Send message</button>
+        </form>
+        <div>
+          <p><strong>Email</strong><br><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></p>
+          <p><strong>Phone</strong><br><a href="tel:+393394496037">+39 339 449 60 37</a></p>
+          <p><strong>Area</strong><br>Liguria (Imperia) & surroundings</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Sunny Hill Solutions — Property Management & Care</div>
+    </footer>
+  </main>
 
   <script>
     // Mobile menu
@@ -463,7 +435,7 @@
     }, {threshold: .12, rootMargin: '0px 0px -60px 0px'});
     revealEls.forEach(el=> io.observe(el));
 
-    // Subtle parallax for hero bg
+    // Subtle parallax for hero bg — it will scroll away naturally
     const hero = document.querySelector('.hero');
     window.addEventListener('scroll', ()=>{
       const y = Math.min(window.scrollY, 400);

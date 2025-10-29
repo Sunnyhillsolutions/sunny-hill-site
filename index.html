@@ -89,6 +89,7 @@
     .sv-head{max-width:780px;margin:0 auto 28px;text-align:center}
     .sv-head h2{margin:0 0 8px;font-size:clamp(26px,3.6vw,36px);color:var(--ink);letter-spacing:.2px}
     .sv-head p{margin:0;font-size:clamp(15px,2.1vw,18px);color:var(--muted);line-height:1.7}
+    
 
     .sv-grid{display:grid;gap:16px;grid-template-columns:repeat(1,minmax(0,1fr))}
     @media (min-width:720px){.sv-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
@@ -158,6 +159,23 @@
       .sv-card,.reveal{transition:none}
       .sv-card:hover{transform:none}
     }
+    /* --- Prevent text from showing under sticky header --- */
+#siteHeader{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #fff; /* opaque background */
+}
+#siteHeader::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 12px; /* adjust if needed */
+  background: #fff;
+  pointer-events: none;
+}
   </style>
 </head>
 <body>

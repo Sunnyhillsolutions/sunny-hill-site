@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunny Hill Solutions — Property Management in Liguria</title>
   <meta name="description" content="Sunny Hill Solutions — Property management in Liguria (Imperia): inspections, maintenance, concierge, guest preparation, pool & garden care." />
+
+  <!-- Performance: speed up font load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -31,13 +35,24 @@
       background:#fff; border-bottom:1px solid var(--line);
       backdrop-filter:saturate(140%) blur(6px);
       isolation:isolate;           /* own stacking context */
+      transition: box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    }
+    header.scrolled{
+      box-shadow: 0 6px 18px rgba(2,6,23,.08);
+      border-color: #dde3eb;
+      background-color: rgba(255,255,255,.98);
     }
     header .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;min-height:var(--nav-h);position:relative;z-index:1}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
     .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#fde68a)}
     .logo { height: 80px; width: auto; display: block; }
     .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-weight:600;color:var(--ink)}
+    .nav-links a{font-weight:600;color:var(--ink);position:relative}
+    .nav-links a::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
+      background: currentColor; transform: scaleX(0); transform-origin:left; transition: transform .22s ease;
+    }
+    .nav-links a:hover::after{ transform: scaleX(1); }
     .nav-links .login{padding:8px 12px;border:1px solid var(--line);border-radius:10px}
 
     /* Mobile menu button */
@@ -59,7 +74,8 @@
     .hero h1{ font-size: clamp(30px, 4.6vw, 56px); letter-spacing:.5px; margin:0 0 12px }
     .hero p{ max-width: 800px; margin: 0 auto 18px; color:#e5e7eb; font-size: clamp(16px, 2.4vw, 20px) }
     .btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
-    .btn{ display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.7); color:#fff }
+    .btn{ display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.7); color:#fff; transition: transform .15s ease, box-shadow .15s ease }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(2,6,23,.18) }
     .btn.primary{ background:var(--brand-2); border-color:var(--brand-2) }
     .btn.ghost{ background:transparent }
 
@@ -120,10 +136,40 @@
     .mobile-panel{
       position:fixed;left:0;right:0;top:var(--nav-h);
       background:#fff;border-bottom:1px solid var(--line);display:none;z-index:70;
+      transform: translateY(-8px); opacity: 0; pointer-events: none;
+      transition: transform .22s ease, opacity .22s ease;
     }
     .mobile-panel .links{display:grid;gap:10px;padding:14px 20px}
     .mobile-panel a{padding:10px 8px;border-radius:10px}
-    .mobile-open .mobile-panel{display:block}
+    .mobile-open .mobile-panel{display:block; transform: translateY(0); opacity: 1; pointer-events:auto}
+  </style>
+
+  <!-- Enhancements: no content change, only polish -->
+  <style id="enhancements">
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+    /* Global link underline effect for non-button links inside content */
+    a:not(.btn){ position:relative; }
+    a:not(.btn)::after{
+      content:""; position:absolute; left:0; bottom:-2px; height:2px; width:100%;
+      background: currentColor; transform: scaleX(0); transform-origin:left; transition: transform .22s ease;
+    }
+    a:not(.btn):hover::after{ transform: scaleX(1); }
+
+    /* Scroll progress bar (auto-injected via JS) */
+    #scroll-progress{
+      position: fixed; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, var(--brand,#0f4c81), var(--brand-2,#0ea5e9));
+      transform-origin: left; transform: scaleX(0); z-index: 1200;
+    }
+
+    /* Better focus rings for a11y */
+    :where(a,button,[role="button"],input,select,textarea):focus-visible{
+      outline: 2px solid color-mix(in oklab, var(--brand,#0f4c81) 80%, white);
+      outline-offset: 2px; border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -424,10 +470,48 @@
 
     // Subtle parallax for hero bg — it will scroll away naturally
     const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', ()=>{
-      const y = Math.min(window.scrollY, 400);
-      hero.style.backgroundPosition = `center calc(50% + ${y*0.15}px)`;
-    }, {passive:true});
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(hero && !reduceMotion){
+      window.addEventListener('scroll', ()=> {
+        const y = Math.min(window.scrollY, 400);
+        hero.style.backgroundPosition = `center calc(50% + ${y*0.15}px)`;
+      }, {passive:true});
+    }
+
+    // Header shadow & background when scrolling
+    const headerEl = document.querySelector('header');
+    const onScrollHeader = () => {
+      if (window.scrollY > 6) headerEl.classList.add('scrolled');
+      else headerEl.classList.remove('scrolled');
+    };
+    document.addEventListener('scroll', onScrollHeader, { passive:true });
+    onScrollHeader();
+
+    // Scroll progress bar (no content change)
+    (function(){
+      const bar = document.createElement('div');
+      bar.id = 'scroll-progress';
+      document.body.appendChild(bar);
+      const update = () => {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const p = max > 0 ? (h.scrollTop / max) : 0;
+        bar.style.transform = `scaleX(${p})`;
+      };
+      document.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
+    // Lazy-load images (keep hero/logo crisp above the fold)
+    (function(){
+      document.querySelectorAll('img:not(.logo)').forEach((img, i)=>{
+        if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
+        img.setAttribute('decoding','async');
+      });
+      // Also set decoding for logo
+      const logo = document.querySelector('.logo');
+      if (logo) logo.setAttribute('decoding','async');
+    })();
   </script>
 </body>
 </html>

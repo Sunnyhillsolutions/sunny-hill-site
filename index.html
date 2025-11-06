@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunny Hill Solutions — Property Management in Liguria</title>
   <meta name="description" content="Sunny Hill Solutions — Property management in Liguria (Imperia): inspections, maintenance, concierge, guest preparation, pool & garden care." />
+  <link rel="alternate" hreflang="en" href="https://yourdomain.com/">
+  <link rel="alternate" hreflang="de" href="https://yourdomain.com/?lang=de">
+  <link rel="alternate" hreflang="it" href="https://yourdomain.com/?lang=it">
+  <link rel="alternate" hreflang="x-default" href="https://yourdomain.com/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -39,6 +43,16 @@
     .nav-links{display:flex;gap:26px;align-items:center}
     .nav-links a{font-weight:600;color:var(--ink)}
     .nav-links .login{padding:8px 12px;border:1px solid var(--line);border-radius:10px}
+
+    /* Language switcher */
+    .lang-switch{display:inline-flex;gap:.5rem;align-items:center;margin-left:16px}
+    .lang-btn{
+      border:1px solid var(--line); background:#fff; padding:.4rem .6rem;
+      border-radius:10px; font:500 13px/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--ink); cursor:pointer; transition:.2s box-shadow,.2s transform,.2s background;
+    }
+    .lang-btn[aria-pressed="true"]{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .lang-btn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(15,23,42,.12)}
 
     /* Mobile menu button */
     .menu-btn{display:none;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:#fff}
@@ -112,6 +126,7 @@
       .logo{ height:64px; }
       .nav-links{display:none}
       .menu-btn{display:flex}
+      .lang-switch{margin-left:0}
       .cards{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
     }
@@ -133,29 +148,39 @@
     <div class="container nav">
       <a href="#home" class="brand" aria-label="Sunny Hill Solutions">
         <img src="images/logo.thick.png" alt="Sunny Hill Solutions logo" class="logo">
-        <span>Sunny Hill Solutions</span>
+        <span data-i18n="brand">Sunny Hill Solutions</span>
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#services">Our Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="login" href="login.html" title="Client & Staff Login (CRM)">Login</a>
+        <a href="#services" data-i18n="nav.services">Our Services</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a class="login" href="login.html" title="Client & Staff Login (CRM)" data-i18n="nav.login">Login</a>
+        <div class="lang-switch" aria-label="Language selector">
+          <button data-lang="en" class="lang-btn" aria-pressed="true">EN</button>
+          <button data-lang="de" class="lang-btn">DE</button>
+          <button data-lang="it" class="lang-btn">IT</button>
+        </div>
       </nav>
 
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        Menu
+        <span data-i18n="nav.menu">Menu</span>
       </button>
     </div>
 
     <div id="mobileMenu" class="mobile-panel" role="dialog" aria-label="Mobile menu">
       <div class="container">
         <div class="links">
-          <a href="#services" onclick="closeMenu()">Our Services</a>
-          <a href="#about" onclick="closeMenu()">About</a>
-          <a href="#contact" onclick="closeMenu()">Contact</a>
-          <a href="login.html" class="login" onclick="closeMenu()">Login</a>
+          <a href="#services" onclick="closeMenu()" data-i18n="nav.services">Our Services</a>
+          <a href="#about" onclick="closeMenu()" data-i18n="nav.about">About</a>
+          <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
+          <a href="login.html" class="login" onclick="closeMenu()" data-i18n="nav.login">Login</a>
+          <div class="lang-switch" aria-label="Language selector">
+            <button data-lang="en" class="lang-btn" aria-pressed="true">EN</button>
+            <button data-lang="de" class="lang-btn">DE</button>
+            <button data-lang="it" class="lang-btn">IT</button>
+          </div>
         </div>
       </div>
     </div>
@@ -166,13 +191,13 @@
     <div class="overlay" aria-hidden="true"></div>
     <div class="content">
       <div class="container">
-        <h1 class="reveal">SUNNY HILL SOLUTIONS</h1>
-        <p class="reveal" style="transition-delay:.08s">
+        <h1 class="reveal" data-i18n="hero.brand">SUNNY HILL SOLUTIONS</h1>
+        <p class="reveal" style="transition-delay:.08s" data-i18n="hero.tagline">
           Innovative, reliable property care in Liguria. Inspections, maintenance, bill payments, guest preparation and concierge — so your home is always ready.
         </p>
         <div class="btns reveal" style="transition-delay:.12s">
-          <a class="btn ghost" href="#services">OUR SERVICES</a>
-          <a class="btn primary" href="#contact">GET IN TOUCH</a>
+          <a class="btn ghost" href="#services" data-i18n="hero.cta.services">OUR SERVICES</a>
+          <a class="btn primary" href="#contact" data-i18n="hero.cta.contact">GET IN TOUCH</a>
         </div>
       </div>
     </div>
@@ -184,8 +209,8 @@
     <section id="services" class="services">
       <div class="sv-wrap">
         <header class="sv-head">
-          <h2>Services</h2>
-          <p>Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
+          <h2 data-i18n="services.title">Services</h2>
+          <p data-i18n="services.lead">Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
         </header>
 
         <div class="sv-grid">
@@ -198,12 +223,12 @@
                 <path d="M3 12h18"></path>
               </svg>
             </div>
-            <h3>Management</h3>
-            <p class="sv-tagline">Smooth handling of all administrative aspects.</p>
+            <h3 data-i18n="services.mgmt.title">Management</h3>
+            <p class="sv-tagline" data-i18n="services.mgmt.tagline">Smooth handling of all administrative aspects.</p>
             <ul class="sv-list">
-              <li>IMU & TARI coordination</li>
-              <li>Utilities & bill oversight</li>
-              <li>Tax return liaison (IRPEF)</li>
+              <li data-i18n="services.mgmt.item1">IMU & TARI coordination</li>
+              <li data-i18n="services.mgmt.item2">Utilities & bill oversight</li>
+              <li data-i18n="services.mgmt.item3">Tax return liaison (IRPEF)</li>
             </ul>
           </article>
 
@@ -216,12 +241,12 @@
                 <path d="M9.5 14.5c2.5-3 6-2.5 7.5-1-1.5 1.5-5 2-7.5 1Z"></path>
               </svg>
             </div>
-            <h3>Property Care</h3>
-            <p class="sv-tagline">Your home in excellent condition, year-round.</p>
+            <h3 data-i18n="services.care.title">Property Care</h3>
+            <p class="sv-tagline" data-i18n="services.care.tagline">Your home in excellent condition, year-round.</p>
             <ul class="sv-list">
-              <li>Regular inspections</li>
-              <li>Cleaning & maintenance</li>
-              <li>Boiler, garden & pool care</li>
+              <li data-i18n="services.care.item1">Regular inspections</li>
+              <li data-i18n="services.care.item2">Cleaning & maintenance</li>
+              <li data-i18n="services.care.item3">Boiler, garden & pool care</li>
             </ul>
           </article>
 
@@ -234,12 +259,12 @@
                 <path d="M20 7a4 4 0 0 0-6-3l2 2-9 9-2-2a4 4 0 0 0 3 6"></path>
               </svg>
             </div>
-            <h3>Construction & Renovation</h3>
-            <p class="sv-tagline">From concept to completion with clear oversight.</p>
+            <h3 data-i18n="services.reno.title">Construction & Renovation</h3>
+            <p class="sv-tagline" data-i18n="services.reno.tagline">From concept to completion with clear oversight.</p>
             <ul class="sv-list">
-              <li>Transparent, itemized quotes</li>
-              <li>Contractor coordination</li>
-              <li>On-site supervision & updates</li>
+              <li data-i18n="services.reno.item1">Transparent, itemized quotes</li>
+              <li data-i18n="services.reno.item2">Contractor coordination</li>
+              <li data-i18n="services.reno.item3">On-site supervision & updates</li>
             </ul>
           </article>
 
@@ -250,12 +275,12 @@
                 <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
               </svg>
             </div>
-            <h3>Concierge & Assistance</h3>
-            <p class="sv-tagline">Effortless comfort for you and your guests.</p>
+            <h3 data-i18n="services.conc.title">Concierge & Assistance</h3>
+            <p class="sv-tagline" data-i18n="services.conc.tagline">Effortless comfort for you and your guests.</p>
             <ul class="sv-list">
-              <li>Arrival preparation</li>
-              <li>Grocery provisioning & housekeeping</li>
-              <li>Transfers, car rentals & bookings</li>
+              <li data-i18n="services.conc.item1">Arrival preparation</li>
+              <li data-i18n="services.conc.item2">Grocery provisioning & housekeeping</li>
+              <li data-i18n="services.conc.item3">Transfers, car rentals & bookings</li>
             </ul>
           </article>
         </div>
@@ -333,20 +358,19 @@
 
       @media (prefers-reduced-motion: reduce){
         .sv-card{transition: none}
-        .sv-card:hover{transform: none}
       }
     </style>
 
     <!-- ABOUT SECTION -->
     <section class="about" id="about">
       <div class="about-wrap">
-        <h2>About Us</h2>
-        <p>
+        <h2 data-i18n="about.title">About Us</h2>
+        <p data-i18n="about.p1">
           Sunny Hill Solutions provides reliable property management for homeowners in Liguria.
           We are dedicated to delivering seamless, worry-free ownership experiences through
           professionalism, transparency, and genuine attention to detail.
         </p>
-        <p>
+        <p data-i18n="about.p2">
           Our approach combines local knowledge with organized management to keep every home
           perfectly cared for, all year round.
         </p>
@@ -378,33 +402,264 @@
        text-align: justify;
        text-justify: inter-word;
        text-align-last: left;
-      } 
+      }
     </style>
 
     <!-- CONTACT -->
     <section id="contact" class="container">
-      <h2 class="reveal">CONTACT</h2>
+      <h2 class="reveal" data-i18n="contact.title">CONTACT</h2>
       <div class="contact reveal" style="transition-delay:.06s">
         <form action="#" method="post">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
-          <textarea name="message" placeholder="How can we help?" required></textarea>
-          <button class="btn submit" type="submit">Send message</button>
+          <input type="text" name="name" required data-i18n-placeholder="contact.form.name" placeholder="Your name">
+          <input type="email" name="email" required data-i18n-placeholder="contact.form.email" placeholder="Your email">
+          <textarea name="message" required data-i18n-placeholder="contact.form.message" placeholder="How can we help?"></textarea>
+          <button class="btn submit" type="submit" data-i18n="contact.form.send">Send message</button>
         </form>
         <div>
-          <p><strong>Email</strong><br><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></p>
-          <p><strong>Phone</strong><br><a href="tel:+393394496037">+39 339 449 60 37</a></p>
-          <p><strong>Area</strong><br>Liguria (Imperia) & surroundings</p>
+          <p><strong data-i18n="contact.email.label">Email</strong><br><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></p>
+          <p><strong data-i18n="contact.phone.label">Phone</strong><br><a href="tel:+393394496037">+39 339 449 60 37</a></p>
+          <p><strong data-i18n="contact.area.label">Area</strong><br><span data-i18n="contact.area.value">Liguria (Imperia) & surroundings</span></p>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="container">© <span id="year"></span> Sunny Hill Solutions — Property Management & Care</div>
+      <div class="container">© <span id="year"></span> <span data-i18n="brand">Sunny Hill Solutions</span> — <span data-i18n="footer.tag">Property Management & Care</span></div>
     </footer>
   </main>
 
   <script>
+    // ----- i18n dictionary (EN / DE / IT)
+    const I18N = {
+      en: {
+        "meta.title": "Sunny Hill Solutions — Property Management in Liguria",
+        "meta.desc": "Sunny Hill Solutions — Property management in Liguria (Imperia): inspections, maintenance, concierge, guest preparation, pool & garden care.",
+        "brand": "Sunny Hill Solutions",
+
+        "nav.services": "Our Services",
+        "nav.about": "About",
+        "nav.contact": "Contact",
+        "nav.login": "Login",
+        "nav.menu": "Menu",
+
+        "hero.brand": "SUNNY HILL SOLUTIONS",
+        "hero.tagline": "Innovative, reliable property care in Liguria. Inspections, maintenance, bill payments, guest preparation and concierge — so your home is always ready.",
+        "hero.cta.services": "OUR SERVICES",
+        "hero.cta.contact": "GET IN TOUCH",
+
+        "services.title": "Services",
+        "services.lead": "Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.",
+
+        "services.mgmt.title": "Management",
+        "services.mgmt.tagline": "Smooth handling of all administrative aspects.",
+        "services.mgmt.item1": "IMU & TARI coordination",
+        "services.mgmt.item2": "Utilities & bill oversight",
+        "services.mgmt.item3": "Tax return liaison (IRPEF)",
+
+        "services.care.title": "Property Care",
+        "services.care.tagline": "Your home in excellent condition, year-round.",
+        "services.care.item1": "Regular inspections",
+        "services.care.item2": "Cleaning & maintenance",
+        "services.care.item3": "Boiler, garden & pool care",
+
+        "services.reno.title": "Construction & Renovation",
+        "services.reno.tagline": "From concept to completion with clear oversight.",
+        "services.reno.item1": "Transparent, itemized quotes",
+        "services.reno.item2": "Contractor coordination",
+        "services.reno.item3": "On-site supervision & updates",
+
+        "services.conc.title": "Concierge & Assistance",
+        "services.conc.tagline": "Effortless comfort for you and your guests.",
+        "services.conc.item1": "Arrival preparation",
+        "services.conc.item2": "Grocery provisioning & housekeeping",
+        "services.conc.item3": "Transfers, car rentals & bookings",
+
+        "about.title": "About Us",
+        "about.p1": "Sunny Hill Solutions provides reliable property management for homeowners in Liguria. We are dedicated to delivering seamless, worry-free ownership experiences through professionalism, transparency, and genuine attention to detail.",
+        "about.p2": "Our approach combines local knowledge with organized management to keep every home perfectly cared for, all year round.",
+
+        "contact.title": "CONTACT",
+        "contact.form.name": "Your name",
+        "contact.form.email": "Your email",
+        "contact.form.message": "How can we help?",
+        "contact.form.send": "Send message",
+        "contact.email.label": "Email",
+        "contact.phone.label": "Phone",
+        "contact.area.label": "Area",
+        "contact.area.value": "Liguria (Imperia) & surroundings",
+
+        "footer.tag": "Property Management & Care"
+      },
+
+      de: {
+        "meta.title": "Sunny Hill Solutions — Immobilienverwaltung in Ligurien",
+        "meta.desc": "Sunny Hill Solutions — Immobilienverwaltung in Ligurien (Imperia): Inspektionen, Instandhaltung, Concierge, Gästevorbereitung, Pool- & Gartenpflege.",
+        "brand": "Sunny Hill Solutions",
+
+        "nav.services": "Leistungen",
+        "nav.about": "Über uns",
+        "nav.contact": "Kontakt",
+        "nav.login": "Login",
+        "nav.menu": "Menü",
+
+        "hero.brand": "SUNNY HILL SOLUTIONS",
+        "hero.tagline": "Innovative, verlässliche Objektbetreuung in Ligurien. Inspektionen, Instandhaltung, Rechnungen, Gästevorbereitung und Concierge – damit Ihr Zuhause stets bereit ist.",
+        "hero.cta.services": "LEISTUNGEN",
+        "hero.cta.contact": "KONTAKT AUFNEHMEN",
+
+        "services.title": "Leistungen",
+        "services.lead": "Klar, verlässlich und umfassend – für entspannte Eigentümerschaft und echte Seelenruhe.",
+
+        "services.mgmt.title": "Verwaltung",
+        "services.mgmt.tagline": "Reibungslose Abwicklung aller administrativen Aspekte.",
+        "services.mgmt.item1": "IMU- & TARI-Koordination",
+        "services.mgmt.item2": "Versorger- & Rechnungsübersicht",
+        "services.mgmt.item3": "Steuererklärungskoordination (IRPEF)",
+
+        "services.care.title": "Objektbetreuung",
+        "services.care.tagline": "Ihr Zuhause – ganzjährig in Bestform.",
+        "services.care.item1": "Regelmäßige Inspektionen",
+        "services.care.item2": "Reinigung & Instandhaltung",
+        "services.care.item3": "Heizung, Garten & Poolpflege",
+
+        "services.reno.title": "Bau & Renovierung",
+        "services.reno.tagline": "Von der Idee bis zur Übergabe – mit klarer Steuerung.",
+        "services.reno.item1": "Transparente, aufgeschlüsselte Angebote",
+        "services.reno.item2": "Koordination der Gewerke",
+        "services.reno.item3": "Baubegleitung & Updates vor Ort",
+
+        "services.conc.title": "Concierge & Assistance",
+        "services.conc.tagline": "Müheloser Komfort für Sie und Ihre Gäste.",
+        "services.conc.item1": "Ankunftsvorbereitung",
+        "services.conc.item2": "Einkauf & Housekeeping",
+        "services.conc.item3": "Transfers, Mietwagen & Reservierungen",
+
+        "about.title": "Über uns",
+        "about.p1": "Sunny Hill Solutions bietet verlässliche Immobilienverwaltung für Eigentümer in Ligurien. Wir stehen für nahtlose, sorgenfreie Eigentümerschaft durch Professionalität, Transparenz und echte Liebe zum Detail.",
+        "about.p2": "Lokale Expertise und strukturierte Organisation sorgen dafür, dass jedes Haus das ganze Jahr über perfekt betreut ist.",
+
+        "contact.title": "KONTAKT",
+        "contact.form.name": "Ihr Name",
+        "contact.form.email": "Ihre E-Mail",
+        "contact.form.message": "Wie können wir helfen?",
+        "contact.form.send": "Nachricht senden",
+        "contact.email.label": "E-Mail",
+        "contact.phone.label": "Telefon",
+        "contact.area.label": "Region",
+        "contact.area.value": "Ligurien (Imperia) & Umgebung",
+
+        "footer.tag": "Immobilienverwaltung & Betreuung"
+      },
+
+      it: {
+        "meta.title": "Sunny Hill Solutions — Gestione immobiliare in Liguria",
+        "meta.desc": "Sunny Hill Solutions — Gestione immobiliare in Liguria (Imperia): ispezioni, manutenzione, concierge, preparazione ospiti, cura di piscina e giardino.",
+        "brand": "Sunny Hill Solutions",
+
+        "nav.services": "Servizi",
+        "nav.about": "Chi siamo",
+        "nav.contact": "Contatti",
+        "nav.login": "Login",
+        "nav.menu": "Menu",
+
+        "hero.brand": "SUNNY HILL SOLUTIONS",
+        "hero.tagline": "Assistenza immobiliare affidabile in Liguria. Ispezioni, manutenzione, pagamenti bollette, preparazione ospiti e concierge — per una casa sempre pronta.",
+        "hero.cta.services": "I NOSTRI SERVIZI",
+        "hero.cta.contact": "CONTATTACI",
+
+        "services.title": "Servizi",
+        "services.lead": "Cura chiara e affidabile in ogni aspetto della proprietà — per semplicità e tranquillità.",
+
+        "services.mgmt.title": "Amministrazione",
+        "services.mgmt.tagline": "Gestione fluida di tutti gli aspetti amministrativi.",
+        "services.mgmt.item1": "Coordinamento IMU & TARI",
+        "services.mgmt.item2": "Gestione utenze e bollette",
+        "services.mgmt.item3": "Supporto dichiarazione redditi (IRPEF)",
+
+        "services.care.title": "Cura della proprietà",
+        "services.care.tagline": "La tua casa in ottime condizioni tutto l’anno.",
+        "services.care.item1": "Ispezioni periodiche",
+        "services.care.item2": "Pulizie & manutenzione",
+        "services.care.item3": "Caldaie, giardino & piscina",
+
+        "services.reno.title": "Edilizia & Ristrutturazioni",
+        "services.reno.tagline": "Dal concept alla consegna con supervisione chiara.",
+        "services.reno.item1": "Preventivi trasparenti e dettagliati",
+        "services.reno.item2": "Coordinamento fornitori",
+        "services.reno.item3": "Supervisione in loco & aggiornamenti",
+
+        "services.conc.title": "Concierge & Assistenza",
+        "services.conc.tagline": "Comfort senza sforzo per te e i tuoi ospiti.",
+        "services.conc.item1": "Preparazione all’arrivo",
+        "services.conc.item2": "Spesa & housekeeping",
+        "services.conc.item3": "Transfer, noleggio auto & prenotazioni",
+
+        "about.title": "Chi siamo",
+        "about.p1": "Sunny Hill Solutions offre gestione immobiliare affidabile per proprietari in Liguria. Siamo impegnati a garantire un’esperienza di proprietà fluida e senza pensieri grazie a professionalità, trasparenza e attenzione sincera ai dettagli.",
+        "about.p2": "Unendo conoscenza locale e organizzazione, manteniamo ogni casa perfettamente curata tutto l’anno.",
+
+        "contact.title": "CONTATTI",
+        "contact.form.name": "Il tuo nome",
+        "contact.form.email": "La tua e-mail",
+        "contact.form.message": "Come possiamo aiutarti?",
+        "contact.form.send": "Invia messaggio",
+        "contact.email.label": "E-mail",
+        "contact.phone.label": "Telefono",
+        "contact.area.label": "Zona",
+        "contact.area.value": "Liguria (Imperia) e dintorni",
+
+        "footer.tag": "Gestione & Cura Immobiliare"
+      }
+    };
+
+    // ----- Helpers
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function applyTranslations(lang) {
+      const dict = I18N[lang] || I18N.en;
+
+      // Text nodes
+      $$("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // Placeholders
+      $$("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) el.setAttribute("placeholder", dict[key]);
+      });
+
+      // Document metadata
+      if (dict["meta.title"]) document.title = dict["meta.title"];
+      if (dict["meta.desc"]) {
+        const md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute("content", dict["meta.desc"]);
+      }
+
+      // <html lang="..."> for a11y/SEO
+      document.documentElement.setAttribute("lang", lang);
+
+      // Mark active button(s)
+      $$(".lang-btn").forEach(btn => btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang)));
+
+      // Persist
+      localStorage.setItem("lang", lang);
+    }
+
+    function resolveInitialLang() {
+      const urlLang = new URLSearchParams(location.search).get("lang");
+      if (urlLang && I18N[urlLang]) return urlLang;
+
+      const saved = localStorage.getItem("lang");
+      if (saved && I18N[saved]) return saved;
+
+      const browser = (navigator.language || "en").slice(0,2);
+      return I18N[browser] ? browser : "en";
+    }
+
+    // ----- Existing scripts (menu/year/reveal/parallax) + i18n boot
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -433,6 +688,18 @@
       const y = Math.min(window.scrollY, 400);
       hero.style.backgroundPosition = `center calc(50% + ${y*0.15}px)`;
     }, {passive:true});
+
+    // i18n init + events
+    document.addEventListener("DOMContentLoaded", () => {
+      const initial = resolveInitialLang();
+      applyTranslations(initial);
+
+      $$(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          applyTranslations(btn.dataset.lang);
+        });
+      });
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunny Hill Solutions — Services</title>
+  <meta name="description" content="Sunny Hill Solutions — Services in Liguria: management, property care, renovation oversight, concierge, and client dashboard." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#0f4c81;--brand-2:#0ea5e9;--ink:#0f172a;--text:#334155;--muted:#64748b;
+      --line:#e2e8f0;--bg:#ffffff;--radius:16px;--shadow:0 10px 30px rgba(15,23,42,.08);
+      --glow:0 18px 42px rgba(15,76,129,.18);
+      --container:1100px;
+      --nav-h: 96px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fff 0%, #f6f7fb 55%, #f6f7fb 100%);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--container);margin-inline:auto;padding-inline:20px}
+
+    /* Header (copied from your index pattern) */
+    header{
+      position:sticky; top:0;
+      z-index:9999;
+      background:#fff;
+      backdrop-filter:saturate(140%) blur(6px);
+      isolation:isolate;
+      border-bottom:1px solid var(--line);
+    }
+    header .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 0;min-height:var(--nav-h);
+      position:relative;z-index:1
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
+    .logo { height: 80px; width: auto; display: block; }
+
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{font-weight:600;color:var(--ink)}
+    .nav-links .login{padding:8px 12px;border:1px solid var(--line);border-radius:10px}
+
+    .lang-switch{display:inline-flex;gap:.5rem;align-items:center;margin-left:16px}
+    .lang-btn{
+      border:1px solid var(--line); background:#fff; padding:.4rem .6rem;
+      border-radius:10px; font:500 13px/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--ink); cursor:pointer; transition:.2s box-shadow,.2s transform,.2s background;
+    }
+    .lang-btn[aria-pressed="true"]{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .lang-btn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(15,23,42,.12)}
+
+    .menu-btn{display:none;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:#fff}
+
+    /* Mobile panel */
+    .mobile-panel{
+      position:fixed;left:0;right:0;top:var(--nav-h);
+      background:#fff;border-bottom:1px solid var(--line);display:none;z-index:70;
+    }
+    .mobile-panel .links{display:grid;gap:10px;padding:14px 20px}
+    .mobile-panel a{padding:10px 8px;border-radius:10px}
+    .mobile-open .mobile-panel{display:block}
+
+    @media (max-width: 900px){
+      :root{ --nav-h: 72px; }
+      .logo{ height:64px; }
+      .nav-links{display:none}
+      .menu-btn{display:flex}
+      .lang-switch{margin-left:0}
+    }
+
+    /* Page */
+    main{padding:28px 0 70px}
+
+    /* "Nice" hero */
+    .hero{
+      margin-top: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 500px at 15% -10%, rgba(14,165,233,.10), transparent 50%),
+        radial-gradient(1000px 500px at 85% 110%, rgba(15,76,129,.10), transparent 55%),
+        #fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+    }
+    .hero-inner{
+      padding: 26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 8px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing: -.5px;
+      color: var(--ink);
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+    .hero-art{
+      min-height: 150px;
+      border-radius: 18px;
+      border: 1px dashed rgba(15,45,74,.25);
+      display:flex;align-items:center;justify-content:center;
+      color: rgba(15,45,74,.6);
+      font-weight: 700;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,200,0,.18), transparent 45%),
+        radial-gradient(circle at 65% 70%, rgba(15,45,74,.12), transparent 55%);
+    }
+    @media (max-width: 860px){ .hero-inner{grid-template-columns:1fr} }
+
+    /* Card grid (2 columns desktop) */
+    .grid{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start; /* important: prevents weird stretching */
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+
+    /* Expanded card spans full width (no blank neighbor space) */
+    .card.is-expanded{
+      grid-column: 1 / -1;
+    }
+
+    /* "Nice" cards with media header */
+    .card{
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+      border-color: rgba(14,165,233,.35);
+    }
+
+    .card-media{
+      height: 170px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      background: #e9eef4;
+    }
+
+    /* Replace these gradients with real images later */
+    .media-management{ background: linear-gradient(135deg, rgba(15,76,129,.14), rgba(14,165,233,.12)); }
+    .media-care{ background: linear-gradient(135deg, rgba(34,197,94,.14), rgba(15,76,129,.10)); }
+    .media-reno{ background: linear-gradient(135deg, rgba(249,115,22,.14), rgba(15,76,129,.10)); }
+    .media-concierge{ background: linear-gradient(135deg, rgba(168,85,247,.14), rgba(15,76,129,.10)); }
+    .media-dashboard{ background: linear-gradient(135deg, rgba(15,76,129,.18), rgba(59,130,246,.10)); }
+
+    .card-body{ padding: 18px 18px 14px; }
+    .card-title{
+      margin:0 0 6px;
+      font-size: 22px;
+      letter-spacing: -.2px;
+      color: var(--ink);
+    }
+    .card-tag{
+      margin:0 0 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .bullets{ margin:0; padding-left: 18px; line-height: 1.6; color: var(--text); }
+
+    .actions{
+      margin-top: 14px;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--brand);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      transition: .2s transform, .2s box-shadow;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(2,6,23,.10)}
+    .btn-primary{
+      background: var(--brand-2);
+      border-color: var(--brand-2);
+      color:#fff;
+    }
+    .chev{display:inline-block; transition: transform .2s ease}
+
+    /* Accordion panel */
+    .panel{
+      border-top: 1px solid var(--line);
+      background: rgba(15,76,129,.03);
+      padding: 0 18px 18px;
+      display:none;
+    }
+    .panel[data-open="true"]{display:block}
+    .panel h4{
+      margin:14px 0 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(15,76,129,.80);
+    }
+    .panel p{margin:0 0 10px; color: var(--muted); line-height:1.6}
+    .panel ul{margin:0 0 10px; padding-left: 18px; line-height: 1.6; color: var(--text)}
+    .divider{height:1px;background:rgba(15,76,129,.14);margin:12px 0}
+
+    /* Trust + CTA */
+    .trust{
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.75);
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .trust span{color: rgba(15,76,129,.85); font-weight: 700;}
+
+    .foot-cta{
+      margin-top: 18 combined;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(15,76,129,.10), rgba(255,200,0,.08));
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .foot-cta h3{margin:0;color:var(--ink)}
+    .foot-cta p{margin:4px 0 0;color:var(--muted);line-height:1.5}
+
+    footer{padding:30px 0;border-top:1px solid var(--line);color:#475569;margin-top:40px}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html#home" class="brand" aria-label="Sunny Hill Solutions">
+        <img src="images/logo.thick.png" alt="Sunny Hill Solutions logo" class="logo">
+        <span data-i18n="brand">Sunny Hill Solutions</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="services.html" aria-current="page" data-i18n="nav.services">Our Services</a>
+        <a href="index.html#about" data-i18n="nav.about">About</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <a class="login" href="login.html" data-i18n="nav.login">Login</a>
+        <div class="lang-switch" aria-label="Language selector">
+          <button data-lang="en" class="lang-btn" aria-pressed="true">EN</button>
+          <button data-lang="de" class="lang-btn">DE</button>
+          <button data-lang="it" class="lang-btn">IT</button>
+        </div>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span data-i18n="nav.menu">Menu</span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-panel" role="dialog" aria-label="Mobile menu">
+      <div class="container">
+        <div class="links">
+          <a href="services.html" onclick="closeMenu()" data-i18n="nav.services">Our Services</a>
+          <a href="index.html#about" onclick="closeMenu()" data-i18n="nav.about">About</a>
+          <a href="index.html#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
+          <a href="login.html" class="login" onclick="closeMenu()" data-i18n="nav.login">Login</a>
+          <div class="lang-switch" aria-label="Language selector">
+            <button data-lang="en" class="lang-btn" aria-pressed="true">EN</button>
+            <button data-lang="de" class="lang-btn">DE</button>
+            <button data-lang="it" class="lang-btn">IT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" aria-label="Services hero">
+      <div class="hero-inner">
+        <div>
+          <h1 data-i18n="services.pageTitle">Services</h1>
+          <p data-i18n="services.pageLead">Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
+        </div>
+        <div class="hero-art">Hero image / illustration</div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Service cards">
+      <!-- Management -->
+      <article class="card">
+        <div class="card-media media-management" aria-hidden="true"></div>
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="services.mgmt.title">Management</h2>
+          <p class="card-tag" data-i18n="services.mgmt.tagline">Smooth handling of all administrative aspects.</p>
+          <ul class="bullets">
+            <li data-i18n="services.mgmt.item1">IMU & TARI coordination</li>
+            <li data-i18n="services.mgmt.item2">Utilities & bill oversight</li>
+            <li data-i18n="services.mgmt.item3">Tax return liaison (IRPEF)</li>
+          </ul>
+
+          <div class="actions">
+            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-mgmt" data-target="panel-mgmt">
+              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-mgmt" role="region" aria-label="Management details" data-open="false">
+          <h4 data-i18n="acc.included">What’s included</h4>
+          <ul>
+            <li data-i18n="acc.mgmt.inc1">IMU/TARI calendar tracking + reminders</li>
+            <li data-i18n="acc.mgmt.inc2">Utility monitoring + anomaly checks</li>
+            <li data-i18n="acc.mgmt.inc3">Document archive (bills, receipts, contracts)</li>
+          </ul>
+          <div class="divider"></div>
+          <h4 data-i18n="acc.how">How it works</h4>
+          <p data-i18n="acc.mgmt.how">We set up access, define responsibilities, and provide regular oversight with clear reporting.</p>
+        </div>
+      </article>
+
+      <!-- Property Care -->
+      <article class="card">
+        <div class="card-media media-care" aria-hidden="true"></div>
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="services.care.title">Property Care</h2>
+          <p class="card-tag" data-i18n="services.care.tagline">Your home in excellent condition, year-round.</p>
+          <ul class="bullets">
+            <li data-i18n="services.care.item1">Regular inspections</li>
+            <li data-i18n="services.care.item2">Cleaning & maintenance</li>
+            <li data-i18n="services.care.item3">Boiler, garden & pool care</li>
+          </ul>
+
+          <div class="actions">
+            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-care" data-target="panel-care">
+              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-care" role="region" aria-label="Property care details" data-open="false">
+          <h4 data-i18n="acc.standard">Inspection standard</h4>
+          <ul>
+            <li data-i18n="acc.care.std1">Photo report after each visit</li>
+            <li data-i18n="acc.care.std2">Basic systems check (water, humidity, power)</li>
+            <li data-i18n="acc.care.std3">Issue alerts + recommended next steps</li>
+          </ul>
+          <div class="divider"></div>
+          <h4 data-i18n="acc.response">Response</h4>
+          <p data-i18n="acc.care.resp">Emergency assistance available. Define your response times per plan.</p>
+        </div>
+      </article>
+
+      <!-- Construction & Renovation -->
+      <article class="card">
+        <div class="card-media media-reno" aria-hidden="true"></div>
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="services.reno.title">Construction & Renovation</h2>
+          <p class="card-tag" data-i18n="services.reno.tagline">From concept to completion with clear oversight.</p>
+          <ul class="bullets">
+            <li data-i18n="services.reno.item1">Transparent, itemized quotes</li>
+            <li data-i18n="services.reno.item2">Contractor coordination</li>
+            <li data-i18n="services.reno.item3">On-site supervision & updates</li>
+          </ul>
+
+          <div class="actions">
+            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-reno" data-target="panel-reno">
+              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-reno" role="region" aria-label="Renovation details" data-open="false">
+          <h4 data-i18n="acc.included">What’s included</h4>
+          <ul>
+            <li data-i18n="acc.reno.inc1">Comparable quotes where possible</li>
+            <li data-i18n="acc.reno.inc2">Milestones + progress updates</li>
+            <li data-i18n="acc.reno.inc3">Snag list + final handover</li>
+          </ul>
+          <div class="divider"></div>
+          <h4 data-i18n="acc.note">Important</h4>
+          <p data-i18n="acc.reno.note">Works are billed separately; we provide coordination and quality oversight.</p>
+        </div>
+      </article>
+
+      <!-- Concierge & Assistance -->
+      <article class="card">
+        <div class="card-media media-concierge" aria-hidden="true"></div>
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="services.conc.title">Concierge & Assistance</h2>
+          <p class="card-tag" data-i18n="services.conc.tagline">Effortless comfort for you and your guests.</p>
+          <ul class="bullets">
+            <li data-i18n="services.conc.item1">Arrival preparation</li>
+            <li data-i18n="services.conc.item2">Grocery provisioning & housekeeping</li>
+            <li data-i18n="services.conc.item3">Transfers, car rentals & bookings</li>
+          </ul>
+
+          <div class="actions">
+            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-conc" data-target="panel-conc">
+              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-conc" role="region" aria-label="Concierge details" data-open="false">
+          <h4 data-i18n="acc.conc.arrivalTitle">Arrival checklist</h4>
+          <ul>
+            <li data-i18n="acc.conc.arr1">Utilities + Wi-Fi tested</li>
+            <li data-i18n="acc.conc.arr2">Heating/AC ready</li>
+            <li data-i18n="acc.conc.arr3">Linen + essentials set up</li>
+          </ul>
+          <div class="divider"></div>
+          <h4 data-i18n="acc.conc.supportTitle">Guest support</h4>
+          <p data-i18n="acc.conc.support">We coordinate trusted local partners for a seamless stay.</p>
+        </div>
+      </article>
+
+      <!-- Client Dashboard -->
+      <article class="card">
+        <div class="card-media media-dashboard" aria-hidden="true"></div>
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="services.dash.title">Client Dashboard</h2>
+          <p class="card-tag" data-i18n="services.dash.tagline">Included with monthly plans for full visibility and faster requests.</p>
+          <ul class="bullets">
+            <li data-i18n="services.dash.item1">Inspection photo reports & visit history</li>
+            <li data-i18n="services.dash.item2">Bills, invoices & documents archive</li>
+            <li data-i18n="services.dash.item3">Service requests & status tracking</li>
+          </ul>
+
+          <div class="actions">
+            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-dash" data-target="panel-dash">
+              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.viewPlans">View plans</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-dash" role="region" aria-label="Dashboard details" data-open="false">
+          <h4 data-i18n="acc.dash.seeTitle">What owners see</h4>
+          <ul>
+            <li data-i18n="acc.dash.see1">Inspection reports with photos</li>
+            <li data-i18n="acc.dash.see2">Work log and documents in one place</li>
+            <li data-i18n="acc.dash.see3">Request tracking (submitted → scheduled → completed)</li>
+          </ul>
+          <div class="divider"></div>
+          <h4 data-i18n="acc.dash.accessTitle">Access</h4>
+          <p data-i18n="acc.dash.access">Available to monthly clients. You receive secure login details during onboarding.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="trust" aria-label="Trust cues">
+      <span data-i18n="trust.1">Local network of vetted contractors</span>
+      <span data-i18n="trust.2">Multilingual support</span>
+      <span data-i18n="trust.3">Emergency assistance</span>
+    </div>
+
+    <section class="foot-cta" aria-label="Call to action">
+      <div>
+        <h3 data-i18n="cta.title">Want a quote tailored to your property?</h3>
+        <p data-i18n="cta.text">Send location, property type, and the level of service you need. We’ll reply with next steps.</p>
+      </div>
+      <a class="btn btn-primary" href="index.html#contact" data-i18n="cta.button">Book a Call</a>
+    </section>
+
+    <footer>
+      <div class="container">© <span id="year"></span> <span data-i18n="brand">Sunny Hill Solutions</span></div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    function closeMenu(){ document.body.classList.remove('mobile-open'); menuBtn?.setAttribute('aria-expanded','false'); }
+    menuBtn?.addEventListener('click', ()=> {
+      const open = document.body.classList.toggle('mobile-open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    window.closeMenu = closeMenu;
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accordion (single open) + full-width expanded card
+    (function(){
+      const toggles = document.querySelectorAll(".js-toggle");
+
+      function setCardState(btn, open){
+        const panelId = btn.dataset.target;
+        const panel = document.getElementById(panelId);
+        const card = btn.closest(".card");
+        if(!panel || !card) return;
+
+        panel.dataset.open = open ? "true" : "false";
+        btn.setAttribute("aria-expanded", String(open));
+        card.classList.toggle("is-expanded", open);
+
+        const chev = btn.querySelector(".chev");
+        if(chev) chev.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
+      }
+
+      function closeAll(exceptBtn){
+        toggles.forEach(btn=>{
+          if(btn !== exceptBtn) setCardState(btn, false);
+        });
+      }
+
+      toggles.forEach(btn=>{
+        const panelId = btn.dataset.target;
+        const panel = document.getElementById(panelId);
+        if(!panel) return;
+
+        btn.addEventListener("click", ()=>{
+          const isOpen = panel.dataset.open === "true";
+          closeAll(btn);
+          setCardState(btn, !isOpen);
+
+          if(!isOpen){
+            const card = btn.closest(".card");
+            card?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    })();
+
+    // i18n (keep same style as your index; expand later)
+    const I18N = {
+      en: {
+        "brand":"Sunny Hill Solutions",
+        "nav.services":"Our Services",
+        "nav.about":"About",
+        "nav.contact":"Contact",
+        "nav.login":"Login",
+        "nav.menu":"Menu",
+
+        "services.pageTitle":"Services",
+        "services.pageLead":"Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.",
+        "services.learnMore":"Learn more",
+        "services.requestQuote":"Request a Quote",
+        "services.viewPlans":"View plans",
+
+        "services.mgmt.title":"Management",
+        "services.mgmt.tagline":"Smooth handling of all administrative aspects.",
+        "services.mgmt.item1":"IMU & TARI coordination",
+        "services.mgmt.item2":"Utilities & bill oversight",
+        "services.mgmt.item3":"Tax return liaison (IRPEF)",
+
+        "services.care.title":"Property Care",
+        "services.care.tagline":"Your home in excellent condition, year-round.",
+        "services.care.item1":"Regular inspections",
+        "services.care.item2":"Cleaning & maintenance",
+        "services.care.item3":"Boiler, garden & pool care",
+
+        "services.reno.title":"Construction & Renovation",
+        "services.reno.tagline":"From concept to completion with clear oversight.",
+        "services.reno.item1":"Transparent, itemized quotes",
+        "services.reno.item2":"Contractor coordination",
+        "services.reno.item3":"On-site supervision & updates",
+
+        "services.conc.title":"Concierge & Assistance",
+        "services.conc.tagline":"Effortless comfort for you and your guests.",
+        "services.conc.item1":"Arrival preparation",
+        "services.conc.item2":"Grocery provisioning & housekeeping",
+        "services.conc.item3":"Transfers, car rentals & bookings",
+
+        "services.dash.title":"Client Dashboard",
+        "services.dash.tagline":"Included with monthly plans for full visibility and faster requests.",
+        "services.dash.item1":"Inspection photo reports & visit history",
+        "services.dash.item2":"Bills, invoices & documents archive",
+        "services.dash.item3":"Service requests & status tracking",
+
+        "acc.included":"What’s included",
+        "acc.how":"How it works",
+        "acc.standard":"Inspection standard",
+        "acc.response":"Response",
+        "acc.note":"Important",
+
+        "acc.mgmt.inc1":"IMU/TARI calendar tracking + reminders",
+        "acc.mgmt.inc2":"Utility monitoring + anomaly checks",
+        "acc.mgmt.inc3":"Document archive (bills, receipts, contracts)",
+        "acc.mgmt.how":"We set up access, define responsibilities, and provide regular oversight with clear reporting.",
+
+        "acc.care.std1":"Photo report after each visit",
+        "acc.care.std2":"Basic systems check (water, humidity, power)",
+        "acc.care.std3":"Issue alerts + recommended next steps",
+        "acc.care.resp":"Emergency assistance available. Define your response times per plan.",
+
+        "acc.reno.inc1":"Comparable quotes where possible",
+        "acc.reno.inc2":"Milestones + progress updates",
+        "acc.reno.inc3":"Snag list + final handover",
+        "acc.reno.note":"Works are billed separately; we provide coordination and quality oversight.",
+
+        "acc.conc.arrivalTitle":"Arrival checklist",
+        "acc.conc.arr1":"Utilities + Wi-Fi tested",
+        "acc.conc.arr2":"Heating/AC ready",
+        "acc.conc.arr3":"Linen + essentials set up",
+        "acc.conc.supportTitle":"Guest support",
+        "acc.conc.support":"We coordinate trusted local partners for a seamless stay.",
+
+        "acc.dash.seeTitle":"What owners see",
+        "acc.dash.see1":"Inspection reports with photos",
+        "acc.dash.see2":"Work log and documents in one place",
+        "acc.dash.see3":"Request tracking (submitted → scheduled → completed)",
+        "acc.dash.accessTitle":"Access",
+        "acc.dash.access":"Available to monthly clients. You receive secure login details during onboarding.",
+
+        "trust.1":"Local network of vetted contractors",
+        "trust.2":"Multilingual support",
+        "trust.3":"Emergency assistance",
+
+        "cta.title":"Want a quote tailored to your property?",
+        "cta.text":"Send location, property type, and the level of service you need. We’ll reply with next steps.",
+        "cta.button":"Book a Call"
+      },
+
+      de: {
+        "brand":"Sunny Hill Solutions",
+        "nav.services":"Leistungen",
+        "nav.about":"Über uns",
+        "nav.contact":"Kontakt",
+        "nav.login":"Login",
+        "nav.menu":"Menü",
+        "services.pageTitle":"Leistungen",
+        "services.pageLead":"Klare, verlässliche Betreuung rund ums Eigentum — für Komfort und Seelenruhe.",
+        "services.learnMore":"Mehr erfahren",
+        "services.requestQuote":"Angebot anfragen",
+        "services.viewPlans":"Pakete ansehen",
+        "cta.title":"Angebot für Ihre Immobilie?",
+        "cta.text":"Senden Sie Ort, Immobilientyp und gewünschten Service. Wir melden uns mit den nächsten Schritten.",
+        "cta.button":"Call buchen"
+      },
+
+      it: {
+        "brand":"Sunny Hill Solutions",
+        "nav.services":"Servizi",
+        "nav.about":"Chi siamo",
+        "nav.contact":"Contatti",
+        "nav.login":"Login",
+        "nav.menu":"Menu",
+        "services.pageTitle":"Servizi",
+        "services.pageLead":"Cura chiara e affidabile — per semplicità e tranquillità.",
+        "services.learnMore":"Scopri di più",
+        "services.requestQuote":"Richiedi preventivo",
+        "services.viewPlans":"Vedi piani",
+        "cta.title":"Vuoi un preventivo su misura?",
+        "cta.text":"Invia località, tipo di immobile e livello di servizio. Ti rispondiamo con i prossimi passi.",
+        "cta.button":"Prenota una call"
+      }
+    };
+
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    function applyTranslations(lang){
+      const dict = I18N[lang] || I18N.en;
+      $$("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key]) el.textContent = dict[key];
+      });
+      document.documentElement.setAttribute("lang", lang);
+      $$(".lang-btn").forEach(btn => btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang)));
+      localStorage.setItem("lang", lang);
+    }
+
+    function resolveInitialLang(){
+      const saved = localStorage.getItem("lang");
+      if(saved && I18N[saved]) return saved;
+      const browser = (navigator.language || "en").slice(0,2);
+      return I18N[browser] ? browser : "en";
+    }
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+      applyTranslations(resolveInitialLang());
+      $$(".lang-btn").forEach(btn=> btn.addEventListener("click", ()=> applyTranslations(btn.dataset.lang)));
+    });
+  </script>
+</body>
+</html>

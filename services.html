@@ -123,13 +123,15 @@
       background:#fff;display:block;
     }
 
-    /* Mobile menu button */
+    /* Mobile menu button (icon-only) */
     .menu-btn{
       display:none;
       align-items:center;
-      gap:8px;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      padding:0;
       border:1px solid var(--line);
-      padding:10px 12px;
       border-radius:10px;
       background:#fff;
       cursor:pointer;
@@ -149,6 +151,9 @@
       .logo{ height:64px; }
       .nav-links{display:none}
       .menu-btn{display:flex}
+
+      /* Move actions slightly left so they don't touch the screen edge */
+      .nav-actions{ padding-right: 8px; }
     }
 
     /* Page */
@@ -348,7 +353,6 @@
         <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Login</a>
       </nav>
 
-      <!-- Mobile requirement: flag dropdown LEFT of hamburger -->
       <div class="nav-actions">
         <div class="lang-dd" id="langDd">
           <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
@@ -371,11 +375,10 @@
           </div>
         </div>
 
-        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
-          <span data-i18n="nav.menu">Menu</span>
         </button>
       </div>
     </div>
@@ -594,6 +597,14 @@
     // Mobile menu
     // -----------------------
     const menuBtn = document.getElementById('menuBtn');
+
+    function closeLangMenu(){
+      const dd = document.getElementById("langDd");
+      const trigger = document.getElementById("langTrigger");
+      dd?.classList.remove("open");
+      trigger?.setAttribute("aria-expanded", "false");
+    }
+
     function closeMenu(){
       document.body.classList.remove('mobile-open');
       menuBtn?.setAttribute('aria-expanded','false');
@@ -603,9 +614,7 @@
     menuBtn?.addEventListener('click', ()=> {
       const open = document.body.classList.toggle('mobile-open');
       menuBtn.setAttribute('aria-expanded', String(open));
-      // close language dropdown if open
-      document.getElementById("langDd")?.classList.remove("open");
-      document.getElementById("langTrigger")?.setAttribute("aria-expanded","false");
+      closeLangMenu();
     });
 
     // Year
@@ -966,7 +975,6 @@
         if(dict[key]) el.textContent = dict[key];
       });
 
-      // Meta
       if (dict["meta.title"]) document.title = dict["meta.title"];
       if (dict["meta.desc"]) {
         const md = document.querySelector('meta[name="description"]');
@@ -991,17 +999,11 @@
 
     // Language dropdown + i18n init
     document.addEventListener("DOMContentLoaded", () => {
-      const initial = resolveInitialLang();
-      applyTranslations(initial);
+      applyTranslations(resolveInitialLang());
 
       const dd = document.getElementById("langDd");
       const trigger = document.getElementById("langTrigger");
       const menu = document.getElementById("langMenu");
-
-      function closeLangMenu(){
-        dd?.classList.remove("open");
-        trigger?.setAttribute("aria-expanded", "false");
-      }
 
       trigger?.addEventListener("click", (e) => {
         e.stopPropagation();

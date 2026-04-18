@@ -3,17 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sunny Hill Solutions — Services</title>
-  <meta name="description" content="Sunny Hill Solutions — Services in Liguria: management, property care, renovation oversight, concierge, and client dashboard." />
+  <title>Sunny Hill Solutions | Services</title>
+  <meta name="description" content="Sunny Hill Solutions offers property management services in Liguria, including administration, property care, renovation coordination, concierge support and client dashboard access." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand:#0f4c81;--brand-2:#0ea5e9;--ink:#0f172a;--text:#334155;--muted:#64748b;
-      --line:#e2e8f0;--bg:#ffffff;--radius:16px;--shadow:0 10px 30px rgba(15,23,42,.08);
-      --glow:0 18px 42px rgba(15,76,129,.18);
-      --container:1100px;
-      --nav-h: 96px;
+      --brand:#0f4c81;
+      --brand-2:#1994d4;
+      --ink:#0f172a;
+      --text:#334155;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+      --soft-2:#f3f6fa;
+      --bg:#ffffff;
+      --container:1160px;
+      --nav-h:96px;
+      --shadow:0 18px 40px rgba(15,23,42,.06);
+      --radius:28px;
     }
 
     *{box-sizing:border-box}
@@ -21,37 +29,61 @@
     body{
       margin:0;
       font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-      background:linear-gradient(180deg,#fff 0%, #f6f7fb 55%, #f6f7fb 100%);
-      color:var(--text)
+      color:var(--text);
+      background:#fff;
     }
     a{text-decoration:none;color:inherit}
-    .container{max-width:var(--container);margin-inline:auto;padding-inline:20px}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--container);margin-inline:auto;padding-inline:24px}
+    [id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 
-    /* Header */
     header{
-      position:sticky; top:0;
+      position:sticky;
+      top:0;
       z-index:9999;
-      background:#fff;
-      backdrop-filter:saturate(140%) blur(6px);
-      isolation:isolate;
-      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(150%) blur(10px);
+      border-bottom:1px solid rgba(229,231,235,.85);
     }
     header .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 0;
       min-height:var(--nav-h);
-      position:relative;
-      z-index:1;
-      gap:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 0;
     }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
-    .logo { height: 80px; width: auto; display: block; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      color:var(--ink);
+      min-width:0;
+    }
+    .logo{
+      height:80px;
+      width:auto;
+      flex-shrink:0;
+    }
+    .brand span{white-space:nowrap}
 
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-weight:600;color:var(--ink)}
-    .nav-links .login{padding:8px 12px;border:1px solid var(--line);border-radius:10px}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+    .nav-links a{
+      color:var(--ink);
+      font-weight:600;
+      font-size:15px;
+    }
+    .nav-links .login{
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+    }
 
     .nav-actions{
       display:flex;
@@ -60,8 +92,7 @@
       flex-shrink:0;
     }
 
-    /* Language dropdown (round flags) */
-    .lang-dd{ position:relative; }
+    .lang-dd{position:relative}
     .lang-trigger{
       display:flex;
       align-items:center;
@@ -71,20 +102,19 @@
       border:0;
       cursor:pointer;
       color:var(--ink);
-      border-radius:10px;
-      transition: background .15s ease;
+      border-radius:12px;
+      transition:background .15s ease;
     }
-    .lang-trigger:hover{ background: rgba(15,23,42,.04); }
-
+    .lang-trigger:hover{background:rgba(15,23,42,.04)}
     .lang-flag{
-      width:18px;height:18px;
-      display:block;
+      width:18px;
+      height:18px;
       border-radius:999px;
       object-fit:cover;
-      box-shadow: 0 0 0 1px rgba(15,23,42,.10);
+      box-shadow:0 0 0 1px rgba(15,23,42,.10);
       background:#fff;
     }
-    .lang-caret{ opacity:.75; transform: translateY(.5px); }
+    .lang-caret{opacity:.75;transform:translateY(.5px)}
 
     .lang-menu{
       position:absolute;
@@ -93,14 +123,13 @@
       min-width:190px;
       background:#fff;
       border:1px solid var(--line);
-      border-radius:12px;
-      box-shadow: 0 12px 28px rgba(15,23,42,.14);
+      border-radius:14px;
+      box-shadow:0 16px 40px rgba(15,23,42,.14);
       padding:6px;
       display:none;
       z-index:10000;
     }
-    .lang-dd.open .lang-menu{ display:block; }
-
+    .lang-dd.open .lang-menu{display:block}
     .lang-item{
       width:100%;
       display:flex;
@@ -115,15 +144,17 @@
       color:var(--ink);
       text-align:left;
     }
-    .lang-item:hover{ background:rgba(14,165,233,.10); }
-    .lang-item[aria-selected="true"]{ background:rgba(15,76,129,.10); }
+    .lang-item:hover{background:rgba(14,165,233,.10)}
+    .lang-item[aria-selected="true"]{background:rgba(15,76,129,.10)}
     .lang-item img{
-      width:18px;height:18px;border-radius:999px;object-fit:cover;
-      box-shadow: 0 0 0 1px rgba(15,23,42,.08);
-      background:#fff;display:block;
+      width:18px;
+      height:18px;
+      border-radius:999px;
+      object-fit:cover;
+      box-shadow:0 0 0 1px rgba(15,23,42,.08);
+      background:#fff;
     }
 
-    /* Mobile menu button (icon-only) */
     .menu-btn{
       display:none;
       align-items:center;
@@ -132,209 +163,496 @@
       height:44px;
       padding:0;
       border:1px solid var(--line);
-      border-radius:10px;
+      border-radius:12px;
       background:#fff;
       cursor:pointer;
     }
 
-    /* Mobile panel */
     .mobile-panel{
-      position:fixed;left:0;right:0;top:var(--nav-h);
-      background:#fff;border-bottom:1px solid var(--line);display:none;z-index:70;
+      position:fixed;
+      left:0;
+      right:0;
+      top:var(--nav-h);
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      display:none;
+      z-index:70;
     }
-    .mobile-panel .links{display:grid;gap:10px;padding:14px 20px}
-    .mobile-panel a{padding:10px 8px;border-radius:10px}
+    .mobile-panel .links{
+      display:grid;
+      gap:8px;
+      padding:14px 20px 18px;
+    }
+    .mobile-panel a{
+      padding:12px 8px;
+      border-radius:10px;
+      color:var(--ink);
+      font-weight:600;
+    }
     .mobile-open .mobile-panel{display:block}
-
-    @media (max-width: 900px){
-      :root{ --nav-h: 72px; }
-      .logo{ height:64px; }
-      .nav-links{display:none}
-      .menu-btn{display:flex}
-
-      /* Move actions slightly left so they don't touch the screen edge */
-      .nav-actions{ padding-right: 8px; }
-    }
-
-    /* Page */
-    main{padding:28px 0 70px}
-
-    /* Hero */
-    .hero{
-      margin-top: 18px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      overflow:hidden;
-      background:
-        radial-gradient(1200px 500px at 15% -10%, rgba(14,165,233,.10), transparent 50%),
-        radial-gradient(1000px 500px at 85% 110%, rgba(15,76,129,.10), transparent 55%),
-        #fff;
-      box-shadow: 0 10px 22px rgba(0,0,0,.05);
-    }
-    .hero-inner{
-      padding: 26px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      align-items:center;
-    }
-    .hero h1{
-      margin:0 0 8px;
-      font-size: clamp(28px, 3.2vw, 44px);
-      letter-spacing: -.5px;
-      color: var(--ink);
-    }
-    .hero p{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 62ch;
-    }
-    .hero-art{
-      min-height: 150px;
-      border-radius: 18px;
-      border: 1px dashed rgba(15,45,74,.25);
-      display:flex;align-items:center;justify-content:center;
-      color: rgba(15,45,74,.6);
-      font-weight: 700;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,200,0,.18), transparent 45%),
-        radial-gradient(circle at 65% 70%, rgba(15,45,74,.12), transparent 55%);
-      text-align:center;
-      padding:12px;
-    }
-    @media (max-width: 860px){ .hero-inner{grid-template-columns:1fr} }
-
-    /* Card grid */
-    .grid{
-      margin-top: 22px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
-
-    .card.is-expanded{ grid-column: 1 / -1; }
-
-    .card{
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .card:hover{
-      transform: translateY(-4px);
-      box-shadow: var(--glow);
-      border-color: rgba(14,165,233,.35);
-    }
-
-    .card-media{
-      height: 170px;
-      border-bottom: 1px solid var(--line);
-      background: #e9eef4;
-    }
-    .media-management{ background: linear-gradient(135deg, rgba(15,76,129,.14), rgba(14,165,233,.12)); }
-    .media-care{ background: linear-gradient(135deg, rgba(34,197,94,.14), rgba(15,76,129,.10)); }
-    .media-reno{ background: linear-gradient(135deg, rgba(249,115,22,.14), rgba(15,76,129,.10)); }
-    .media-concierge{ background: linear-gradient(135deg, rgba(168,85,247,.14), rgba(15,76,129,.10)); }
-    .media-dashboard{ background: linear-gradient(135deg, rgba(15,76,129,.18), rgba(59,130,246,.10)); }
-
-    .card-body{ padding: 18px 18px 14px; }
-    .card-title{
-      margin:0 0 6px;
-      font-size: 22px;
-      letter-spacing: -.2px;
-      color: var(--ink);
-    }
-    .card-tag{
-      margin:0 0 12px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-    .bullets{ margin:0; padding-left: 18px; line-height: 1.6; color: var(--text); }
-
-    .actions{
-      margin-top: 14px;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
 
     .btn{
       appearance:none;
       border:1px solid var(--line);
       background:#fff;
-      color: var(--brand);
-      padding:10px 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
+      color:var(--brand);
+      padding:13px 18px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      transition: .2s transform, .2s box-shadow;
+      justify-content:center;
+      transition:.2s transform,.2s box-shadow,.2s background,.2s border-color;
     }
-    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(2,6,23,.10)}
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 26px rgba(2,6,23,.08);
+    }
     .btn-primary{
-      background: var(--brand-2);
-      border-color: var(--brand-2);
+      background:var(--brand);
+      border-color:var(--brand);
       color:#fff;
     }
-    .chev{display:inline-block; transition: transform .2s ease}
 
-    .panel{
-      border-top: 1px solid var(--line);
-      background: rgba(15,76,129,.03);
-      padding: 0 18px 18px;
-      display:none;
+    .hero{
+      padding:28px 0 0;
     }
-    .panel[data-open="true"]{display:block}
-    .panel h4{
-      margin:14px 0 8px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: rgba(15,76,129,.80);
+    .hero-wrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:36px;
+      min-height:640px;
+      background:
+        linear-gradient(90deg, rgba(6,13,25,.74) 0%, rgba(6,13,25,.56) 40%, rgba(6,13,25,.24) 100%),
+        url("images/servicebackpic.png") center/cover no-repeat;
+      box-shadow:var(--shadow);
     }
-    .panel p{margin:0 0 10px; color: var(--muted); line-height:1.6}
-    .panel ul{margin:0 0 10px; padding-left: 18px; line-height: 1.6; color: var(--text)}
-    .divider{height:1px;background:rgba(15,76,129,.14);margin:12px 0}
-
-    .trust{
-      margin-top: 18px;
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(255,255,255,.75);
-      display:flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+    .hero-inner{
+      min-height:640px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:38px;
+      align-items:end;
+      padding:56px;
     }
-    .trust span{color: rgba(15,76,129,.85); font-weight: 700;}
-
-    .foot-cta{
-      margin-top: 18px;
-      padding: 22px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(15,76,129,.10), rgba(255,200,0,.08));
-      display:flex;
+    .eyebrow{
+      display:inline-flex;
       align-items:center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.11);
+      border:1px solid rgba(255,255,255,.18);
+      color:rgba(255,255,255,.92);
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.02em;
+      margin-bottom:18px;
     }
-    .foot-cta h3{margin:0;color:var(--ink)}
-    .foot-cta p{margin:4px 0 0;color:var(--muted);line-height:1.5}
+    .hero h1{
+      margin:0 0 16px;
+      color:#fff;
+      font-size:clamp(38px,5vw,68px);
+      line-height:.96;
+      letter-spacing:-1.2px;
+      max-width:10ch;
+    }
+    .hero p{
+      margin:0;
+      color:rgba(255,255,255,.88);
+      font-size:18px;
+      line-height:1.85;
+      max-width:58ch;
+    }
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
 
-    footer{padding:30px 0;border-top:1px solid var(--line);color:#475569;margin-top:40px}
+    .hero-side{
+      border-left:1px solid rgba(255,255,255,.18);
+      padding-left:34px;
+      display:grid;
+      gap:18px;
+    }
+    .hero-side-block{
+      padding-bottom:18px;
+      border-bottom:1px solid rgba(255,255,255,.16);
+    }
+    .hero-side-block:last-child{
+      padding-bottom:0;
+      border-bottom:0;
+    }
+    .hero-side-block span{
+      display:block;
+      color:rgba(255,255,255,.72);
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:6px;
+    }
+    .hero-side-block strong{
+      display:block;
+      color:#fff;
+      font-size:21px;
+      line-height:1.35;
+      font-weight:600;
+    }
+    .hero-side-block p{
+      margin:6px 0 0;
+      color:rgba(255,255,255,.82);
+      font-size:15px;
+      line-height:1.75;
+    }
+
+    .section{
+      padding:96px 0;
+    }
+
+    .section-head{
+      max-width:820px;
+      margin:0 auto 42px;
+      text-align:center;
+    }
+    .kicker{
+      font-size:13px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--brand);
+      margin-bottom:12px;
+    }
+    .section-head h2{
+      margin:0 0 14px;
+      color:var(--ink);
+      font-size:clamp(32px,4vw,50px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:17px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+    }
+    .service-card{
+      border-top:1px solid var(--line);
+      padding-top:24px;
+    }
+    .service-number{
+      color:var(--brand);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+    .service-card h3{
+      margin:0 0 8px;
+      color:var(--ink);
+      font-size:28px;
+      letter-spacing:-.4px;
+    }
+    .service-card p{
+      margin:0 0 16px;
+      color:var(--text);
+      line-height:1.85;
+      font-size:16px;
+    }
+    .service-card ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--text);
+      line-height:1.8;
+    }
+
+    .split-band{
+      background:#fafafa;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .split-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:46px;
+      align-items:start;
+    }
+    .split-block h3{
+      margin:0 0 10px;
+      color:var(--ink);
+      font-size:24px;
+      letter-spacing:-.3px;
+    }
+    .split-block p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:16px;
+    }
+
+    .contact{
+      padding-top:88px;
+    }
+    .contact-shell{
+      background:linear-gradient(180deg, #ffffff, #f8fafc);
+      border:1px solid var(--line);
+      border-radius:36px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      align-items:stretch;
+    }
+    .contact-copy{
+      padding:42px;
+      border-right:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(15,76,129,.03), rgba(15,76,129,0));
+    }
+    .contact-copy h2{
+      margin:0 0 14px;
+      color:var(--ink);
+      font-size:clamp(30px,4vw,46px);
+      line-height:1.04;
+      letter-spacing:-.7px;
+      max-width:11ch;
+    }
+    .contact-copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+      max-width:48ch;
+    }
+    .contact-meta{
+      margin-top:28px;
+      display:grid;
+      gap:16px;
+    }
+    .contact-meta div{
+      padding-top:14px;
+      border-top:1px solid var(--line);
+    }
+    .contact-meta strong{
+      display:block;
+      color:var(--ink);
+      font-size:14px;
+      margin-bottom:4px;
+    }
+    .contact-meta a,
+    .contact-meta span{
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .contact-form-wrap{
+      padding:42px;
+      background:#fff;
+    }
+    form{
+      display:grid;
+      gap:12px;
+    }
+    .field-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    input, textarea{
+      width:100%;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      outline:0;
+      background:#fff;
+      color:var(--ink);
+      font:500 14px/1.3 Inter,system-ui,Segoe UI,Roboto,Arial;
+    }
+    input::placeholder, textarea::placeholder{
+      color:#94a3b8;
+    }
+    input:focus, textarea:focus{
+      border-color:rgba(15,76,129,.32);
+      box-shadow:0 0 0 4px rgba(15,76,129,.06);
+    }
+    textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+    .contact-note{
+      margin:8px 0 0;
+      font-size:13px;
+      line-height:1.7;
+      color:var(--muted);
+    }
+
+    footer{
+      padding:36px 0 42px;
+      color:#64748b;
+      text-align:center;
+      font-size:14px;
+    }
+
+    @media (max-width: 1100px){
+      .hero-inner,
+      .split-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-inner{
+        min-height:auto;
+        padding:34px;
+      }
+      .hero-wrap{
+        min-height:auto;
+      }
+      .hero-side{
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.18);
+        padding-left:0;
+        padding-top:24px;
+      }
+      .contact-copy{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 900px){
+      :root{--nav-h:72px}
+      .container{padding-inline:18px}
+      .logo{height:62px}
+      .brand span{display:none}
+      .nav-links{display:none}
+      .menu-btn{display:flex}
+      .nav-actions{padding-right:2px;gap:8px}
+
+      .hero{
+        padding:16px 0 0;
+      }
+      .hero-wrap{
+        min-height:auto;
+        border-radius:26px;
+      }
+      .hero-inner{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:22px 20px 24px;
+      }
+      .eyebrow{
+        margin-bottom:14px;
+        font-size:12px;
+        padding:7px 10px;
+      }
+      .hero h1{
+        max-width:none;
+        font-size:42px;
+        line-height:1.02;
+        margin-bottom:14px;
+      }
+      .hero p{
+        font-size:16px;
+        line-height:1.75;
+      }
+      .hero-cta{
+        margin-top:22px;
+        display:grid;
+        grid-template-columns:1fr;
+      }
+      .hero-cta .btn{
+        width:100%;
+        min-height:48px;
+      }
+      .hero-side{
+        padding-top:18px;
+        gap:14px;
+      }
+      .hero-side-block strong{
+        font-size:19px;
+      }
+
+      .section{
+        padding:64px 0;
+      }
+      .contact{
+        padding-top:64px;
+      }
+
+      .section-head{
+        margin-bottom:28px;
+      }
+      .section-head h2{
+        font-size:34px;
+      }
+      .section-head p,
+      .service-card p,
+      .split-block p{
+        font-size:15px;
+        line-height:1.8;
+      }
+
+      .services-grid,
+      .field-row{
+        grid-template-columns:1fr;
+      }
+
+      .service-card h3{
+        font-size:23px;
+      }
+
+      .split-grid{
+        gap:26px;
+      }
+      .split-block h3{
+        font-size:21px;
+      }
+
+      .contact-shell{
+        border-radius:26px;
+      }
+      .contact-copy,
+      .contact-form-wrap{
+        padding:24px 20px;
+      }
+      .contact-copy h2{
+        max-width:none;
+        font-size:32px;
+      }
+      .contact-meta{
+        margin-top:20px;
+        gap:12px;
+      }
+
+      input, textarea{
+        min-height:48px;
+      }
+      textarea{
+        min-height:130px;
+      }
+      form .btn{
+        width:100%;
+        min-height:48px;
+      }
+    }
+
+    @media (max-width: 520px){
+      .hero h1{
+        font-size:36px;
+      }
+      .contact-copy h2,
+      .section-head h2{
+        font-size:30px;
+      }
+    }
   </style>
 </head>
 
@@ -348,6 +666,7 @@
 
       <nav class="nav-links" aria-label="Primary">
         <a href="services.html" aria-current="page" data-i18n="nav.services">Our Services</a>
+        <a href="index.html#why" data-i18n="nav.why">Why Sunny Hill</a>
         <a href="index.html#about" data-i18n="nav.about">About</a>
         <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
         <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Login</a>
@@ -377,7 +696,9 @@
 
         <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
       </div>
@@ -387,6 +708,7 @@
       <div class="container">
         <div class="links">
           <a href="services.html" onclick="closeMenu()" data-i18n="nav.services">Our Services</a>
+          <a href="index.html#why" onclick="closeMenu()" data-i18n="nav.why">Why Sunny Hill</a>
           <a href="index.html#about" onclick="closeMenu()" data-i18n="nav.about">About</a>
           <a href="index.html#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
           <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Login</a>
@@ -395,207 +717,177 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero" aria-label="Services hero">
-      <div class="hero-inner">
-        <div>
-          <h1 data-i18n="services.pageTitle">Services</h1>
-          <p data-i18n="services.pageLead">Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.</p>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-wrap">
+          <div class="hero-inner">
+            <div>
+              <div class="eyebrow" data-i18n="hero.eyebrow">Services in Liguria</div>
+              <h1 data-i18n="hero.title">Services designed around the practical needs of property ownership</h1>
+              <p data-i18n="hero.lead">From administration to property care and local coordination, our services are structured to make ownership easier, clearer and better supported over time.</p>
+
+              <div class="hero-cta">
+                <a class="btn btn-primary" href="index.html#contact" data-i18n="hero.cta">Request a Quote</a>
+              </div>
+            </div>
+
+            <aside class="hero-side" aria-label="Service overview">
+              <div class="hero-side-block">
+                <span data-i18n="hero.side1.kicker">Administration</span>
+                <strong data-i18n="hero.side1.title">Structure for the recurring responsibilities of ownership</strong>
+                <p data-i18n="hero.side1.text">Bills, taxes, documentation and practical follow up kept under clearer control.</p>
+              </div>
+
+              <div class="hero-side-block">
+                <span data-i18n="hero.side2.kicker">Property care</span>
+                <strong data-i18n="hero.side2.title">Regular attention and local coordination where needed</strong>
+                <p data-i18n="hero.side2.text">Support that helps the property stay in good order over time.</p>
+              </div>
+
+              <div class="hero-side-block">
+                <span data-i18n="hero.side3.kicker">Owner support</span>
+                <strong data-i18n="hero.side3.title">A dependable local point of contact</strong>
+                <p data-i18n="hero.side3.text">Practical assistance for arrivals, projects and ongoing requests.</p>
+              </div>
+            </aside>
+          </div>
         </div>
-        <div class="hero-art" data-i18n="services.heroArt">Hero image / illustration</div>
       </div>
     </section>
 
-    <section class="grid" aria-label="Service cards">
-      <!-- Management -->
-      <article class="card">
-        <div class="card-media media-management" aria-hidden="true"></div>
-        <div class="card-body">
-          <h2 class="card-title" data-i18n="services.mgmt.title">Management</h2>
-          <p class="card-tag" data-i18n="services.mgmt.tagline">Smooth handling of all administrative aspects.</p>
-          <ul class="bullets">
-            <li data-i18n="services.mgmt.item1">IMU & TARI coordination</li>
-            <li data-i18n="services.mgmt.item2">Utilities & bill oversight</li>
-            <li data-i18n="services.mgmt.item3">Tax return liaison (IRPEF)</li>
-          </ul>
-
-          <div class="actions">
-            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-mgmt" data-target="panel-mgmt">
-              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
-            </button>
-            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
-          </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker" data-i18n="services.kicker">Our services</div>
+          <h2 data-i18n="services.title">A clear structure for the areas that matter most</h2>
+          <p data-i18n="services.intro">Our services are designed to support homeowners in a practical and dependable way, with the flexibility to adapt to different properties and priorities.</p>
         </div>
 
-        <div class="panel" id="panel-mgmt" role="region" aria-label="Management details" data-open="false">
-          <h4 data-i18n="acc.included">What’s included</h4>
-          <ul>
-            <li data-i18n="acc.mgmt.inc1">IMU/TARI calendar tracking + reminders</li>
-            <li data-i18n="acc.mgmt.inc2">Utility monitoring + anomaly checks</li>
-            <li data-i18n="acc.mgmt.inc3">Document archive (bills, receipts, contracts)</li>
-          </ul>
-          <div class="divider"></div>
-          <h4 data-i18n="acc.how">How it works</h4>
-          <p data-i18n="acc.mgmt.how">We set up access, define responsibilities, and provide regular oversight with clear reporting.</p>
+        <div class="services-grid" aria-label="Services list">
+          <article class="service-card">
+            <div class="service-number">01</div>
+            <h3 data-i18n="srv.mgmt.title">Management</h3>
+            <p data-i18n="srv.mgmt.text">Administrative support for the ongoing needs of property ownership, helping keep bills, taxes and related matters under control.</p>
+            <ul>
+              <li data-i18n="srv.mgmt.item1">IMU and TARI coordination</li>
+              <li data-i18n="srv.mgmt.item2">Utilities and bill oversight</li>
+              <li data-i18n="srv.mgmt.item3">Support and liaison for IRPEF matters</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">02</div>
+            <h3 data-i18n="srv.care.title">Property Care</h3>
+            <p data-i18n="srv.care.text">Regular support to help keep the property in good condition over time, with attention to practical issues before they become larger problems.</p>
+            <ul>
+              <li data-i18n="srv.care.item1">Regular inspections</li>
+              <li data-i18n="srv.care.item2">Cleaning and maintenance coordination</li>
+              <li data-i18n="srv.care.item3">Oversight of boiler, garden and pool care</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">03</div>
+            <h3 data-i18n="srv.reno.title">Construction and Renovation</h3>
+            <p data-i18n="srv.reno.text">Coordination and local oversight for works, helping owners follow projects more clearly and with greater continuity.</p>
+            <ul>
+              <li data-i18n="srv.reno.item1">Detailed and transparent quotations</li>
+              <li data-i18n="srv.reno.item2">Coordination with contractors and suppliers</li>
+              <li data-i18n="srv.reno.item3">On site supervision and progress updates</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">04</div>
+            <h3 data-i18n="srv.conc.title">Concierge and Assistance</h3>
+            <p data-i18n="srv.conc.text">Support for owner arrivals, guest preparation and practical requests that help the property feel ready and well arranged.</p>
+            <ul>
+              <li data-i18n="srv.conc.item1">Arrival preparation</li>
+              <li data-i18n="srv.conc.item2">Grocery provisioning and housekeeping coordination</li>
+              <li data-i18n="srv.conc.item3">Transfers, car rentals and local bookings</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">05</div>
+            <h3 data-i18n="srv.dash.title">Client Dashboard</h3>
+            <p data-i18n="srv.dash.text">Available for monthly clients, the dashboard gives owners a clearer overview of documents, reports and service requests in one place.</p>
+            <ul>
+              <li data-i18n="srv.dash.item1">Visit history and inspection reports</li>
+              <li data-i18n="srv.dash.item2">Bills, invoices and document archive</li>
+              <li data-i18n="srv.dash.item3">Request submission and status tracking</li>
+            </ul>
+          </article>
         </div>
-      </article>
-
-      <!-- Property Care -->
-      <article class="card">
-        <div class="card-media media-care" aria-hidden="true"></div>
-        <div class="card-body">
-          <h2 class="card-title" data-i18n="services.care.title">Property Care</h2>
-          <p class="card-tag" data-i18n="services.care.tagline">Your home in excellent condition, year-round.</p>
-          <ul class="bullets">
-            <li data-i18n="services.care.item1">Regular inspections</li>
-            <li data-i18n="services.care.item2">Cleaning & maintenance</li>
-            <li data-i18n="services.care.item3">Boiler, garden & pool care</li>
-          </ul>
-
-          <div class="actions">
-            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-care" data-target="panel-care">
-              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
-            </button>
-            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
-          </div>
-        </div>
-
-        <div class="panel" id="panel-care" role="region" aria-label="Property care details" data-open="false">
-          <h4 data-i18n="acc.standard">Inspection standard</h4>
-          <ul>
-            <li data-i18n="acc.care.std1">Photo report after each visit</li>
-            <li data-i18n="acc.care.std2">Basic systems check (water, humidity, power)</li>
-            <li data-i18n="acc.care.std3">Issue alerts + recommended next steps</li>
-          </ul>
-          <div class="divider"></div>
-          <h4 data-i18n="acc.response">Response</h4>
-          <p data-i18n="acc.care.resp">Emergency assistance available. Define your response times per plan.</p>
-        </div>
-      </article>
-
-      <!-- Construction & Renovation -->
-      <article class="card">
-        <div class="card-media media-reno" aria-hidden="true"></div>
-        <div class="card-body">
-          <h2 class="card-title" data-i18n="services.reno.title">Construction & Renovation</h2>
-          <p class="card-tag" data-i18n="services.reno.tagline">From concept to completion with clear oversight.</p>
-          <ul class="bullets">
-            <li data-i18n="services.reno.item1">Transparent, itemized quotes</li>
-            <li data-i18n="services.reno.item2">Contractor coordination</li>
-            <li data-i18n="services.reno.item3">On-site supervision & updates</li>
-          </ul>
-
-          <div class="actions">
-            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-reno" data-target="panel-reno">
-              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
-            </button>
-            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
-          </div>
-        </div>
-
-        <div class="panel" id="panel-reno" role="region" aria-label="Renovation details" data-open="false">
-          <h4 data-i18n="acc.included">What’s included</h4>
-          <ul>
-            <li data-i18n="acc.reno.inc1">Comparable quotes where possible</li>
-            <li data-i18n="acc.reno.inc2">Milestones + progress updates</li>
-            <li data-i18n="acc.reno.inc3">Snag list + final handover</li>
-          </ul>
-          <div class="divider"></div>
-          <h4 data-i18n="acc.note">Important</h4>
-          <p data-i18n="acc.reno.note">Works are billed separately; we provide coordination and quality oversight.</p>
-        </div>
-      </article>
-
-      <!-- Concierge & Assistance -->
-      <article class="card">
-        <div class="card-media media-concierge" aria-hidden="true"></div>
-        <div class="card-body">
-          <h2 class="card-title" data-i18n="services.conc.title">Concierge & Assistance</h2>
-          <p class="card-tag" data-i18n="services.conc.tagline">Effortless comfort for you and your guests.</p>
-          <ul class="bullets">
-            <li data-i18n="services.conc.item1">Arrival preparation</li>
-            <li data-i18n="services.conc.item2">Grocery provisioning & housekeeping</li>
-            <li data-i18n="services.conc.item3">Transfers, car rentals & bookings</li>
-          </ul>
-
-          <div class="actions">
-            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-conc" data-target="panel-conc">
-              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
-            </button>
-            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.requestQuote">Request a Quote</a>
-          </div>
-        </div>
-
-        <div class="panel" id="panel-conc" role="region" aria-label="Concierge details" data-open="false">
-          <h4 data-i18n="acc.conc.arrivalTitle">Arrival checklist</h4>
-          <ul>
-            <li data-i18n="acc.conc.arr1">Utilities + Wi-Fi tested</li>
-            <li data-i18n="acc.conc.arr2">Heating/AC ready</li>
-            <li data-i18n="acc.conc.arr3">Linen + essentials set up</li>
-          </ul>
-          <div class="divider"></div>
-          <h4 data-i18n="acc.conc.supportTitle">Guest support</h4>
-          <p data-i18n="acc.conc.support">We coordinate trusted local partners for a seamless stay.</p>
-        </div>
-      </article>
-
-      <!-- Client Dashboard -->
-      <article class="card">
-        <div class="card-media media-dashboard" aria-hidden="true"></div>
-        <div class="card-body">
-          <h2 class="card-title" data-i18n="services.dash.title">Client Dashboard</h2>
-          <p class="card-tag" data-i18n="services.dash.tagline">Included with monthly plans for full visibility and faster requests.</p>
-          <ul class="bullets">
-            <li data-i18n="services.dash.item1">Inspection photo reports & visit history</li>
-            <li data-i18n="services.dash.item2">Bills, invoices & documents archive</li>
-            <li data-i18n="services.dash.item3">Service requests & status tracking</li>
-          </ul>
-
-          <div class="actions">
-            <button class="btn js-toggle" type="button" aria-expanded="false" aria-controls="panel-dash" data-target="panel-dash">
-              <span data-i18n="services.learnMore">Learn more</span> <span class="chev" aria-hidden="true">▾</span>
-            </button>
-            <a class="btn btn-primary" href="index.html#contact" data-i18n="services.viewPlans">View plans</a>
-          </div>
-        </div>
-
-        <div class="panel" id="panel-dash" role="region" aria-label="Dashboard details" data-open="false">
-          <h4 data-i18n="acc.dash.seeTitle">What owners see</h4>
-          <ul>
-            <li data-i18n="acc.dash.see1">Inspection reports with photos</li>
-            <li data-i18n="acc.dash.see2">Work log and documents in one place</li>
-            <li data-i18n="acc.dash.see3">Request tracking (submitted → scheduled → completed)</li>
-          </ul>
-          <div class="divider"></div>
-          <h4 data-i18n="acc.dash.accessTitle">Access</h4>
-          <p data-i18n="acc.dash.access">Available to monthly clients. You receive secure login details during onboarding.</p>
-        </div>
-      </article>
+      </div>
     </section>
 
-    <div class="trust" aria-label="Trust cues">
-      <span data-i18n="trust.1">Local network of vetted contractors</span>
-      <span data-i18n="trust.2">Multilingual support</span>
-      <span data-i18n="trust.3">Emergency assistance</span>
-    </div>
+    <section class="section split-band">
+      <div class="container">
+        <div class="split-grid">
+          <div class="split-block">
+            <div class="kicker" data-i18n="extra.kicker1">How it works</div>
+            <h3 data-i18n="extra.title1">The service can be adapted to the property and the owner</h3>
+            <p data-i18n="extra.text1">Some owners prefer regular monthly oversight. Others require support only at certain times of the year or for specific projects. We structure the service around what is genuinely useful.</p>
+          </div>
 
-    <section class="foot-cta" aria-label="Call to action">
-      <div>
-        <h3 data-i18n="cta.title">Want a quote tailored to your property?</h3>
-        <p data-i18n="cta.text">Send location, property type, and the level of service you need. We’ll reply with next steps.</p>
+          <div class="split-block">
+            <div class="kicker" data-i18n="extra.kicker2">What matters</div>
+            <h3 data-i18n="extra.title2">Clarity, continuity and practical follow up</h3>
+            <p data-i18n="extra.text2">The aim is not to make things more complicated. It is to create a clearer and more dependable way to manage the property with the right level of local support.</p>
+          </div>
+        </div>
       </div>
-      <a class="btn btn-primary" href="index.html#contact" data-i18n="cta.button">Book a Call</a>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-shell">
+          <div class="contact-grid">
+            <div class="contact-copy">
+              <h2 data-i18n="contact.title">Tell us what kind of support your property needs</h2>
+              <p data-i18n="contact.intro">Share a few details about the property and the type of assistance you are looking for. We will come back to you with the next steps.</p>
+
+              <div class="contact-meta">
+                <div>
+                  <strong data-i18n="contact.email.label">Email</strong>
+                  <a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a>
+                </div>
+                <div>
+                  <strong data-i18n="contact.phone.label">Phone</strong>
+                  <a href="tel:+393394496037">+39 339 449 60 37</a>
+                </div>
+                <div>
+                  <strong data-i18n="contact.area.label">Area</strong>
+                  <span data-i18n="contact.area.value">Liguria, Imperia and surrounding areas</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-wrap">
+              <form action="index.html#contact" method="get">
+                <div class="field-row">
+                  <input type="text" name="name" required data-i18n-placeholder="contact.form.name" placeholder="Your name">
+                  <input type="email" name="email" required data-i18n-placeholder="contact.form.email" placeholder="Your email">
+                </div>
+                <input type="text" name="property" data-i18n-placeholder="contact.form.property" placeholder="Property location or type">
+                <textarea name="message" required data-i18n-placeholder="contact.form.message" placeholder="Tell us what support you are looking for"></textarea>
+                <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send request</button>
+              </form>
+              <p class="contact-note" data-i18n="contact.note">For urgent matters, please write URGENT at the beginning of your message.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer>
-      <div class="container">© <span id="year"></span> <span data-i18n="brand">Sunny Hill Solutions</span></div>
+      © <span id="year"></span> <span data-i18n="brand">Sunny Hill Solutions</span>
     </footer>
   </main>
 
   <script>
-    // -----------------------
-    // Mobile menu
-    // -----------------------
     const menuBtn = document.getElementById('menuBtn');
 
     function closeLangMenu(){
@@ -617,333 +909,263 @@
       closeLangMenu();
     });
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      applyTranslations(resolveInitialLang());
 
-    // -----------------------
-    // Accordion (single open) + full-width expanded card
-    // -----------------------
-    (function(){
-      const toggles = document.querySelectorAll(".js-toggle");
+      const dd = document.getElementById("langDd");
+      const trigger = document.getElementById("langTrigger");
+      const menu = document.getElementById("langMenu");
 
-      function setCardState(btn, open){
-        const panelId = btn.dataset.target;
-        const panel = document.getElementById(panelId);
-        const card = btn.closest(".card");
-        if(!panel || !card) return;
-
-        panel.dataset.open = open ? "true" : "false";
-        btn.setAttribute("aria-expanded", String(open));
-        card.classList.toggle("is-expanded", open);
-
-        const chev = btn.querySelector(".chev");
-        if(chev) chev.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
-      }
-
-      function closeAll(exceptBtn){
-        toggles.forEach(btn=>{
-          if(btn !== exceptBtn) setCardState(btn, false);
-        });
-      }
-
-      toggles.forEach(btn=>{
-        const panelId = btn.dataset.target;
-        const panel = document.getElementById(panelId);
-        if(!panel) return;
-
-        btn.addEventListener("click", ()=>{
-          const isOpen = panel.dataset.open === "true";
-          closeAll(btn);
-          setCardState(btn, !isOpen);
-
-          if(!isOpen){
-            btn.closest(".card")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
+      trigger?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = dd.classList.toggle("open");
+        trigger.setAttribute("aria-expanded", String(isOpen));
       });
-    })();
 
-    // -----------------------
-    // i18n
-    // -----------------------
+      menu?.addEventListener("click", (e) => {
+        const btn = e.target.closest(".lang-item");
+        if (!btn) return;
+        applyTranslations(btn.dataset.lang);
+        closeLangMenu();
+      });
+
+      document.addEventListener("click", closeLangMenu);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLangMenu();
+      });
+    });
+
     const I18N = {
       en: {
-        "meta.title":"Sunny Hill Solutions — Services",
-        "meta.desc":"Sunny Hill Solutions — Services in Liguria: management, property care, renovation oversight, concierge, and client dashboard.",
         "brand":"Sunny Hill Solutions",
-
         "nav.services":"Our Services",
+        "nav.why":"Why Sunny Hill",
         "nav.about":"About",
         "nav.contact":"Contact",
         "nav.login":"Login",
-        "nav.menu":"Menu",
 
-        "services.pageTitle":"Services",
-        "services.pageLead":"Clear, reliable care across every aspect of home ownership — designed for ease and peace of mind.",
-        "services.heroArt":"Hero image / illustration",
+        "hero.eyebrow":"Services in Liguria",
+        "hero.title":"Services designed around the practical needs of property ownership",
+        "hero.lead":"From administration to property care and local coordination, our services are structured to make ownership easier, clearer and better supported over time.",
+        "hero.cta":"Request a Quote",
+        "hero.side1.kicker":"Administration",
+        "hero.side1.title":"Structure for the recurring responsibilities of ownership",
+        "hero.side1.text":"Bills, taxes, documentation and practical follow up kept under clearer control.",
+        "hero.side2.kicker":"Property care",
+        "hero.side2.title":"Regular attention and local coordination where needed",
+        "hero.side2.text":"Support that helps the property stay in good order over time.",
+        "hero.side3.kicker":"Owner support",
+        "hero.side3.title":"A dependable local point of contact",
+        "hero.side3.text":"Practical assistance for arrivals, projects and ongoing requests.",
 
-        "services.learnMore":"Learn more",
-        "services.requestQuote":"Request a Quote",
-        "services.viewPlans":"View plans",
+        "services.kicker":"Our services",
+        "services.title":"A clear structure for the areas that matter most",
+        "services.intro":"Our services are designed to support homeowners in a practical and dependable way, with the flexibility to adapt to different properties and priorities.",
 
-        "services.mgmt.title":"Management",
-        "services.mgmt.tagline":"Smooth handling of all administrative aspects.",
-        "services.mgmt.item1":"IMU & TARI coordination",
-        "services.mgmt.item2":"Utilities & bill oversight",
-        "services.mgmt.item3":"Tax return liaison (IRPEF)",
+        "srv.mgmt.title":"Management",
+        "srv.mgmt.text":"Administrative support for the ongoing needs of property ownership, helping keep bills, taxes and related matters under control.",
+        "srv.mgmt.item1":"IMU and TARI coordination",
+        "srv.mgmt.item2":"Utilities and bill oversight",
+        "srv.mgmt.item3":"Support and liaison for IRPEF matters",
 
-        "services.care.title":"Property Care",
-        "services.care.tagline":"Your home in excellent condition, year-round.",
-        "services.care.item1":"Regular inspections",
-        "services.care.item2":"Cleaning & maintenance",
-        "services.care.item3":"Boiler, garden & pool care",
+        "srv.care.title":"Property Care",
+        "srv.care.text":"Regular support to help keep the property in good condition over time, with attention to practical issues before they become larger problems.",
+        "srv.care.item1":"Regular inspections",
+        "srv.care.item2":"Cleaning and maintenance coordination",
+        "srv.care.item3":"Oversight of boiler, garden and pool care",
 
-        "services.reno.title":"Construction & Renovation",
-        "services.reno.tagline":"From concept to completion with clear oversight.",
-        "services.reno.item1":"Transparent, itemized quotes",
-        "services.reno.item2":"Contractor coordination",
-        "services.reno.item3":"On-site supervision & updates",
+        "srv.reno.title":"Construction and Renovation",
+        "srv.reno.text":"Coordination and local oversight for works, helping owners follow projects more clearly and with greater continuity.",
+        "srv.reno.item1":"Detailed and transparent quotations",
+        "srv.reno.item2":"Coordination with contractors and suppliers",
+        "srv.reno.item3":"On site supervision and progress updates",
 
-        "services.conc.title":"Concierge & Assistance",
-        "services.conc.tagline":"Effortless comfort for you and your guests.",
-        "services.conc.item1":"Arrival preparation",
-        "services.conc.item2":"Grocery provisioning & housekeeping",
-        "services.conc.item3":"Transfers, car rentals & bookings",
+        "srv.conc.title":"Concierge and Assistance",
+        "srv.conc.text":"Support for owner arrivals, guest preparation and practical requests that help the property feel ready and well arranged.",
+        "srv.conc.item1":"Arrival preparation",
+        "srv.conc.item2":"Grocery provisioning and housekeeping coordination",
+        "srv.conc.item3":"Transfers, car rentals and local bookings",
 
-        "services.dash.title":"Client Dashboard",
-        "services.dash.tagline":"Included with monthly plans for full visibility and faster requests.",
-        "services.dash.item1":"Inspection photo reports & visit history",
-        "services.dash.item2":"Bills, invoices & documents archive",
-        "services.dash.item3":"Service requests & status tracking",
+        "srv.dash.title":"Client Dashboard",
+        "srv.dash.text":"Available for monthly clients, the dashboard gives owners a clearer overview of documents, reports and service requests in one place.",
+        "srv.dash.item1":"Visit history and inspection reports",
+        "srv.dash.item2":"Bills, invoices and document archive",
+        "srv.dash.item3":"Request submission and status tracking",
 
-        "acc.included":"What’s included",
-        "acc.how":"How it works",
-        "acc.standard":"Inspection standard",
-        "acc.response":"Response",
-        "acc.note":"Important",
+        "extra.kicker1":"How it works",
+        "extra.title1":"The service can be adapted to the property and the owner",
+        "extra.text1":"Some owners prefer regular monthly oversight. Others require support only at certain times of the year or for specific projects. We structure the service around what is genuinely useful.",
+        "extra.kicker2":"What matters",
+        "extra.title2":"Clarity, continuity and practical follow up",
+        "extra.text2":"The aim is not to make things more complicated. It is to create a clearer and more dependable way to manage the property with the right level of local support.",
 
-        "acc.mgmt.inc1":"IMU/TARI calendar tracking + reminders",
-        "acc.mgmt.inc2":"Utility monitoring + anomaly checks",
-        "acc.mgmt.inc3":"Document archive (bills, receipts, contracts)",
-        "acc.mgmt.how":"We set up access, define responsibilities, and provide regular oversight with clear reporting.",
-
-        "acc.care.std1":"Photo report after each visit",
-        "acc.care.std2":"Basic systems check (water, humidity, power)",
-        "acc.care.std3":"Issue alerts + recommended next steps",
-        "acc.care.resp":"Emergency assistance available. Define your response times per plan.",
-
-        "acc.reno.inc1":"Comparable quotes where possible",
-        "acc.reno.inc2":"Milestones + progress updates",
-        "acc.reno.inc3":"Snag list + final handover",
-        "acc.reno.note":"Works are billed separately; we provide coordination and quality oversight.",
-
-        "acc.conc.arrivalTitle":"Arrival checklist",
-        "acc.conc.arr1":"Utilities + Wi-Fi tested",
-        "acc.conc.arr2":"Heating/AC ready",
-        "acc.conc.arr3":"Linen + essentials set up",
-        "acc.conc.supportTitle":"Guest support",
-        "acc.conc.support":"We coordinate trusted local partners for a seamless stay.",
-
-        "acc.dash.seeTitle":"What owners see",
-        "acc.dash.see1":"Inspection reports with photos",
-        "acc.dash.see2":"Work log and documents in one place",
-        "acc.dash.see3":"Request tracking (submitted → scheduled → completed)",
-        "acc.dash.accessTitle":"Access",
-        "acc.dash.access":"Available to monthly clients. You receive secure login details during onboarding.",
-
-        "trust.1":"Local network of vetted contractors",
-        "trust.2":"Multilingual support",
-        "trust.3":"Emergency assistance",
-
-        "cta.title":"Want a quote tailored to your property?",
-        "cta.text":"Send location, property type, and the level of service you need. We’ll reply with next steps.",
-        "cta.button":"Book a Call"
+        "contact.title":"Tell us what kind of support your property needs",
+        "contact.intro":"Share a few details about the property and the type of assistance you are looking for. We will come back to you with the next steps.",
+        "contact.form.name":"Your name",
+        "contact.form.email":"Your email",
+        "contact.form.property":"Property location or type",
+        "contact.form.message":"Tell us what support you are looking for",
+        "contact.form.send":"Send request",
+        "contact.email.label":"Email",
+        "contact.phone.label":"Phone",
+        "contact.area.label":"Area",
+        "contact.area.value":"Liguria, Imperia and surrounding areas",
+        "contact.note":"For urgent matters, please write URGENT at the beginning of your message."
       },
 
       de: {
-        "meta.title":"Sunny Hill Solutions — Leistungen",
-        "meta.desc":"Sunny Hill Solutions — Leistungen in Ligurien: Verwaltung, Objektbetreuung, Renovierungskoordination, Concierge und Kunden-Dashboard.",
         "brand":"Sunny Hill Solutions",
-
         "nav.services":"Leistungen",
+        "nav.why":"Warum Sunny Hill",
         "nav.about":"Über uns",
         "nav.contact":"Kontakt",
         "nav.login":"Login",
-        "nav.menu":"Menü",
 
-        "services.pageTitle":"Leistungen",
-        "services.pageLead":"Klare, verlässliche Betreuung rund ums Eigentum — für Komfort und echte Seelenruhe.",
-        "services.heroArt":"Hero-Bild / Illustration",
+        "hero.eyebrow":"Leistungen in Ligurien",
+        "hero.title":"Leistungen, die auf die praktischen Anforderungen von Immobilieneigentum abgestimmt sind",
+        "hero.lead":"Von Verwaltung über Immobilienbetreuung bis hin zu lokaler Koordination sind unsere Leistungen darauf ausgelegt, den Besitz einfacher, klarer und langfristig besser betreut zu machen.",
+        "hero.cta":"Angebot anfragen",
+        "hero.side1.kicker":"Verwaltung",
+        "hero.side1.title":"Struktur für die wiederkehrenden Aufgaben des Eigentums",
+        "hero.side1.text":"Rechnungen, Steuern, Dokumentation und praktische Nachverfolgung unter klarerer Kontrolle.",
+        "hero.side2.kicker":"Immobilienbetreuung",
+        "hero.side2.title":"Regelmäßige Aufmerksamkeit und lokale Koordination bei Bedarf",
+        "hero.side2.text":"Unterstützung, die hilft, die Immobilie langfristig in Ordnung zu halten.",
+        "hero.side3.kicker":"Eigentümerbetreuung",
+        "hero.side3.title":"Ein verlässlicher lokaler Ansprechpartner",
+        "hero.side3.text":"Praktische Hilfe bei Anreisen, Projekten und laufenden Anfragen.",
 
-        "services.learnMore":"Mehr erfahren",
-        "services.requestQuote":"Angebot anfragen",
-        "services.viewPlans":"Pakete ansehen",
+        "services.kicker":"Unsere Leistungen",
+        "services.title":"Eine klare Struktur für die Bereiche, die am wichtigsten sind",
+        "services.intro":"Unsere Leistungen sind darauf ausgelegt, Eigentümer auf praktische und verlässliche Weise zu unterstützen, mit der Flexibilität, sich an unterschiedliche Immobilien und Prioritäten anzupassen.",
 
-        "services.mgmt.title":"Verwaltung",
-        "services.mgmt.tagline":"Reibungslose Abwicklung aller administrativen Aspekte.",
-        "services.mgmt.item1":"Koordination von IMU & TARI",
-        "services.mgmt.item2":"Versorger- & Rechnungsübersicht",
-        "services.mgmt.item3":"Abstimmung zur Steuererklärung (IRPEF)",
+        "srv.mgmt.title":"Verwaltung",
+        "srv.mgmt.text":"Administrative Unterstützung für die laufenden Anforderungen des Immobilieneigentums, damit Rechnungen, Steuern und damit verbundene Themen unter Kontrolle bleiben.",
+        "srv.mgmt.item1":"Koordination von IMU und TARI",
+        "srv.mgmt.item2":"Überwachung von Versorgern und Rechnungen",
+        "srv.mgmt.item3":"Unterstützung und Abstimmung bei IRPEF Themen",
 
-        "services.care.title":"Objektbetreuung",
-        "services.care.tagline":"Ihr Zuhause ganzjährig in Bestform.",
-        "services.care.item1":"Regelmäßige Inspektionen",
-        "services.care.item2":"Reinigung & Instandhaltung",
-        "services.care.item3":"Heizung, Garten- & Poolpflege",
+        "srv.care.title":"Immobilienbetreuung",
+        "srv.care.text":"Regelmäßige Unterstützung, um die Immobilie langfristig in gutem Zustand zu halten, mit Aufmerksamkeit für praktische Themen, bevor daraus größere Probleme werden.",
+        "srv.care.item1":"Regelmäßige Inspektionen",
+        "srv.care.item2":"Koordination von Reinigung und Wartung",
+        "srv.care.item3":"Überwachung von Heizung, Garten und Poolpflege",
 
-        "services.reno.title":"Bau & Renovierung",
-        "services.reno.tagline":"Von der Idee bis zur Übergabe — mit klarer Steuerung.",
-        "services.reno.item1":"Transparente, aufgeschlüsselte Angebote",
-        "services.reno.item2":"Koordination der Gewerke",
-        "services.reno.item3":"Vor-Ort-Begleitung & Updates",
+        "srv.reno.title":"Bau und Renovierung",
+        "srv.reno.text":"Koordination und lokale Aufsicht bei Arbeiten, damit Eigentümer Projekte klarer und mit mehr Kontinuität verfolgen können.",
+        "srv.reno.item1":"Detaillierte und transparente Angebote",
+        "srv.reno.item2":"Koordination mit Handwerkern und Lieferanten",
+        "srv.reno.item3":"Vor Ort Überwachung und Fortschrittsupdates",
 
-        "services.conc.title":"Concierge & Assistance",
-        "services.conc.tagline":"Müheloser Komfort für Sie und Ihre Gäste.",
-        "services.conc.item1":"Ankunftsvorbereitung",
-        "services.conc.item2":"Einkauf & Housekeeping",
-        "services.conc.item3":"Transfers, Mietwagen & Reservierungen",
+        "srv.conc.title":"Concierge und Assistance",
+        "srv.conc.text":"Unterstützung bei Anreisen von Eigentümern, Vorbereitung für Gäste und praktischen Anliegen, damit die Immobilie bereit und gut organisiert ist.",
+        "srv.conc.item1":"Vorbereitung von Anreisen",
+        "srv.conc.item2":"Einkauf und Koordination von Housekeeping",
+        "srv.conc.item3":"Transfers, Mietwagen und lokale Buchungen",
 
-        "services.dash.title":"Kunden-Dashboard",
-        "services.dash.tagline":"In monatlichen Plänen enthalten — für volle Transparenz und schnellere Anfragen.",
-        "services.dash.item1":"Fotoberichte & Besuchshistorie",
-        "services.dash.item2":"Archiv für Rechnungen, Belege & Dokumente",
-        "services.dash.item3":"Service-Anfragen & Statusverfolgung",
+        "srv.dash.title":"Kunden Dashboard",
+        "srv.dash.text":"Für monatliche Kunden verfügbar. Das Dashboard gibt Eigentümern einen klareren Überblick über Dokumente, Berichte und Serviceanfragen an einem Ort.",
+        "srv.dash.item1":"Besuchshistorie und Inspektionsberichte",
+        "srv.dash.item2":"Archiv für Rechnungen und Dokumente",
+        "srv.dash.item3":"Einreichung und Statusverfolgung von Anfragen",
 
-        "acc.included":"Enthalten",
-        "acc.how":"So funktioniert’s",
-        "acc.standard":"Inspektionsstandard",
-        "acc.response":"Reaktionszeit",
-        "acc.note":"Wichtig",
+        "extra.kicker1":"So funktioniert es",
+        "extra.title1":"Der Service kann an die Immobilie und den Eigentümer angepasst werden",
+        "extra.text1":"Einige Eigentümer bevorzugen eine regelmäßige monatliche Betreuung. Andere benötigen Unterstützung nur zu bestimmten Zeiten des Jahres oder für spezielle Projekte. Wir strukturieren den Service danach, was wirklich sinnvoll ist.",
+        "extra.kicker2":"Worauf es ankommt",
+        "extra.title2":"Klarheit, Kontinuität und praktische Nachverfolgung",
+        "extra.text2":"Das Ziel ist nicht, Dinge komplizierter zu machen. Es geht darum, einen klareren und verlässlicheren Weg zu schaffen, die Immobilie mit dem richtigen Maß an lokaler Unterstützung zu betreuen.",
 
-        "acc.mgmt.inc1":"Fristenplanung für IMU/TARI + Erinnerungen",
-        "acc.mgmt.inc2":"Überwachung der Versorger + Auffälligkeitschecks",
-        "acc.mgmt.inc3":"Dokumentenarchiv (Rechnungen, Belege, Verträge)",
-        "acc.mgmt.how":"Wir richten Zugänge ein, klären Zuständigkeiten und sorgen für laufende Kontrolle mit klarer Berichterstattung.",
-
-        "acc.care.std1":"Fotoreport nach jedem Besuch",
-        "acc.care.std2":"Basis-Check der Systeme (Wasser, Feuchtigkeit, Strom)",
-        "acc.care.std3":"Meldung von Problemen + empfohlene nächste Schritte",
-        "acc.care.resp":"Notfallhilfe möglich. Reaktionszeiten werden je nach Plan definiert.",
-
-        "acc.reno.inc1":"Wenn möglich, vergleichbare Angebote (mehrere Gewerke)",
-        "acc.reno.inc2":"Meilensteine + regelmäßige Fortschritts-Updates",
-        "acc.reno.inc3":"Mängelliste + finale Übergabe",
-        "acc.reno.note":"Bauleistungen werden separat berechnet; wir übernehmen Koordination und Qualitätskontrolle.",
-
-        "acc.conc.arrivalTitle":"Ankunfts-Checkliste",
-        "acc.conc.arr1":"Versorger + WLAN getestet",
-        "acc.conc.arr2":"Heizung/AC vorbereitet",
-        "acc.conc.arr3":"Wäsche + Essentials bereitgestellt",
-        "acc.conc.supportTitle":"Gästeservice",
-        "acc.conc.support":"Wir koordinieren geprüfte lokale Partner für einen reibungslosen Aufenthalt.",
-
-        "acc.dash.seeTitle":"Was Eigentümer sehen",
-        "acc.dash.see1":"Inspektionsberichte mit Fotos",
-        "acc.dash.see2":"Arbeitsprotokoll und Dokumente an einem Ort",
-        "acc.dash.see3":"Statusverfolgung (eingereicht → geplant → erledigt)",
-        "acc.dash.accessTitle":"Zugang",
-        "acc.dash.access":"Für monatliche Kunden verfügbar. Sichere Login-Daten erhalten Sie beim Onboarding.",
-
-        "trust.1":"Lokales Netzwerk geprüfter Handwerker",
-        "trust.2":"Mehrsprachige Betreuung",
-        "trust.3":"Notfallhilfe",
-
-        "cta.title":"Angebot passend zu Ihrer Immobilie?",
-        "cta.text":"Senden Sie Ort, Immobilientyp und gewünschten Serviceumfang. Wir melden uns mit den nächsten Schritten.",
-        "cta.button":"Call buchen"
+        "contact.title":"Teilen Sie uns mit, welche Unterstützung Ihre Immobilie braucht",
+        "contact.intro":"Nennen Sie uns ein paar Details zur Immobilie und zur gewünschten Unterstützung. Wir melden uns mit den nächsten Schritten zurück.",
+        "contact.form.name":"Ihr Name",
+        "contact.form.email":"Ihre E-Mail",
+        "contact.form.property":"Standort oder Art der Immobilie",
+        "contact.form.message":"Teilen Sie uns mit, welche Unterstützung Sie suchen",
+        "contact.form.send":"Anfrage senden",
+        "contact.email.label":"E-Mail",
+        "contact.phone.label":"Telefon",
+        "contact.area.label":"Region",
+        "contact.area.value":"Ligurien, Imperia und umliegende Gebiete",
+        "contact.note":"In dringenden Fällen schreiben Sie bitte URGENT an den Anfang Ihrer Nachricht."
       },
 
       it: {
-        "meta.title":"Sunny Hill Solutions — Servizi",
-        "meta.desc":"Sunny Hill Solutions — Servizi in Liguria: gestione, cura della proprietà, coordinamento ristrutturazioni, concierge e dashboard clienti.",
         "brand":"Sunny Hill Solutions",
-
         "nav.services":"Servizi",
+        "nav.why":"Perché Sunny Hill",
         "nav.about":"Chi siamo",
         "nav.contact":"Contatti",
         "nav.login":"Login",
-        "nav.menu":"Menu",
 
-        "services.pageTitle":"Servizi",
-        "services.pageLead":"Cura chiara e affidabile in ogni aspetto della proprietà — per semplicità e tranquillità.",
-        "services.heroArt":"Immagine / illustrazione hero",
+        "hero.eyebrow":"Servizi in Liguria",
+        "hero.title":"Servizi costruiti intorno alle esigenze pratiche della proprietà",
+        "hero.lead":"Dalla gestione amministrativa alla cura della casa e al coordinamento locale, i nostri servizi sono pensati per rendere la proprietà più semplice da gestire, più chiara e meglio seguita nel tempo.",
+        "hero.cta":"Richiedi preventivo",
+        "hero.side1.kicker":"Amministrazione",
+        "hero.side1.title":"Struttura per le responsabilità ricorrenti della proprietà",
+        "hero.side1.text":"Bollette, tasse, documentazione e seguito pratico tenuti sotto un controllo più chiaro.",
+        "hero.side2.kicker":"Cura della proprietà",
+        "hero.side2.title":"Attenzione regolare e coordinamento locale quando necessario",
+        "hero.side2.text":"Un supporto che aiuta la proprietà a restare in ordine nel tempo.",
+        "hero.side3.kicker":"Supporto al proprietario",
+        "hero.side3.title":"Un referente locale affidabile",
+        "hero.side3.text":"Assistenza pratica per arrivi, progetti e richieste continuative.",
 
-        "services.learnMore":"Scopri di più",
-        "services.requestQuote":"Richiedi preventivo",
-        "services.viewPlans":"Vedi piani",
+        "services.kicker":"I nostri servizi",
+        "services.title":"Una struttura chiara per le aree che contano di più",
+        "services.intro":"I nostri servizi sono pensati per supportare i proprietari in modo pratico e affidabile, con la flessibilità di adattarsi a proprietà ed esigenze diverse.",
 
-        "services.mgmt.title":"Gestione",
-        "services.mgmt.tagline":"Gestione fluida di tutti gli aspetti amministrativi.",
-        "services.mgmt.item1":"Coordinamento IMU & TARI",
-        "services.mgmt.item2":"Monitoraggio utenze e bollette",
-        "services.mgmt.item3":"Supporto e coordinamento per IRPEF",
+        "srv.mgmt.title":"Gestione",
+        "srv.mgmt.text":"Supporto amministrativo per le esigenze continue della proprietà, per mantenere sotto controllo bollette, tasse e aspetti correlati.",
+        "srv.mgmt.item1":"Coordinamento IMU e TARI",
+        "srv.mgmt.item2":"Monitoraggio utenze e bollette",
+        "srv.mgmt.item3":"Supporto e coordinamento per questioni IRPEF",
 
-        "services.care.title":"Cura della proprietà",
-        "services.care.tagline":"La tua casa in ottime condizioni tutto l’anno.",
-        "services.care.item1":"Ispezioni periodiche",
-        "services.care.item2":"Pulizie & manutenzione",
-        "services.care.item3":"Caldaia, giardino & piscina",
+        "srv.care.title":"Cura della proprietà",
+        "srv.care.text":"Supporto regolare per mantenere la proprietà in buone condizioni nel tempo, con attenzione ai problemi pratici prima che diventino più importanti.",
+        "srv.care.item1":"Ispezioni regolari",
+        "srv.care.item2":"Coordinamento pulizie e manutenzioni",
+        "srv.care.item3":"Supervisione di caldaia, giardino e piscina",
 
-        "services.reno.title":"Edilizia & Ristrutturazioni",
-        "services.reno.tagline":"Dal concept alla consegna con supervisione chiara.",
-        "services.reno.item1":"Preventivi trasparenti e dettagliati",
-        "services.reno.item2":"Coordinamento imprese e fornitori",
-        "services.reno.item3":"Supervisione in loco & aggiornamenti",
+        "srv.reno.title":"Edilizia e ristrutturazioni",
+        "srv.reno.text":"Coordinamento e supervisione locale dei lavori, per aiutare i proprietari a seguire i progetti con maggiore chiarezza e continuità.",
+        "srv.reno.item1":"Preventivi dettagliati e trasparenti",
+        "srv.reno.item2":"Coordinamento con imprese e fornitori",
+        "srv.reno.item3":"Supervisione in loco e aggiornamenti avanzamento",
 
-        "services.conc.title":"Concierge & Assistenza",
-        "services.conc.tagline":"Comfort senza sforzo per te e i tuoi ospiti.",
-        "services.conc.item1":"Preparazione all’arrivo",
-        "services.conc.item2":"Spesa & housekeeping",
-        "services.conc.item3":"Transfer, noleggio auto & prenotazioni",
+        "srv.conc.title":"Concierge e assistenza",
+        "srv.conc.text":"Supporto per arrivi dei proprietari, preparazione degli ospiti e richieste pratiche che aiutano la proprietà a essere pronta e ben organizzata.",
+        "srv.conc.item1":"Preparazione all’arrivo",
+        "srv.conc.item2":"Spesa e coordinamento housekeeping",
+        "srv.conc.item3":"Transfer, noleggio auto e prenotazioni locali",
 
-        "services.dash.title":"Dashboard Clienti",
-        "services.dash.tagline":"Inclusa nei piani mensili — più visibilità e richieste più rapide.",
-        "services.dash.item1":"Report ispezioni con foto & storico visite",
-        "services.dash.item2":"Archivio bollette, fatture & documenti",
-        "services.dash.item3":"Richieste di servizio & stato avanzamento",
+        "srv.dash.title":"Dashboard clienti",
+        "srv.dash.text":"Disponibile per i clienti mensili, la dashboard offre una visione più chiara di documenti, report e richieste di servizio in un unico posto.",
+        "srv.dash.item1":"Storico visite e report ispezioni",
+        "srv.dash.item2":"Archivio bollette, fatture e documenti",
+        "srv.dash.item3":"Invio richieste e monitoraggio stato",
 
-        "acc.included":"Cosa include",
-        "acc.how":"Come funziona",
-        "acc.standard":"Standard ispezione",
-        "acc.response":"Risposta",
-        "acc.note":"Importante",
+        "extra.kicker1":"Come funziona",
+        "extra.title1":"Il servizio può essere adattato alla proprietà e al proprietario",
+        "extra.text1":"Alcuni proprietari preferiscono una supervisione mensile regolare. Altri richiedono supporto solo in determinati periodi dell’anno o per progetti specifici. Strutturiamo il servizio attorno a ciò che è realmente utile.",
+        "extra.kicker2":"Ciò che conta",
+        "extra.title2":"Chiarezza, continuità e seguito pratico",
+        "extra.text2":"L’obiettivo non è complicare le cose. È creare un modo più chiaro e affidabile di gestire la proprietà con il giusto livello di supporto locale.",
 
-        "acc.mgmt.inc1":"Scadenze IMU/TARI + promemoria",
-        "acc.mgmt.inc2":"Monitoraggio utenze + controllo anomalie",
-        "acc.mgmt.inc3":"Archivio documenti (bollette, ricevute, contratti)",
-        "acc.mgmt.how":"Impostiamo gli accessi, definiamo le responsabilità e garantiamo un controllo regolare con report chiari.",
-
-        "acc.care.std1":"Report fotografico dopo ogni visita",
-        "acc.care.std2":"Controllo base impianti (acqua, umidità, elettricità)",
-        "acc.care.std3":"Segnalazioni problemi + prossimi passi consigliati",
-        "acc.care.resp":"Assistenza d’emergenza disponibile. I tempi di risposta dipendono dal piano.",
-
-        "acc.reno.inc1":"Preventivi comparabili quando possibile",
-        "acc.reno.inc2":"Milestone + aggiornamenti avanzamento",
-        "acc.reno.inc3":"Snag list + consegna finale",
-        "acc.reno.note":"I lavori sono fatturati separatamente; noi gestiamo coordinamento e controllo qualità.",
-
-        "acc.conc.arrivalTitle":"Checklist arrivo",
-        "acc.conc.arr1":"Utenze + Wi-Fi testati",
-        "acc.conc.arr2":"Riscaldamento/AC pronti",
-        "acc.conc.arr3":"Biancheria + essenziali predisposti",
-        "acc.conc.supportTitle":"Supporto ospiti",
-        "acc.conc.support":"Coordiniamo partner locali affidabili per un soggiorno senza pensieri.",
-
-        "acc.dash.seeTitle":"Cosa vede il proprietario",
-        "acc.dash.see1":"Report ispezioni con foto",
-        "acc.dash.see2":"Registro lavori e documenti in un unico posto",
-        "acc.dash.see3":"Tracking richieste (inviata → programmata → completata)",
-        "acc.dash.accessTitle":"Accesso",
-        "acc.dash.access":"Disponibile per clienti con piano mensile. Ricevi le credenziali sicure durante l’onboarding.",
-
-        "trust.1":"Rete locale di professionisti verificati",
-        "trust.2":"Supporto multilingue",
-        "trust.3":"Assistenza d’emergenza",
-
-        "cta.title":"Vuoi un preventivo su misura per la tua casa?",
-        "cta.text":"Invia località, tipologia immobile e livello di servizio. Ti rispondiamo con i prossimi passi.",
-        "cta.button":"Prenota una call"
+        "contact.title":"Dicci di che tipo di supporto ha bisogno la tua proprietà",
+        "contact.intro":"Condividi qualche dettaglio sulla proprietà e sul tipo di assistenza che stai cercando. Ti ricontatteremo con i prossimi passi.",
+        "contact.form.name":"Il tuo nome",
+        "contact.form.email":"La tua e-mail",
+        "contact.form.property":"Località o tipologia immobile",
+        "contact.form.message":"Dicci di che supporto hai bisogno",
+        "contact.form.send":"Invia richiesta",
+        "contact.email.label":"E-mail",
+        "contact.phone.label":"Telefono",
+        "contact.area.label":"Zona",
+        "contact.area.value":"Liguria, Imperia e aree circostanti",
+        "contact.note":"Per le urgenze, scrivi URGENTE all’inizio del messaggio."
       }
     };
 
@@ -975,11 +1197,10 @@
         if(dict[key]) el.textContent = dict[key];
       });
 
-      if (dict["meta.title"]) document.title = dict["meta.title"];
-      if (dict["meta.desc"]) {
-        const md = document.querySelector('meta[name="description"]');
-        if (md) md.setAttribute("content", dict["meta.desc"]);
-      }
+      $$("[data-i18n-placeholder]").forEach(el=>{
+        const key = el.getAttribute("data-i18n-placeholder");
+        if(dict[key]) el.setAttribute("placeholder", dict[key]);
+      });
 
       document.documentElement.setAttribute("lang", lang);
       localStorage.setItem("lang", lang);
@@ -996,31 +1217,6 @@
       const browser = (navigator.language || "en").slice(0,2);
       return I18N[browser] ? browser : "en";
     }
-
-    // Language dropdown + i18n init
-    document.addEventListener("DOMContentLoaded", () => {
-      applyTranslations(resolveInitialLang());
-
-      const dd = document.getElementById("langDd");
-      const trigger = document.getElementById("langTrigger");
-      const menu = document.getElementById("langMenu");
-
-      trigger?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = dd.classList.toggle("open");
-        trigger.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      menu?.addEventListener("click", (e) => {
-        const btn = e.target.closest(".lang-item");
-        if (!btn) return;
-        applyTranslations(btn.dataset.lang);
-        closeLangMenu();
-      });
-
-      document.addEventListener("click", closeLangMenu);
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLangMenu(); });
-    });
   </script>
 </body>
 </html>

@@ -3,86 +3,64 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sunny Hill Solutions | Property Management in Liguria</title>
-  <meta name="description" content="Sunny Hill Solutions offers reliable property management in Liguria with practical local support, careful oversight and clear communication." />
+  <title>Sunny Hill Solutions | Property Care in Liguria</title>
+  <meta name="description" content="Sunny Hill Solutions provides local property care, inspections, maintenance coordination and arrival preparation for second homes in Liguria." />
 
-  <link rel="alternate" hreflang="en" href="https://yourdomain.com/">
-  <link rel="alternate" hreflang="de" href="https://yourdomain.com/?lang=de">
-  <link rel="alternate" hreflang="it" href="https://yourdomain.com/?lang=it">
-  <link rel="alternate" hreflang="x-default" href="https://yourdomain.com/">
+  <link rel="alternate" hreflang="en" href="https://sunnyhillsolutions.com/">
+  <link rel="alternate" hreflang="de" href="https://sunnyhillsolutions.com/?lang=de">
+  <link rel="alternate" hreflang="it" href="https://sunnyhillsolutions.com/?lang=it">
+  <link rel="alternate" hreflang="es" href="https://sunnyhillsolutions.com/?lang=es">
+  <link rel="alternate" hreflang="x-default" href="https://sunnyhillsolutions.com/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand:#0f4c81;
-      --brand-2:#1693cf;
-      --brand-3:#65b9f2;
-      --ink:#0f172a;
-      --text:#334155;
-      --muted:#64748b;
-      --line:#e2e8f0;
-      --soft:#f8fafc;
+      --nav-h:88px;
+      --container:1180px;
+      --ink:#13211d;
+      --text:#45544f;
+      --muted:#75827d;
+      --cream:#fbf7ef;
+      --paper:#fffdf8;
+      --sand:#eadfcf;
+      --line:rgba(40,55,49,.14);
+      --olive:#66785f;
+      --olive-dark:#344538;
+      --sea:#3b7b86;
+      --blue:#2f6d87;
+      --gold:#c7a45d;
       --white:#ffffff;
-      --container:1240px;
-      --nav-h:92px;
-      --shadow:0 24px 70px rgba(15,23,42,.10);
-      --shadow-soft:0 12px 34px rgba(15,23,42,.08);
-      --radius:30px;
+      --shadow:0 24px 70px rgba(38,49,44,.14);
+      --soft-shadow:0 16px 44px rgba(38,49,44,.09);
+      --radius:28px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:Manrope,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--text);
-      background:#fff;
+      background:var(--cream);
       overflow-x:hidden;
     }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button,input,textarea{font:inherit}
+    [id]{scroll-margin-top:calc(var(--nav-h) + 28px)}
+    .container{width:min(var(--container),calc(100% - 44px));margin-inline:auto}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
-
-    button,
-    input,
-    textarea{
-      font:inherit;
-    }
-
-    [id]{
-      scroll-margin-top:calc(var(--nav-h) + 22px);
-    }
-
-    .container{
-      width:min(var(--container), calc(100% - 48px));
-      margin-inline:auto;
-    }
-
-    header{
+    .site-header{
       position:sticky;
       top:0;
-      z-index:9999;
-      background:rgba(255,255,255,.94);
-      border-bottom:1px solid rgba(226,232,240,.85);
-      backdrop-filter:saturate(170%) blur(18px);
+      z-index:50;
+      border-bottom:1px solid rgba(52,69,56,.1);
+      background:rgba(251,247,239,.88);
+      backdrop-filter:saturate(160%) blur(18px);
     }
-
     .nav{
       min-height:var(--nav-h);
       display:grid;
@@ -90,132 +68,109 @@
       align-items:center;
       gap:18px;
     }
-
     .brand{
-      justify-self:start;
       display:flex;
       align-items:center;
-      gap:15px;
+      gap:13px;
       min-width:0;
+      justify-self:start;
     }
-
     .logo{
       width:auto;
-      height:76px;
+      height:62px;
       flex:0 0 auto;
+      filter:drop-shadow(0 10px 18px rgba(38,49,44,.08));
     }
-
-    .brand-copy{
+    .brand-type{
       display:flex;
       flex-direction:column;
+      gap:2px;
       min-width:0;
-    }
-
-    .brand-name{
-      color:var(--ink);
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:-.045em;
       line-height:1;
+    }
+    .brand-main{
+      display:flex;
+      align-items:baseline;
+      gap:6px;
+      color:var(--ink);
+      letter-spacing:-.04em;
       white-space:nowrap;
     }
-
-    .brand-sub{
+    .brand-main strong{
+      font-size:18px;
+      font-weight:800;
+    }
+    .brand-main span{
+      font-size:18px;
+      font-weight:500;
+      color:var(--olive);
+    }
+    .brand-tagline{
       margin-top:5px;
-      color:#475569;
-      font-size:13px;
-      font-weight:600;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
       white-space:nowrap;
     }
-
     .nav-links{
       justify-self:center;
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:26px;
+      padding:10px 14px;
+      border:1px solid rgba(52,69,56,.1);
+      border-radius:999px;
+      background:rgba(255,253,248,.66);
     }
-
     .nav-links a{
       color:var(--ink);
-      font-size:15px;
-      font-weight:750;
-      padding:10px 0;
-      transition:color .22s ease;
+      font-size:14px;
+      font-weight:800;
+      transition:color .2s ease;
     }
-
-    .nav-links a:hover,
-    .nav-links a[aria-current="page"]{
-      color:var(--brand);
-    }
-
+    .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--sea)}
     .nav-links .login{
-      padding:11px 17px;
-      border:1px solid var(--line);
+      padding:10px 15px;
       border-radius:999px;
-      background:#fff;
-      box-shadow:0 12px 28px rgba(15,23,42,.07);
+      color:#fff;
+      background:var(--olive-dark);
     }
+    .nav-actions{justify-self:end;display:flex;align-items:center;gap:10px}
 
-    .nav-actions{
-      justify-self:end;
+    .lang-dd{position:relative}
+    .lang-trigger,.menu-btn{
       display:flex;
       align-items:center;
-      gap:10px;
-    }
-
-    .lang-dd{
-      position:relative;
-    }
-
-    .lang-trigger{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      min-width:48px;
-      min-height:46px;
-      padding:9px 11px;
-      border:1px solid var(--line);
-      border-radius:15px;
-      background:#fff;
+      justify-content:center;
+      width:46px;
+      height:46px;
+      border:1px solid rgba(52,69,56,.14);
+      border-radius:999px;
+      background:rgba(255,253,248,.86);
       color:var(--ink);
-      box-shadow:0 10px 24px rgba(15,23,42,.06);
+      box-shadow:0 10px 28px rgba(38,49,44,.08);
       cursor:pointer;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      transition:transform .2s ease,box-shadow .2s ease;
     }
-
-    .lang-trigger:hover{
-      transform:translateY(-1px);
-      border-color:rgba(15,76,129,.24);
-      box-shadow:0 14px 30px rgba(15,23,42,.10);
-    }
-
-    .lang-flag{
-      width:19px;
-      height:19px;
-      border-radius:999px;
-      object-fit:cover;
-      background:#fff;
-      box-shadow:0 0 0 1px rgba(15,23,42,.12);
-    }
-
+    .lang-trigger{gap:7px;width:auto;padding:0 12px}
+    .lang-trigger:hover,.menu-btn:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(38,49,44,.12)}
+    .lang-flag{width:19px;height:19px;border-radius:999px;object-fit:cover;box-shadow:0 0 0 1px rgba(19,33,29,.16)}
     .lang-menu{
       position:absolute;
       right:0;
       top:calc(100% + 10px);
-      width:198px;
       display:none;
-      padding:7px;
-      border:1px solid var(--line);
+      width:198px;
+      padding:8px;
+      border:1px solid rgba(52,69,56,.14);
       border-radius:18px;
-      background:#fff;
-      box-shadow:0 22px 56px rgba(15,23,42,.16);
-      z-index:20000;
+      background:#fffdf8;
+      box-shadow:var(--shadow);
+      z-index:80;
     }
-
-    .lang-dd.open .lang-menu{
-      display:block;
-    }
-
+    .lang-dd.open .lang-menu{display:block}
     .lang-item{
       width:100%;
       display:flex;
@@ -227,1672 +182,432 @@
       background:transparent;
       color:var(--ink);
       font-size:14px;
-      font-weight:750;
+      font-weight:800;
       text-align:left;
       cursor:pointer;
     }
-
-    .lang-item:hover{
-      background:rgba(15,76,129,.08);
-    }
-
-    .lang-item[aria-selected="true"]{
-      background:rgba(22,147,207,.12);
-    }
-
-    .lang-item img{
-      width:19px;
-      height:19px;
-      border-radius:999px;
-      object-fit:cover;
-      box-shadow:0 0 0 1px rgba(15,23,42,.10);
-    }
-
-    .menu-btn{
-      display:none;
-      align-items:center;
-      justify-content:center;
-      width:46px;
-      height:46px;
-      border:1px solid var(--line);
-      border-radius:15px;
-      background:#fff;
-      box-shadow:0 10px 24px rgba(15,23,42,.06);
-      cursor:pointer;
-    }
-
+    .lang-item:hover,.lang-item[aria-selected="true"]{background:rgba(102,120,95,.12)}
+    .lang-item img{width:19px;height:19px;border-radius:999px;object-fit:cover}
+    .menu-btn{display:none}
     .mobile-panel{
       position:fixed;
-      top:calc(var(--nav-h) + 8px);
+      top:calc(var(--nav-h) + 10px);
       left:18px;
       right:18px;
       display:none;
-      overflow:hidden;
-      border:1px solid var(--line);
+      padding:12px;
+      border:1px solid rgba(52,69,56,.14);
       border-radius:24px;
-      background:rgba(255,255,255,.98);
-      box-shadow:0 24px 70px rgba(15,23,42,.18);
-      backdrop-filter:blur(18px);
-      z-index:9998;
+      background:rgba(255,253,248,.98);
+      box-shadow:var(--shadow);
+      z-index:48;
     }
-
-    .mobile-open .mobile-panel{
-      display:block;
-    }
-
-    .mobile-panel .links{
-      display:grid;
-      gap:6px;
-      padding:14px;
-    }
-
-    .mobile-panel a{
-      padding:15px 14px;
-      border-radius:15px;
-      color:var(--ink);
-      font-weight:800;
-    }
-
-    .mobile-panel a:hover{
-      background:rgba(15,76,129,.07);
-    }
-
-    .mobile-panel .login{
-      margin-top:4px;
-      color:#fff;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-      text-align:center;
-    }
+    .mobile-open .mobile-panel{display:block}
+    .mobile-panel .links{display:grid;gap:6px}
+    .mobile-panel a{padding:15px;border-radius:16px;color:var(--ink);font-weight:850}
+    .mobile-panel a:hover{background:rgba(102,120,95,.12)}
+    .mobile-panel .login{background:var(--olive-dark);color:#fff;text-align:center}
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      min-height:52px;
-      padding:14px 21px;
-      border:1px solid var(--line);
+      min-height:50px;
+      padding:13px 20px;
+      border:1px solid rgba(52,69,56,.16);
       border-radius:999px;
-      background:#fff;
-      color:var(--brand);
+      background:rgba(255,253,248,.92);
+      color:var(--ink);
       font-weight:850;
       cursor:pointer;
-      transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+      transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
     }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 16px 32px rgba(2,6,23,.12);
-    }
-
-    .btn-primary{
-      color:#fff;
-      border-color:transparent;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-    }
-
-    .btn-light{
-      color:#fff;
-      border-color:rgba(255,255,255,.22);
-      background:rgba(255,255,255,.14);
-      backdrop-filter:blur(12px);
-    }
-
-    .btn-dark{
-      color:#fff;
-      border-color:var(--ink);
-      background:var(--ink);
-    }
-
-    .section{
-      padding:110px 0;
-    }
-
-    .kicker{
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(38,49,44,.13)}
+    .btn-primary{border-color:transparent;background:var(--olive-dark);color:#fff}
+    .btn-secondary{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(12px)}
+    .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      margin-bottom:16px;
-      color:var(--brand);
-      font-size:13px;
+      margin-bottom:15px;
+      color:var(--olive);
+      font-size:12px;
       font-weight:900;
-      letter-spacing:.09em;
+      letter-spacing:.16em;
       text-transform:uppercase;
     }
-
-    .kicker::before{
-      content:"";
-      width:30px;
-      height:1px;
-      background:linear-gradient(90deg,var(--brand),transparent);
-    }
+    .eyebrow::before{content:"";width:34px;height:1px;background:currentColor;opacity:.55}
+    h1,h2,h3,p{margin-top:0}
 
     .hero{
       position:relative;
+      overflow:hidden;
       min-height:calc(100svh - var(--nav-h));
-      display:flex;
+      display:grid;
       align-items:center;
-      overflow:hidden;
-      background:#08111d;
-    }
-
-    .hero-media,
-    .hero-bg,
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-    }
-
-    .hero-bg{
-      background:url("images/backgroundvilla.png") center/cover no-repeat;
-      transform:scale(1.06);
-      will-change:transform;
-    }
-
-    .hero-overlay{
       background:
-        radial-gradient(circle at 72% 34%, rgba(101,185,242,.18), transparent 34%),
-        linear-gradient(180deg, rgba(6,12,24,.12), rgba(6,12,24,.50)),
-        linear-gradient(90deg, rgba(6,12,24,.78) 0%, rgba(6,12,24,.52) 42%, rgba(6,12,24,.16) 100%);
+        linear-gradient(115deg, rgba(255,253,248,.96) 0%, rgba(251,247,239,.92) 42%, rgba(234,223,207,.74) 100%);
     }
-
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      width:100%;
-      padding:96px 0 220px;
-    }
-
-    .hero-copy{
-      width:min(780px, 100%);
-      margin-left:clamp(30px, 8vw, 110px);
-    }
-
-    .hero-kicker{
-      color:#dbeafe;
-    }
-
-    .hero-kicker::before{
-      background:linear-gradient(90deg,#dbeafe,transparent);
-    }
-
-    .hero-copy h1{
-      margin:0 0 20px;
-      max-width:11ch;
-      color:#fff;
-      font-size:clamp(48px,6.2vw,92px);
-      line-height:.96;
-      letter-spacing:-.065em;
-    }
-
-    html[lang="it"] .hero-copy h1,
-    html[lang="de"] .hero-copy h1{
-      max-width:13ch;
-      font-size:clamp(42px,5.35vw,80px);
-    }
-
-    .hero-copy p{
-      margin:0;
-      max-width:62ch;
-      color:rgba(255,255,255,.88);
-      font-size:19px;
-      line-height:1.82;
-    }
-
-    .hero-cta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:13px;
-      margin-top:32px;
-    }
-
-    .hero-panel{
+    .hero::before{
+      content:"";
       position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:3;
-      padding:0 0 30px;
-      background:linear-gradient(180deg, rgba(8,17,29,0), rgba(8,17,29,.38) 32%, rgba(8,17,29,.72) 100%);
-    }
-
-    .hero-panel-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:0;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:28px;
-      background:rgba(255,255,255,.09);
-      backdrop-filter:blur(16px);
-    }
-
-    .hero-panel-item{
-      padding:26px 28px;
-      border-right:1px solid rgba(255,255,255,.14);
-    }
-
-    .hero-panel-item:last-child{
-      border-right:0;
-    }
-
-    .hero-panel-item h3{
-      margin:0 0 8px;
-      color:#fff;
-      font-size:18px;
-      letter-spacing:-.03em;
-    }
-
-    .hero-panel-item p{
-      margin:0;
-      color:rgba(255,255,255,.74);
-      font-size:14px;
-      line-height:1.72;
-    }
-
-    .intro-grid{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:54px;
-      align-items:start;
-    }
-
-    .intro-copy h2,
-    .services-head h2,
-    .about-copy h2,
-    .contact-copy h2{
-      margin:0 0 18px;
-      color:var(--ink);
-      font-size:clamp(36px,4.5vw,60px);
-      line-height:1.02;
-      letter-spacing:-.055em;
-    }
-
-    .intro-copy h2{
-      max-width:13ch;
-    }
-
-    .intro-copy p,
-    .services-head p,
-    .about-copy p,
-    .contact-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.9;
-    }
-
-    .intro-copy p{
-      max-width:58ch;
-    }
-
-    .intro-path{
-      display:grid;
-      gap:18px;
-    }
-
-    .intro-item{
-      position:relative;
-      display:grid;
-      grid-template-columns:150px 1fr;
-      gap:28px;
-      padding:26px 0;
-      border-top:1px solid var(--line);
-    }
-
-    .intro-item:last-child{
-      border-bottom:1px solid var(--line);
-    }
-
-    .intro-label{
-      color:var(--brand);
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      padding-top:6px;
-    }
-
-    .intro-item h3{
-      margin:0 0 8px;
-      color:var(--ink);
-      font-size:25px;
-      line-height:1.08;
-      letter-spacing:-.04em;
-    }
-
-    .intro-item p{
-      margin:0;
-      max-width:60ch;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.84;
-    }
-
-    .services-band{
-      position:relative;
-      overflow:hidden;
-      padding:116px 0;
-      background:#08111d;
-    }
-
-    .services-bg{
-      position:absolute;
-      inset:0;
+      inset:-18%;
       background:
-        linear-gradient(180deg, rgba(6,12,24,.42), rgba(6,12,24,.68)),
-        url("images/servicebackpic.png") center/cover no-repeat;
-      transform:scale(1.08);
-      will-change:transform;
+        linear-gradient(120deg, rgba(199,164,93,.16), transparent 34%, rgba(59,123,134,.12) 64%, transparent),
+        linear-gradient(25deg, transparent 0%, rgba(102,120,95,.10) 42%, transparent 78%);
+      background-size:170% 170%, 145% 145%;
+      opacity:.9;
+      animation:ambientShift 18s ease-in-out infinite alternate;
+      pointer-events:none;
     }
-
-    .services-band::after{
+    .hero::after{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        radial-gradient(circle at 78% 24%, rgba(101,185,242,.18), transparent 30%),
-        linear-gradient(90deg, rgba(7,14,28,.78), rgba(7,14,28,.56) 45%, rgba(7,14,28,.36));
+      background-image:
+        linear-gradient(rgba(52,69,56,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(52,69,56,.03) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.08));
       pointer-events:none;
     }
-
-    .services-inner{
+    .hero-grid{
       position:relative;
       z-index:2;
-    }
-
-    .services-head{
-      max-width:780px;
-      margin-bottom:42px;
-    }
-
-    .services-head .kicker{
-      color:#dbeafe;
-    }
-
-    .services-head .kicker::before{
-      background:linear-gradient(90deg,#dbeafe,transparent);
-    }
-
-    .services-head h2{
-      color:#fff;
-      max-width:12ch;
-    }
-
-    .services-head p{
-      max-width:58ch;
-      color:rgba(255,255,255,.82);
-    }
-
-    .service-flow{
       display:grid;
-      border-top:1px solid rgba(255,255,255,.16);
+      grid-template-columns:.95fr 1.05fr;
+      gap:56px;
+      align-items:center;
+      padding:70px 0 84px;
     }
-
-    .service-link{
-      display:grid;
-      grid-template-columns:210px 1fr auto;
-      gap:30px;
-      align-items:start;
-      padding:31px 0;
-      border-bottom:1px solid rgba(255,255,255,.16);
-      transition:transform .24s ease;
+    .hero-copy h1{
+      max-width:720px;
+      margin-bottom:22px;
+      color:var(--ink);
+      font-size:clamp(42px,5.6vw,76px);
+      line-height:1.02;
+      letter-spacing:-.065em;
+      font-weight:800;
     }
-
-    .service-link:hover{
-      transform:translateX(8px);
+    .hero-copy p{
+      max-width:620px;
+      margin-bottom:30px;
+      color:var(--text);
+      font-size:18px;
+      line-height:1.85;
+      font-weight:500;
     }
-
-    .service-label{
-      color:#9ed4f0;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      padding-top:8px;
-    }
-
-    .service-main h3{
-      margin:0 0 9px;
-      max-width:18ch;
-      color:#fff;
-      font-size:31px;
-      line-height:1.05;
-      letter-spacing:-.052em;
-    }
-
-    .service-main p{
-      margin:0;
-      max-width:64ch;
-      color:rgba(255,255,255,.76);
-      font-size:15px;
-      line-height:1.84;
-    }
-
-    .service-arrow{
-      color:#fff;
-      font-size:30px;
-      line-height:1;
-      transition:transform .24s ease, color .24s ease;
-    }
-
-    .service-link:hover .service-arrow,
-    .service-link:hover h3{
-      color:#9ed4f0;
-    }
-
-    .service-link:hover .service-arrow{
-      transform:translate(5px,-5px);
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:46px;
-      align-items:start;
-    }
-
-    .about-copy{
-      padding-top:8px;
-    }
-
-    .about-copy h2{
-      max-width:12ch;
-    }
-
-    .about-copy p{
-      max-width:58ch;
-      margin-bottom:18px;
-    }
-
-    .about-side{
-      display:grid;
-      gap:26px;
-    }
-
-    .about-image-wrap{
-      position:relative;
-      min-height:330px;
-      overflow:hidden;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .about-image{
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-visual{position:relative;min-height:640px}
+    .image-card{
       position:absolute;
       inset:0;
+      overflow:hidden;
+      border-radius:44px;
+      box-shadow:var(--shadow);
+      background:#0d1714;
+    }
+    .image-card::before{
+      content:"";
+      position:absolute;
+      inset:-2%;
       background:
-        linear-gradient(180deg, rgba(7,14,28,.08), rgba(7,14,28,.28)),
-        url("images/servicebackpic.png") center/cover no-repeat;
-      transform:scale(1.06);
+        linear-gradient(180deg,rgba(14,25,22,.04),rgba(14,25,22,.42)),
+        url("images/backgroundvilla.png") center/cover no-repeat;
+      transform:scale(1.08) translate3d(-8px,calc(-4px + var(--parallax-y, 0px)),0);
+      animation:imageDrift 16s ease-in-out infinite alternate;
       will-change:transform;
     }
+    .image-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(19,33,29,.12),rgba(102,120,95,.04));
+    }
+    .floating-note{
+      position:absolute;
+      left:-26px;
+      bottom:44px;
+      width:min(370px,88%);
+      padding:23px;
+      border:1px solid rgba(255,255,255,.62);
+      border-radius:26px;
+      background:rgba(255,253,248,.9);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      animation:cardFloat 6s ease-in-out infinite;
+    }
+    .floating-note strong{display:block;margin-bottom:8px;color:var(--ink);font-size:20px;line-height:1.2;letter-spacing:-.03em}
+    .floating-note span{display:block;color:var(--text);font-size:14px;line-height:1.7}
+    .small-badge{
+      position:absolute;
+      right:-22px;
+      top:60px;
+      max-width:210px;
+      padding:16px 18px;
+      border-radius:999px;
+      color:#fff;
+      background:var(--sea);
+      box-shadow:0 18px 40px rgba(59,123,134,.22);
+      font-size:13px;
+      font-weight:850;
+      animation:cardFloatAlt 7s ease-in-out infinite;
+    }
 
-    .about-lines{
+    .section{padding:96px 0}
+    .services-preview-section{padding-top:76px}
+    .section-head{max-width:760px;margin-bottom:34px}
+    .section-head h2{margin-bottom:16px;color:var(--ink);font-size:clamp(34px,4.4vw,58px);line-height:1.06;letter-spacing:-.055em;font-weight:800}
+    .section-head p{max-width:680px;color:var(--text);font-size:17px;line-height:1.85;font-weight:500}
+
+    .split{
       display:grid;
-      border-top:1px solid var(--line);
+      grid-template-columns:.86fr 1.14fr;
+      gap:56px;
+      align-items:start;
     }
-
-    .about-line{
-      padding:20px 0;
-      border-bottom:1px solid var(--line);
+    .calm-panel{
+      position:sticky;
+      top:calc(var(--nav-h) + 28px);
+      padding:34px;
+      border:1px solid rgba(52,69,56,.12);
+      border-radius:32px;
+      background:#fffdf8;
+      box-shadow:var(--soft-shadow);
     }
-
-    .about-line h3{
-      margin:0 0 6px;
-      color:var(--ink);
-      font-size:21px;
-      letter-spacing:-.03em;
+    .calm-panel h2{margin-bottom:14px;color:var(--ink);font-size:38px;line-height:1.08;letter-spacing:-.05em}
+    .calm-panel p{color:var(--text);font-size:16px;line-height:1.82}
+    .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .service-card{
+      position:relative;
+      overflow:hidden;
+      min-height:220px;
+      padding:25px;
+      border:1px solid rgba(52,69,56,.12);
+      border-radius:28px;
+      background:
+        linear-gradient(#fffdf8,#fffdf8) padding-box,
+        linear-gradient(120deg, rgba(52,69,56,.12), rgba(199,164,93,.20), rgba(59,123,134,.16), rgba(52,69,56,.12)) border-box;
+      box-shadow:0 14px 36px rgba(38,49,44,.06);
+      transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
     }
-
-    .about-line p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.82;
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(115deg, transparent 0%, rgba(199,164,93,.10) 42%, rgba(59,123,134,.08) 56%, transparent 100%);
+      transform:translateX(-110%);
+      transition:transform .55s ease;
+      pointer-events:none;
     }
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 22px 54px rgba(38,49,44,.12);border-color:rgba(59,123,134,.22)}
+    .service-card:hover::before{transform:translateX(110%)}
+    .service-grid .reveal:nth-child(1){transition-delay:.04s}
+    .service-grid .reveal:nth-child(2){transition-delay:.12s}
+    .service-grid .reveal:nth-child(3){transition-delay:.20s}
+    .service-grid .reveal:nth-child(4){transition-delay:.28s}
+    .service-card .tag{display:inline-flex;margin-bottom:26px;color:var(--sea);font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+    .service-card h3{position:relative;margin-bottom:12px;color:var(--ink);font-size:25px;line-height:1.12;letter-spacing:-.04em}
+    .service-card p{position:relative;margin:0;color:var(--muted);font-size:15px;line-height:1.75}
 
-    .contact{
-      padding-top:94px;
-    }
-
+    .contact-section{padding:104px 0 70px}
     .contact-shell{
       overflow:hidden;
-      border:1px solid var(--line);
+      border:1px solid rgba(52,69,56,.12);
       border-radius:34px;
-      background:#fff;
+      background:#fffdf8;
       box-shadow:var(--shadow);
-    }
-
-    .contact-grid{
       display:grid;
       grid-template-columns:.9fr 1.1fr;
     }
-
     .contact-copy{
-      padding:46px;
-      border-right:1px solid var(--line);
+      padding:44px;
       background:
-        radial-gradient(circle at top left, rgba(22,147,207,.12), transparent 34%),
-        #fbfdff;
+        linear-gradient(135deg,rgba(234,223,207,.65),rgba(255,253,248,.95)),
+        linear-gradient(120deg, rgba(199,164,93,.14), transparent 42%, rgba(59,123,134,.10));
+      background-size:100% 100%, 180% 180%;
+      border-right:1px solid rgba(52,69,56,.1);
+      animation:contactGlow 16s ease-in-out infinite alternate;
     }
+    .contact-copy h2{margin-bottom:14px;color:var(--ink);font-size:clamp(32px,4vw,50px);line-height:1.07;letter-spacing:-.05em}
+    .contact-copy p{color:var(--text);font-size:16px;line-height:1.8}
+    .contact-meta{display:grid;gap:14px;margin-top:30px}
+    .contact-meta div{padding-top:14px;border-top:1px solid rgba(52,69,56,.12)}
+    .contact-meta strong{display:block;margin-bottom:5px;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+    .contact-meta a,.contact-meta span{color:var(--text);line-height:1.6}
+    .contact-form{padding:44px;background:#fffdf8}
+    form{display:grid;gap:13px}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    input,textarea{width:100%;padding:15px 16px;border:1px solid rgba(52,69,56,.16);border-radius:17px;outline:0;background:#fff;color:var(--ink);font-size:14px;font-weight:650;line-height:1.35;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+    input::placeholder,textarea::placeholder{color:#8f9a95}
+    input:focus,textarea:focus{border-color:rgba(59,123,134,.38);box-shadow:0 0 0 4px rgba(59,123,134,.1);transform:translateY(-1px)}
+    textarea{min-height:148px;resize:vertical}
+    .contact-note{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.65}
+    footer{padding:30px 0 42px;color:var(--muted);text-align:center;font-size:14px}
 
-    .contact-copy h2{
-      max-width:12ch;
+    .reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+    .reveal.in-view{opacity:1;transform:translate3d(0,0,0)}
+    @keyframes ambientShift{
+      0%{background-position:0% 42%, 100% 0%;transform:translate3d(0,0,0)}
+      100%{background-position:100% 58%, 0% 100%;transform:translate3d(-18px,12px,0)}
     }
-
-    .contact-copy p{
-      max-width:48ch;
+    @keyframes imageDrift{
+      from{transform:scale(1.08) translate3d(-8px,calc(-4px + var(--parallax-y, 0px)),0)}
+      to{transform:scale(1.12) translate3d(10px,calc(8px + var(--parallax-y, 0px)),0)}
     }
-
-    .contact-meta{
-      display:grid;
-      gap:15px;
-      margin-top:30px;
-    }
-
-    .contact-meta div{
-      padding-top:15px;
-      border-top:1px solid var(--line);
-    }
-
-    .contact-meta strong{
-      display:block;
-      margin-bottom:5px;
-      color:var(--ink);
-      font-size:14px;
-    }
-
-    .contact-meta a,
-    .contact-meta span{
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    .contact-form-wrap{
-      padding:46px;
-      background:#fff;
-    }
-
-    form{
-      display:grid;
-      gap:13px;
-    }
-
-    .field-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:13px;
-    }
-
-    input,
-    textarea{
-      width:100%;
-      padding:15px 16px;
-      border:1px solid var(--line);
-      border-radius:17px;
-      outline:0;
-      background:#fff;
-      color:var(--ink);
-      font-size:14px;
-      font-weight:600;
-      line-height:1.35;
-      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
-    }
-
-    input::placeholder,
-    textarea::placeholder{
-      color:#94a3b8;
-    }
-
-    input:focus,
-    textarea:focus{
-      border-color:rgba(15,76,129,.34);
-      box-shadow:0 0 0 4px rgba(15,76,129,.07);
-      transform:translateY(-1px);
-    }
-
-    textarea{
-      min-height:152px;
-      resize:vertical;
-    }
-
-    .contact-note{
-      margin:9px 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.7;
-    }
-
-    footer{
-      padding:38px 0 44px;
-      color:#64748b;
-      text-align:center;
-      font-size:14px;
-    }
-
-    .reveal{
-      opacity:0;
-      transition:
-        opacity .9s cubic-bezier(.2,.8,.2,1),
-        transform .9s cubic-bezier(.2,.8,.2,1);
-      will-change:transform,opacity;
-    }
-
-    .reveal-up{
-      transform:translate3d(0,34px,0);
-    }
-
-    .reveal-left{
-      transform:translate3d(-46px,0,0);
-    }
-
-    .reveal-right{
-      transform:translate3d(46px,0,0);
-    }
-
-    .reveal.in-view{
-      opacity:1;
-      transform:translate3d(0,0,0);
-    }
-
-    @media (prefers-reduced-motion:reduce){
-      html{
-        scroll-behavior:auto;
-      }
-
-      .reveal,
-      .hero-bg,
-      .services-bg,
-      .about-image{
-        opacity:1 !important;
-        transform:none !important;
-        transition:none !important;
-      }
-    }
-
-    @media (max-width:1120px){
-      .nav{
-        grid-template-columns:auto 1fr auto;
-      }
-
-      .nav-links{
-        justify-self:end;
-        gap:20px;
-      }
-
-      .brand-sub{
-        max-width:none;
-        overflow:visible;
-        text-overflow:clip;
-      }
-
-      .hero-inner{
-        padding-bottom:250px;
-      }
-
-      .hero-copy{
-        margin-left:clamp(20px, 5vw, 70px);
-      }
-
-      .hero-panel-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-panel-item{
-        border-right:0;
-        border-bottom:1px solid rgba(255,255,255,.14);
-      }
-
-      .hero-panel-item:last-child{
-        border-bottom:0;
-      }
-
-      .intro-grid,
-      .about-grid,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .contact-copy{
-        border-right:0;
-        border-bottom:1px solid var(--line);
-      }
-    }
-
-    @media (max-width:900px){
-      :root{
-        --nav-h:84px;
-      }
-
-      .container{
-        width:min(var(--container), calc(100% - 36px));
-      }
-
-      .nav{
-        min-height:var(--nav-h);
-        grid-template-columns:auto 1fr auto;
-        gap:10px;
-      }
-
-      .brand{
-        gap:10px;
-      }
-
-      .logo{
-        height:58px;
-      }
-
-      .brand-copy{
-        display:flex;
-        min-width:0;
-      }
-
-      .brand-name{
-        font-size:13px;
-        line-height:1.05;
-        white-space:normal;
-      }
-
-      .brand-sub{
-        max-width:none;
-        overflow:visible;
-        text-overflow:clip;
-        white-space:normal;
-        font-size:10.5px;
-        line-height:1.2;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .menu-btn{
-        display:flex;
-      }
-
-      .section{
-        padding:76px 0;
-      }
-
-      .hero{
-        min-height:auto;
-      }
-
-      .hero-inner{
-        padding:104px 0 360px;
-      }
-
-      .hero-copy{
-        margin-left:0;
-        padding-inline:8px;
-      }
-
-      .hero-copy h1,
-      html[lang="it"] .hero-copy h1,
-      html[lang="de"] .hero-copy h1{
-        max-width:100%;
-        font-size:clamp(34px,10vw,48px);
-        line-height:1.03;
-        letter-spacing:-.055em;
-      }
-
-      .hero-copy p,
-      .intro-copy p,
-      .services-head p,
-      .about-copy p{
-        font-size:15px;
-        line-height:1.78;
-      }
-
-      .hero-cta{
-        display:grid;
-        grid-template-columns:1fr;
-        margin-top:24px;
-      }
-
-      .hero-cta .btn{
-        width:100%;
-      }
-
-      .hero-panel{
-        padding-bottom:20px;
-      }
-
-      .hero-panel-grid{
-        border-radius:24px;
-      }
-
-      .hero-panel-item{
-        padding:20px;
-      }
-
-      .hero-panel-item h3{
-        font-size:16px;
-      }
-
-      .hero-panel-item p{
-        font-size:13px;
-        line-height:1.58;
-      }
-
-      .intro-copy h2,
-      .services-head h2,
-      .about-copy h2,
-      .contact-copy h2{
-        font-size:34px;
-      }
-
-      .intro-item{
-        grid-template-columns:1fr;
-        gap:8px;
-        padding:22px 0;
-      }
-
-      .intro-label{
-        padding-top:0;
-      }
-
-      .services-band{
-        padding:78px 0;
-      }
-
-      .service-link{
-        grid-template-columns:1fr auto;
-        gap:12px 16px;
-        padding:24px 0;
-      }
-
-      .service-label{
-        grid-column:1 / -1;
-        padding-top:0;
-      }
-
-      .service-main h3{
-        max-width:none;
-        font-size:25px;
-      }
-
-      .service-main p{
-        font-size:15px;
-        line-height:1.76;
-      }
-
-      .service-arrow{
-        font-size:24px;
-      }
-
-      .about-image-wrap{
-        min-height:260px;
-        border-radius:24px;
-      }
-
-      .contact{
-        padding-top:70px;
-      }
-
-      .contact-shell{
-        border-radius:26px;
-      }
-
-      .contact-copy,
-      .contact-form-wrap{
-        padding:26px 20px;
-      }
-
-      .field-row{
-        grid-template-columns:1fr;
-      }
-
-      input,
-      textarea,
-      form .btn{
-        min-height:50px;
-      }
-
-      textarea{
-        min-height:132px;
-      }
-    }
-
-    @media (max-width:520px){
-      .container{
-        width:min(var(--container), calc(100% - 32px));
-      }
-
-      .logo{
-        height:54px;
-      }
-
-      .brand-name{
-        font-size:12.5px;
-      }
-
-      .brand-sub{
-        font-size:10px;
-      }
-
-      .lang-trigger{
-        min-width:44px;
-        width:44px;
-        padding:0;
-        justify-content:center;
-      }
-
-      .lang-trigger svg{
-        display:none;
-      }
-
-      .hero-inner{
-        padding-top:92px;
-        padding-bottom:390px;
-      }
-
-      .hero-copy h1,
-      html[lang="it"] .hero-copy h1,
-      html[lang="de"] .hero-copy h1{
-        font-size:33px;
-      }
-
-      .hero-copy p{
-        font-size:14.5px;
-      }
-
-      .hero-panel-item{
-        padding:18px;
-      }
-    }
+    @keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes cardFloatAlt{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(8px) rotate(1deg)}}
+    @keyframes contactGlow{from{background-position:center,0% 45%}to{background-position:center,100% 55%}}
+
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.hero::before,.image-card::before,.floating-note,.small-badge,.contact-copy{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}}
+    @media (max-width:1060px){.nav{grid-template-columns:auto 1fr auto}.nav-links{justify-self:end}.hero-grid,.split,.contact-shell{grid-template-columns:1fr}.hero-visual{min-height:560px}.floating-note{left:24px}.small-badge{right:24px}.calm-panel{position:relative;top:auto}.signal-shell{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:850px){:root{--nav-h:80px}.container{width:min(var(--container),calc(100% - 32px))}.nav-links{display:none}.menu-btn{display:flex}.logo{height:54px}.brand-main strong,.brand-main span{font-size:15px}.brand-tagline{font-size:9.5px;letter-spacing:.08em}.hero-grid{padding:52px 0 58px;gap:34px}.hero-copy h1{font-size:clamp(34px,10vw,48px)}.hero-copy p,.section-head p{font-size:15px;line-height:1.75}.hero-actions{display:grid}.hero-actions .btn{width:100%}.hero-visual{min-height:420px}.image-card{border-radius:30px}.small-badge{display:none}.floating-note{left:16px;right:16px;bottom:22px;width:auto}.signal-row{padding-bottom:58px}.signal-shell,.service-grid{grid-template-columns:1fr}.section,.contact-section{padding:76px 0}.contact-copy,.contact-form{padding:26px 20px}.contact-copy{border-right:0;border-bottom:1px solid rgba(52,69,56,.1)}.field-row{grid-template-columns:1fr}}
+    @media (max-width:520px){.lang-trigger{width:44px;padding:0}.lang-trigger svg{display:none}.brand-tagline{max-width:145px;white-space:normal;line-height:1.25}.hero-visual{min-height:390px}.signal-card,.service-card{padding:21px}.about-image{min-height:320px}}
   </style>
 </head>
-
 <body>
-  <header>
+  <header class="site-header">
     <div class="container nav">
       <a href="#home" class="brand" aria-label="Sunny Hill Solutions">
         <img src="images/logo.thick.png" alt="Sunny Hill Solutions logo" class="logo">
-        <div class="brand-copy">
-          <span class="brand-name" data-i18n="brand">Sunny Hill Solutions</span>
-          <span class="brand-sub" data-i18n="brand.sub">Property Management in Liguria</span>
-        </div>
+        <span class="brand-type">
+          <span class="brand-main"><strong>Sunny Hill</strong><span>Solutions</span></span>
+          <span class="brand-tagline" data-i18n="brand.sub">Property Care in Liguria</span>
+        </span>
       </a>
-
-      <nav class="nav-links" aria-label="Primary">
-        <a href="services.html" data-i18n="nav.services">Our Services</a>
-        <a href="#about" data-i18n="nav.about">About</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html" data-i18n="nav.services">Services</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Login</a>
+        <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Client Login</a>
       </nav>
-
       <div class="nav-actions">
         <div class="lang-dd" id="langDd">
           <button class="lang-trigger" id="langTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
-            <img id="langFlag" class="lang-flag" src="images/flags/gb.svg" alt="English" width="19" height="19">
-            <svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M5 7l5 6 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img id="langFlag" class="lang-flag" src="images/flags/gb.svg" alt="English">
+            <svg width="13" height="13" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7l5 6 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-
           <div class="lang-menu" id="langMenu" role="listbox" aria-label="Language options">
-            <button class="lang-item" type="button" role="option" data-lang="en" aria-selected="false">
-              <img src="images/flags/gb.svg" alt=""> English
-            </button>
-            <button class="lang-item" type="button" role="option" data-lang="it" aria-selected="false">
-              <img src="images/flags/it.svg" alt=""> Italiano
-            </button>
-            <button class="lang-item" type="button" role="option" data-lang="de" aria-selected="false">
-              <img src="images/flags/de.svg" alt=""> Deutsch
-            </button>
+            <button class="lang-item" type="button" role="option" data-lang="en"><img src="images/flags/gb.svg" alt=""> English</button>
+            <button class="lang-item" type="button" role="option" data-lang="it"><img src="images/flags/it.svg" alt=""> Italiano</button>
+            <button class="lang-item" type="button" role="option" data-lang="de"><img src="images/flags/de.svg" alt=""> Deutsch</button>
+            <button class="lang-item" type="button" role="option" data-lang="es"><img src="images/flags/es.svg" alt=""> Español</button>
           </div>
         </div>
-
         <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </div>
-
     <div id="mobileMenu" class="mobile-panel" role="dialog" aria-label="Mobile menu">
       <div class="links">
-        <a href="services.html" data-i18n="nav.services">Our Services</a>
-        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="services.html" data-i18n="nav.services">Services</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Login</a>
+        <a class="login" href="https://backoffice.sunnyhillsolutions.com" target="_blank" rel="noopener" data-i18n="nav.login">Client Login</a>
       </div>
     </div>
   </header>
 
   <main id="home">
     <section class="hero">
-      <div class="hero-media">
-        <div class="hero-bg" id="homeHeroBg"></div>
-        <div class="hero-overlay"></div>
-      </div>
-
-      <div class="container hero-inner">
-        <div class="hero-copy reveal reveal-up">
-          <div class="kicker hero-kicker" data-i18n="hero.eyebrow">Property Management in Liguria</div>
-          <h1 data-i18n="hero.title">Reliable care for your home on the Ligurian coast</h1>
-          <p data-i18n="hero.lead">Sunny Hill Solutions supports homeowners with practical local oversight, trusted coordination and clear communication for the day to day needs of second home ownership.</p>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="services.html" data-i18n="hero.cta.services">Explore Services</a>
-            <a class="btn btn-light" href="#contact" data-i18n="hero.cta.contact">Get in Touch</a>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" data-i18n="hero.eyebrow">Local property care</div>
+          <h1 data-i18n="hero.title">Your Ligurian home, cared for while you are away.</h1>
+          <p data-i18n="hero.lead">Sunny Hill Solutions gives second home owners a reliable local contact for inspections, maintenance coordination, arrival preparation and everyday property matters across Imperia and the Ligurian coast.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact" data-i18n="hero.cta.main">Request property support</a>
+            <a class="btn" href="services.html" data-i18n="hero.cta.second">View services</a>
           </div>
         </div>
-      </div>
-
-      <div class="hero-panel">
-        <div class="container">
-          <div class="hero-panel-grid reveal reveal-up">
-            <div class="hero-panel-item">
-              <h3 data-i18n="hero.p1.title">Local presence</h3>
-              <p data-i18n="hero.p1.text">Reliable on site follow up to help keep the property secure, orderly and properly looked after.</p>
-            </div>
-            <div class="hero-panel-item">
-              <h3 data-i18n="hero.p2.title">Trusted coordination</h3>
-              <p data-i18n="hero.p2.text">Careful coordination of local suppliers, maintenance works and practical property needs.</p>
-            </div>
-            <div class="hero-panel-item">
-              <h3 data-i18n="hero.p3.title">Clear communication</h3>
-              <p data-i18n="hero.p3.text">Straightforward updates and one dependable point of contact whenever support is needed.</p>
-            </div>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="image-card"></div>
+          <div class="small-badge" data-i18n="hero.badge">Local presence for second homes in Liguria</div>
+          <div class="floating-note">
+            <strong data-i18n="hero.note.title">Clear updates. Practical care.</strong>
+            <span data-i18n="hero.note.text">A calm and structured way to keep your property followed up locally.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="intro-grid">
-          <div class="intro-copy reveal reveal-left">
-            <div class="kicker" data-i18n="intro.kicker">Approach</div>
-            <h2 data-i18n="intro.title">Property support built around the practical reality of ownership</h2>
-            <p data-i18n="intro.text">Every home is different. The level of support should reflect how the property is used, what needs attention over time and what matters most to the owner.</p>
-          </div>
-
-          <div class="intro-path">
-            <div class="intro-item reveal reveal-right">
-              <div class="intro-label" data-i18n="intro.i1.label">Support</div>
-              <div>
-                <h3 data-i18n="intro.i1.title">Regular oversight</h3>
-                <p data-i18n="intro.i1.text">Checks, follow up and local attention help keep the property secure, in order and ready when needed.</p>
-              </div>
-            </div>
-
-            <div class="intro-item reveal reveal-right">
-              <div class="intro-label" data-i18n="intro.i2.label">Coordination</div>
-              <div>
-                <h3 data-i18n="intro.i2.title">Practical coordination</h3>
-                <p data-i18n="intro.i2.text">Maintenance works, local suppliers and recurring tasks can be managed with clearer structure and continuity.</p>
-              </div>
-            </div>
-
-            <div class="intro-item reveal reveal-right">
-              <div class="intro-label" data-i18n="intro.i3.label">Contact</div>
-              <div>
-                <h3 data-i18n="intro.i3.title">Dependable contact</h3>
-                <p data-i18n="intro.i3.text">One reliable point of contact helps keep communication more straightforward across the needs of the property.</p>
-              </div>
-            </div>
-          </div>
+    <section class="section services-preview-section" id="services-preview">
+      <div class="container split">
+        <aside class="calm-panel reveal">
+          <div class="eyebrow" data-i18n="services.kicker">What we handle</div>
+          <h2 data-i18n="services.title">Property support made simple.</h2>
+          <p data-i18n="services.text">The service can be adapted to the property, the season and the amount of support you want locally.</p>
+          <a class="btn btn-primary" href="services.html" data-i18n="services.button">Open services page</a>
+        </aside>
+        <div class="service-grid">
+          <a class="service-card reveal" href="services.html#property-care"><span class="tag" data-i18n="card.care.tag">Property care</span><h3 data-i18n="card.care.title">Checks, repairs and follow up</h3><p data-i18n="card.care.text">Regular attention helps keep the property secure, tidy and ready when needed.</p></a>
+          <a class="service-card reveal" href="services.html#administration"><span class="tag" data-i18n="card.admin.tag">Administration</span><h3 data-i18n="card.admin.title">Bills and recurring matters</h3><p data-i18n="card.admin.text">Support for utilities, local documents and recurring property responsibilities.</p></a>
+          <a class="service-card reveal" href="services.html#projects"><span class="tag" data-i18n="card.projects.tag">Projects</span><h3 data-i18n="card.projects.title">Works and supplier coordination</h3><p data-i18n="card.projects.text">A clearer way to coordinate tradesmen, quotations and local progress.</p></a>
+          <a class="service-card reveal" href="services.html#readiness"><span class="tag" data-i18n="card.ready.tag">Arrivals</span><h3 data-i18n="card.ready.title">Owner and guest preparation</h3><p data-i18n="card.ready.text">Housekeeping, preparation and practical local requests before each stay.</p></a>
         </div>
       </div>
     </section>
 
-    <section class="services-band">
-      <div class="services-bg" id="servicesBg"></div>
-
-      <div class="container services-inner">
-        <div class="services-head reveal reveal-up">
-          <div class="kicker" data-i18n="services.kicker">What we do</div>
-          <h2 data-i18n="services.title">Practical support with a stronger local presence</h2>
-          <p data-i18n="services.intro">The support can be adapted according to the property, the season and the level of assistance required.</p>
+    <section class="contact-section" id="contact">
+      <div class="container contact-shell reveal">
+        <div class="contact-copy">
+          <div class="eyebrow" data-i18n="contact.kicker">Contact</div>
+          <h2 data-i18n="contact.title">Tell us about your property.</h2>
+          <p data-i18n="contact.intro">Share a few details about the home and the type of support you are looking for. We will come back to you with the next steps.</p>
+          <div class="contact-meta">
+            <div><strong data-i18n="contact.email.label">Email</strong><a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a></div>
+            <div><strong data-i18n="contact.phone.label">Phone</strong><a href="tel:+393394496037">+39 339 449 60 37</a></div>
+            <div><strong data-i18n="contact.area.label">Area</strong><span data-i18n="contact.area.value">Liguria, Imperia and surrounding areas</span></div>
+          </div>
         </div>
-
-        <div class="service-flow">
-          <a href="services.html" class="service-link reveal reveal-left">
-            <div class="service-label" data-i18n="services.row1.label">Property care</div>
-            <div class="service-main">
-              <h3 data-i18n="services.row1.title">Regular oversight of the property</h3>
-              <p data-i18n="services.row1.text">Inspections, practical follow up and local attention help keep the home secure, in good condition and ready when needed.</p>
+        <div class="contact-form">
+          <form action="#" method="post">
+            <div class="field-row">
+              <input type="text" name="name" required data-i18n-placeholder="form.name" placeholder="Your name">
+              <input type="email" name="email" required data-i18n-placeholder="form.email" placeholder="Your email">
             </div>
-            <div class="service-arrow" aria-hidden="true">↗</div>
-          </a>
-
-          <a href="services.html" class="service-link reveal reveal-right">
-            <div class="service-label" data-i18n="services.row2.label">Administration</div>
-            <div class="service-main">
-              <h3 data-i18n="services.row2.title">Support for recurring ownership matters</h3>
-              <p data-i18n="services.row2.text">Coordination of bills, practical responsibilities and the day to day matters that come with owning a second home.</p>
-            </div>
-            <div class="service-arrow" aria-hidden="true">↗</div>
-          </a>
-
-          <a href="services.html" class="service-link reveal reveal-left">
-            <div class="service-label" data-i18n="services.row3.label">Projects</div>
-            <div class="service-main">
-              <h3 data-i18n="services.row3.title">Coordination of maintenance and works</h3>
-              <p data-i18n="services.row3.text">A clearer way to oversee suppliers, practical works and on site progress when something needs to be handled locally.</p>
-            </div>
-            <div class="service-arrow" aria-hidden="true">↗</div>
-          </a>
-
-          <a href="services.html" class="service-link reveal reveal-right">
-            <div class="service-label" data-i18n="services.row4.label">Readiness</div>
-            <div class="service-main">
-              <h3 data-i18n="services.row4.title">Preparation before owners or guests arrive</h3>
-              <p data-i18n="services.row4.text">Practical support to help the property feel prepared, comfortable and organized before it is used.</p>
-            </div>
-            <div class="service-arrow" aria-hidden="true">↗</div>
-          </a>
+            <input type="text" name="property" data-i18n-placeholder="form.property" placeholder="Property location or type">
+            <textarea name="message" required data-i18n-placeholder="form.message" placeholder="Tell us what support you are looking for"></textarea>
+            <button class="btn btn-primary" type="submit" data-i18n="form.send">Send request</button>
+          </form>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-copy reveal reveal-left">
-            <div class="kicker" data-i18n="about.kicker">About</div>
-            <h2 data-i18n="about.title">Support shaped around the reality of the property</h2>
-            <p data-i18n="about.p1">This can include inspections, supplier coordination, maintenance follow up, arrival preparation and general oversight according to the property’s needs.</p>
-            <p data-i18n="about.p2">The structure should stay practical, with the right level of local presence and follow up over time.</p>
-          </div>
-
-          <div class="about-side reveal reveal-right">
-            <div class="about-image-wrap">
-              <div class="about-image" id="homeFeatureImage"></div>
-            </div>
-
-            <div class="about-lines">
-              <div class="about-line">
-                <div>
-                  <h3 data-i18n="about.m1.title">Inspections and follow up</h3>
-                  <p data-i18n="about.m1.text">Regular checks and careful coordination help keep the property in order over time.</p>
-                </div>
-              </div>
-
-              <div class="about-line">
-                <div>
-                  <h3 data-i18n="about.m2.title">Suppliers and tradesmen</h3>
-                  <p data-i18n="about.m2.text">We work with trusted local professionals according to the needs of the property.</p>
-                </div>
-              </div>
-
-              <div class="about-line">
-                <div>
-                  <h3 data-i18n="about.m3.title">Owner and guest readiness</h3>
-                  <p data-i18n="about.m3.text">Support can include arrivals, preparation, housekeeping coordination and practical local assistance.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="container">
-        <div class="contact-shell reveal reveal-up">
-          <div class="contact-grid">
-            <div class="contact-copy">
-              <div class="kicker" data-i18n="contact.kicker">Contact</div>
-              <h2 data-i18n="contact.title">Tell us what kind of support you are looking for</h2>
-              <p data-i18n="contact.intro">Share a little about your property or the assistance you need and we will come back to you with the next steps.</p>
-
-              <div class="contact-meta">
-                <div>
-                  <strong data-i18n="contact.email.label">Email</strong>
-                  <a href="mailto:contact@sunnyhillsolutions.com">contact@sunnyhillsolutions.com</a>
-                </div>
-                <div>
-                  <strong data-i18n="contact.phone.label">Phone</strong>
-                  <a href="tel:+393394496037">+39 339 449 60 37</a>
-                </div>
-                <div>
-                  <strong data-i18n="contact.area.label">Area</strong>
-                  <span data-i18n="contact.area.value">Liguria, Imperia and surrounding areas</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="contact-form-wrap">
-              <form action="#" method="post">
-                <div class="field-row">
-                  <input type="text" name="name" required data-i18n-placeholder="contact.form.name" placeholder="Your name">
-                  <input type="email" name="email" required data-i18n-placeholder="contact.form.email" placeholder="Your email">
-                </div>
-                <input type="tel" name="phone" data-i18n-placeholder="contact.form.phone" placeholder="Your phone number">
-                <textarea name="message" required data-i18n-placeholder="contact.form.message" placeholder="How can we help?"></textarea>
-                <button class="btn btn-dark" type="submit" data-i18n="contact.form.send">Send message</button>
-              </form>
-              <p class="contact-note" data-i18n="contact.note">For urgent matters, please write URGENT at the beginning of your message.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="year"></span> <span data-i18n="brand">Sunny Hill Solutions</span>
-    </footer>
+    <footer>© <span id="year"></span> Sunny Hill Solutions</footer>
   </main>
 
   <script>
-    const I18N = {
-      en: {
-        "brand":"Sunny Hill Solutions",
-        "brand.sub":"Property Management in Liguria",
-        "nav.services":"Our Services",
-        "nav.about":"About",
-        "nav.contact":"Contact",
-        "nav.login":"Login",
-
-        "hero.eyebrow":"Property Management in Liguria",
-        "hero.title":"Reliable care for your home on the Ligurian coast",
-        "hero.lead":"Sunny Hill Solutions supports homeowners with practical local oversight, trusted coordination and clear communication for the day to day needs of second home ownership.",
-        "hero.cta.services":"Explore Services",
-        "hero.cta.contact":"Get in Touch",
-        "hero.p1.title":"Local presence",
-        "hero.p1.text":"Reliable on site follow up to help keep the property secure, orderly and properly looked after.",
-        "hero.p2.title":"Trusted coordination",
-        "hero.p2.text":"Careful coordination of local suppliers, maintenance works and practical property needs.",
-        "hero.p3.title":"Clear communication",
-        "hero.p3.text":"Straightforward updates and one dependable point of contact whenever support is needed.",
-
-        "intro.kicker":"Approach",
-        "intro.title":"Property support built around the practical reality of ownership",
-        "intro.text":"Every home is different. The level of support should reflect how the property is used, what needs attention over time and what matters most to the owner.",
-        "intro.i1.label":"Support",
-        "intro.i1.title":"Regular oversight",
-        "intro.i1.text":"Checks, follow up and local attention help keep the property secure, in order and ready when needed.",
-        "intro.i2.label":"Coordination",
-        "intro.i2.title":"Practical coordination",
-        "intro.i2.text":"Maintenance works, local suppliers and recurring tasks can be managed with clearer structure and continuity.",
-        "intro.i3.label":"Contact",
-        "intro.i3.title":"Dependable contact",
-        "intro.i3.text":"One reliable point of contact helps keep communication more straightforward across the needs of the property.",
-
-        "services.kicker":"What we do",
-        "services.title":"Practical support with a stronger local presence",
-        "services.intro":"The support can be adapted according to the property, the season and the level of assistance required.",
-        "services.row1.label":"Property care",
-        "services.row1.title":"Regular oversight of the property",
-        "services.row1.text":"Inspections, practical follow up and local attention help keep the home secure, in good condition and ready when needed.",
-        "services.row2.label":"Administration",
-        "services.row2.title":"Support for recurring ownership matters",
-        "services.row2.text":"Coordination of bills, practical responsibilities and the day to day matters that come with owning a second home.",
-        "services.row3.label":"Projects",
-        "services.row3.title":"Coordination of maintenance and works",
-        "services.row3.text":"A clearer way to oversee suppliers, practical works and on site progress when something needs to be handled locally.",
-        "services.row4.label":"Readiness",
-        "services.row4.title":"Preparation before owners or guests arrive",
-        "services.row4.text":"Practical support to help the property feel prepared, comfortable and organized before it is used.",
-
-        "about.kicker":"About",
-        "about.title":"Support shaped around the reality of the property",
-        "about.p1":"This can include inspections, supplier coordination, maintenance follow up, arrival preparation and general oversight according to the property’s needs.",
-        "about.p2":"The structure should stay practical, with the right level of local presence and follow up over time.",
-        "about.m1.title":"Inspections and follow up",
-        "about.m1.text":"Regular checks and careful coordination help keep the property in order over time.",
-        "about.m2.title":"Suppliers and tradesmen",
-        "about.m2.text":"We work with trusted local professionals according to the needs of the property.",
-        "about.m3.title":"Owner and guest readiness",
-        "about.m3.text":"Support can include arrivals, preparation, housekeeping coordination and practical local assistance.",
-
-        "contact.kicker":"Contact",
-        "contact.title":"Tell us what kind of support you are looking for",
-        "contact.intro":"Share a little about your property or the assistance you need and we will come back to you with the next steps.",
-        "contact.form.name":"Your name",
-        "contact.form.email":"Your email",
-        "contact.form.phone":"Your phone number",
-        "contact.form.message":"How can we help?",
-        "contact.form.send":"Send message",
-        "contact.email.label":"Email",
-        "contact.phone.label":"Phone",
-        "contact.area.label":"Area",
-        "contact.area.value":"Liguria, Imperia and surrounding areas",
-        "contact.note":"For urgent matters, please write URGENT at the beginning of your message."
-      },
-
-      it: {
-        "brand":"Sunny Hill Solutions",
-        "brand.sub":"Property Management in Liguria",
-        "nav.services":"Servizi",
-        "nav.about":"Chi siamo",
-        "nav.contact":"Contatti",
-        "nav.login":"Login",
-
-        "hero.eyebrow":"Gestione immobiliare in Liguria",
-        "hero.title":"Cura affidabile per la tua casa sulla costa ligure",
-        "hero.lead":"Sunny Hill Solutions supporta i proprietari con supervisione locale concreta, coordinamento di fiducia e comunicazione chiara per le esigenze quotidiane di una seconda casa.",
-        "hero.cta.services":"Scopri i servizi",
-        "hero.cta.contact":"Contattaci",
-        "hero.p1.title":"Presenza locale",
-        "hero.p1.text":"Un seguito affidabile sul posto per aiutare a mantenere la proprietà sicura, in ordine e ben seguita.",
-        "hero.p2.title":"Coordinamento di fiducia",
-        "hero.p2.text":"Coordinamento attento di fornitori locali, lavori di manutenzione e necessità pratiche della proprietà.",
-        "hero.p3.title":"Comunicazione chiara",
-        "hero.p3.text":"Aggiornamenti diretti e un unico referente affidabile ogni volta che serve supporto.",
-
-        "intro.kicker":"Approccio",
-        "intro.title":"Supporto alla proprietà costruito intorno alla realtà pratica della gestione",
-        "intro.text":"Ogni casa è diversa. Il livello di supporto dovrebbe riflettere come la proprietà viene utilizzata, cosa richiede attenzione nel tempo e cosa conta di più per il proprietario.",
-        "intro.i1.label":"Supporto",
-        "intro.i1.title":"Supervisione regolare",
-        "intro.i1.text":"Controlli, seguito e attenzione locale aiutano a mantenere la proprietà sicura, in ordine e pronta quando serve.",
-        "intro.i2.label":"Coordinamento",
-        "intro.i2.title":"Coordinamento pratico",
-        "intro.i2.text":"Manutenzioni, fornitori locali e attività ricorrenti possono essere gestiti con più struttura e continuità.",
-        "intro.i3.label":"Contatto",
-        "intro.i3.title":"Referente affidabile",
-        "intro.i3.text":"Un unico contatto affidabile aiuta a rendere la comunicazione più semplice rispetto alle esigenze della proprietà.",
-
-        "services.kicker":"Cosa facciamo",
-        "services.title":"Supporto pratico con una presenza locale più forte",
-        "services.intro":"Il supporto può essere adattato in base alla proprietà, alla stagione e al livello di assistenza richiesto.",
-        "services.row1.label":"Cura della proprietà",
-        "services.row1.title":"Supervisione regolare della proprietà",
-        "services.row1.text":"Ispezioni, seguito pratico e attenzione locale aiutano a mantenere la casa sicura, in buono stato e pronta all’uso.",
-        "services.row2.label":"Amministrazione",
-        "services.row2.title":"Supporto per le responsabilità ricorrenti della proprietà",
-        "services.row2.text":"Coordinamento di bollette, responsabilità pratiche e questioni quotidiane legate a una seconda casa.",
-        "services.row3.label":"Progetti",
-        "services.row3.title":"Coordinamento di manutenzioni e lavori",
-        "services.row3.text":"Un modo più chiaro per seguire fornitori, lavori pratici e avanzamento sul posto quando qualcosa deve essere gestito localmente.",
-        "services.row4.label":"Preparazione",
-        "services.row4.title":"Preparazione prima dell’arrivo di proprietari o ospiti",
-        "services.row4.text":"Supporto pratico per aiutare la proprietà a sentirsi preparata, confortevole e organizzata prima dell’utilizzo.",
-
-        "about.kicker":"Chi siamo",
-        "about.title":"Supporto costruito intorno alla realtà della proprietà",
-        "about.p1":"Questo può includere ispezioni, coordinamento fornitori, seguito manutenzioni, preparazione arrivi e supervisione generale in base alle esigenze della proprietà.",
-        "about.p2":"La struttura dovrebbe rimanere pratica, con il giusto livello di presenza locale e seguito nel tempo.",
-        "about.m1.title":"Ispezioni e seguito",
-        "about.m1.text":"Controlli regolari e coordinamento accurato aiutano a mantenere la proprietà in ordine nel tempo.",
-        "about.m2.title":"Fornitori e artigiani",
-        "about.m2.text":"Lavoriamo con professionisti locali affidabili in base alle esigenze della proprietà.",
-        "about.m3.title":"Prontezza per proprietari e ospiti",
-        "about.m3.text":"Il supporto può includere arrivi, preparazione, coordinamento housekeeping e assistenza pratica locale.",
-
-        "contact.kicker":"Contatti",
-        "contact.title":"Dicci che tipo di supporto stai cercando",
-        "contact.intro":"Condividi qualche dettaglio sulla tua proprietà o sul tipo di assistenza di cui hai bisogno e ti ricontatteremo con i prossimi passi.",
-        "contact.form.name":"Il tuo nome",
-        "contact.form.email":"La tua e-mail",
-        "contact.form.phone":"Il tuo numero di telefono",
-        "contact.form.message":"Come possiamo aiutarti?",
-        "contact.form.send":"Invia messaggio",
-        "contact.email.label":"E-mail",
-        "contact.phone.label":"Telefono",
-        "contact.area.label":"Zona",
-        "contact.area.value":"Liguria, Imperia e aree circostanti",
-        "contact.note":"Per le urgenze, scrivi URGENTE all’inizio del messaggio."
-      },
-
-      de: {
-        "brand":"Sunny Hill Solutions",
-        "brand.sub":"Property Management in Liguria",
-        "nav.services":"Leistungen",
-        "nav.about":"Über uns",
-        "nav.contact":"Kontakt",
-        "nav.login":"Login",
-
-        "hero.eyebrow":"Immobilienverwaltung in Ligurien",
-        "hero.title":"Zuverlässige Betreuung für Ihr Zuhause an der ligurischen Küste",
-        "hero.lead":"Sunny Hill Solutions unterstützt Eigentümer mit praktischer lokaler Betreuung, verlässlicher Koordination und klarer Kommunikation für die täglichen Anforderungen eines Zweitwohnsitzes.",
-        "hero.cta.services":"Leistungen ansehen",
-        "hero.cta.contact":"Kontakt aufnehmen",
-        "hero.p1.title":"Lokale Präsenz",
-        "hero.p1.text":"Verlässliche Betreuung vor Ort, damit die Immobilie sicher, ordentlich und gut betreut bleibt.",
-        "hero.p2.title":"Vertrauenswürdige Koordination",
-        "hero.p2.text":"Sorgfältige Koordination lokaler Dienstleister, Wartungsarbeiten und praktischer Anforderungen der Immobilie.",
-        "hero.p3.title":"Klare Kommunikation",
-        "hero.p3.text":"Direkte Updates und ein verlässlicher Ansprechpartner, sobald Unterstützung nötig ist.",
-
-        "intro.kicker":"Ansatz",
-        "intro.title":"Property Support, aufgebaut auf der praktischen Realität des Eigentums",
-        "intro.text":"Jedes Haus ist anders. Der Umfang der Unterstützung sollte widerspiegeln, wie die Immobilie genutzt wird, was im Laufe der Zeit Aufmerksamkeit braucht und was dem Eigentümer am wichtigsten ist.",
-        "intro.i1.label":"Support",
-        "intro.i1.title":"Regelmäßige Betreuung",
-        "intro.i1.text":"Kontrollen, Nachverfolgung und lokale Aufmerksamkeit helfen, die Immobilie sicher, ordentlich und einsatzbereit zu halten.",
-        "intro.i2.label":"Koordination",
-        "intro.i2.title":"Praktische Koordination",
-        "intro.i2.text":"Wartung, lokale Dienstleister und wiederkehrende Aufgaben können mit mehr Struktur und Kontinuität betreut werden.",
-        "intro.i3.label":"Kontakt",
-        "intro.i3.title":"Verlässlicher Ansprechpartner",
-        "intro.i3.text":"Ein zuverlässiger Kontaktpunkt macht die Kommunikation rund um die Anforderungen der Immobilie klarer.",
-
-        "services.kicker":"Was wir tun",
-        "services.title":"Praktische Unterstützung mit stärkerer lokaler Präsenz",
-        "services.intro":"Die Unterstützung kann an die Immobilie, die Jahreszeit und das gewünschte Maß an Betreuung angepasst werden.",
-        "services.row1.label":"Objektbetreuung",
-        "services.row1.title":"Regelmäßige Betreuung der Immobilie",
-        "services.row1.text":"Inspektionen, praktische Nachverfolgung und lokale Aufmerksamkeit helfen, das Haus sicher, in gutem Zustand und einsatzbereit zu halten.",
-        "services.row2.label":"Administration",
-        "services.row2.title":"Unterstützung bei wiederkehrenden Eigentumsaufgaben",
-        "services.row2.text":"Koordination von Rechnungen, praktischen Verantwortlichkeiten und den täglichen Themen eines Zweitwohnsitzes.",
-        "services.row3.label":"Projekte",
-        "services.row3.title":"Koordination von Wartung und Arbeiten",
-        "services.row3.text":"Ein klarerer Weg, Dienstleister, praktische Arbeiten und Fortschritt vor Ort zu begleiten, wenn etwas lokal organisiert werden muss.",
-        "services.row4.label":"Bereitschaft",
-        "services.row4.title":"Vorbereitung vor der Ankunft von Eigentümern oder Gästen",
-        "services.row4.text":"Praktische Unterstützung, damit sich die Immobilie vorbereitet, komfortabel und organisiert anfühlt, bevor sie genutzt wird.",
-
-        "about.kicker":"Über uns",
-        "about.title":"Unterstützung, die an der Realität der Immobilie ausgerichtet ist",
-        "about.p1":"Dies kann Inspektionen, Koordination von Dienstleistern, Nachverfolgung von Wartung, Vorbereitung von Ankünften und allgemeine Betreuung je nach Bedarf der Immobilie umfassen.",
-        "about.p2":"Die Struktur sollte praktisch bleiben, mit dem richtigen Maß an lokaler Präsenz und Nachverfolgung im Zeitverlauf.",
-        "about.m1.title":"Inspektionen und Nachverfolgung",
-        "about.m1.text":"Regelmäßige Kontrollen und sorgfältige Koordination helfen, die Immobilie langfristig in Ordnung zu halten.",
-        "about.m2.title":"Dienstleister und Handwerker",
-        "about.m2.text":"Wir arbeiten mit vertrauenswürdigen lokalen Fachkräften entsprechend den Anforderungen der Immobilie.",
-        "about.m3.title":"Bereitschaft für Eigentümer und Gäste",
-        "about.m3.text":"Die Unterstützung kann Ankünfte, Vorbereitung, Housekeeping Koordination und praktische lokale Hilfe umfassen.",
-
-        "contact.kicker":"Kontakt",
-        "contact.title":"Sagen Sie uns, welche Unterstützung Sie suchen",
-        "contact.intro":"Teilen Sie uns kurz etwas über Ihre Immobilie oder die gewünschte Unterstützung mit und wir melden uns mit den nächsten Schritten.",
-        "contact.form.name":"Ihr Name",
-        "contact.form.email":"Ihre E-Mail",
-        "contact.form.phone":"Ihre Telefonnummer",
-        "contact.form.message":"Wie können wir helfen?",
-        "contact.form.send":"Nachricht senden",
-        "contact.email.label":"E-Mail",
-        "contact.phone.label":"Telefon",
-        "contact.area.label":"Region",
-        "contact.area.value":"Ligurien, Imperia und umliegende Gebiete",
-        "contact.note":"In dringenden Fällen schreiben Sie bitte URGENT an den Anfang Ihrer Nachricht."
-      }
+    const I18N={
+      en:{"brand.sub":"Property Care in Liguria","nav.services":"Services","nav.about":"About","nav.contact":"Contact","nav.login":"Client Login","hero.eyebrow":"Local property care","hero.title":"Your Ligurian home, cared for while you are away.","hero.lead":"Sunny Hill Solutions gives second home owners a reliable local contact for inspections, maintenance coordination, arrival preparation and everyday property matters across Imperia and the Ligurian coast.","hero.cta.main":"Request property support","hero.cta.second":"View services","hero.badge":"Local presence for second homes in Liguria","hero.note.title":"Clear updates. Practical care.","hero.note.text":"A calm and structured way to keep your property followed up locally.","signal.one.title":"Inspections","signal.one.text":"Regular checks and practical follow up.","signal.two.title":"Maintenance","signal.two.text":"Coordination with trusted local suppliers.","signal.three.title":"Readiness","signal.three.text":"Preparation before owners or guests arrive.","signal.four.title":"Updates","signal.four.text":"Simple communication from one contact.","services.kicker":"What we handle","services.title":"Property support made simple.","services.text":"The service can be adapted to the property, the season and the amount of support you want locally.","services.button":"Open services page","card.care.tag":"Property care","card.care.title":"Checks, repairs and follow up","card.care.text":"Regular attention helps keep the property secure, tidy and ready when needed.","card.admin.tag":"Administration","card.admin.title":"Bills and recurring matters","card.admin.text":"Support for utilities, local documents and recurring property responsibilities.","card.projects.tag":"Projects","card.projects.title":"Works and supplier coordination","card.projects.text":"A clearer way to coordinate tradesmen, quotations and local progress.","card.ready.tag":"Arrivals","card.ready.title":"Owner and guest preparation","card.ready.text":"Housekeeping, preparation and practical local requests before each stay.","process.kicker":"How it works","process.title":"Calm coordination, with a real local presence.","process.text":"We keep the process clear and personal. The support is shaped around the property rather than forced into a standard package.","process.one.title":"Understand the property","process.one.text":"We look at how the home is used, what needs attention and what matters most to you.","process.two.title":"Agree the support","process.two.text":"We define the right level of assistance for regular care, seasonal needs or occasional requests.","process.three.title":"Coordinate locally","process.three.text":"We follow up with suppliers, visits and practical matters while keeping communication clear.","about.kicker":"About Sunny Hill","about.title":"A trusted contact for homeowners in Liguria.","about.text":"Sunny Hill Solutions was created for owners who need practical, dependable support for their property in Liguria. The focus is simple: local presence, reliable coordination and clear communication.","about.one.title":"Local and practical","about.one.text":"Support designed around real property needs rather than complicated packages.","about.two.title":"Clear and personal","about.two.text":"One point of contact for updates, suppliers and property requests.","about.three.title":"Built for second homes","about.three.text":"Useful for owners who are abroad, seasonal visitors or families using the property occasionally.","contact.kicker":"Contact","contact.title":"Tell us about your property.","contact.intro":"Share a few details about the home and the type of support you are looking for. We will come back to you with the next steps.","contact.email.label":"Email","contact.phone.label":"Phone","contact.area.label":"Area","contact.area.value":"Liguria, Imperia and surrounding areas","form.name":"Your name","form.email":"Your email","form.property":"Property location or type","form.message":"Tell us what support you are looking for","form.send":"Send request","contact.note":"For urgent matters, please write URGENT at the beginning of your message."},
+      it:{"brand.sub":"Property Care in Liguria","nav.services":"Servizi","nav.about":"Chi siamo","nav.contact":"Contatti","nav.login":"Area Clienti","hero.eyebrow":"Cura locale della proprietà","hero.title":"La tua casa in Liguria, seguita quando sei lontano.","hero.lead":"Sunny Hill Solutions offre ai proprietari di seconde case un referente locale affidabile per ispezioni, manutenzioni, preparazione arrivi e necessità quotidiane della proprietà tra Imperia e la costa ligure.","hero.cta.main":"Richiedi supporto","hero.cta.second":"Vedi i servizi","hero.badge":"Presenza locale per seconde case in Liguria","hero.note.title":"Aggiornamenti chiari. Cura pratica.","hero.note.text":"Un modo calmo e strutturato per seguire la tua proprietà localmente.","signal.one.title":"Ispezioni","signal.one.text":"Controlli regolari e seguito pratico.","signal.two.title":"Manutenzione","signal.two.text":"Coordinamento con fornitori locali affidabili.","signal.three.title":"Preparazione","signal.three.text":"Prima dell’arrivo di proprietari o ospiti.","signal.four.title":"Aggiornamenti","signal.four.text":"Comunicazione semplice da un unico contatto.","services.kicker":"Cosa gestiamo","services.title":"Supporto alla proprietà, semplice.","services.text":"Il servizio può essere adattato alla proprietà, alla stagione e al livello di supporto locale desiderato.","services.button":"Apri la pagina servizi","card.care.tag":"Cura proprietà","card.care.title":"Controlli, riparazioni e seguito","card.care.text":"Un’attenzione regolare aiuta a mantenere la proprietà sicura, ordinata e pronta quando serve.","card.admin.tag":"Amministrazione","card.admin.title":"Bollette e questioni ricorrenti","card.admin.text":"Supporto per utenze, documenti locali e responsabilità ricorrenti.","card.projects.tag":"Progetti","card.projects.title":"Lavori e coordinamento fornitori","card.projects.text":"Un modo più chiaro per coordinare artigiani, preventivi e avanzamenti locali.","card.ready.tag":"Arrivi","card.ready.title":"Preparazione per proprietari e ospiti","card.ready.text":"Housekeeping, preparazione e richieste pratiche locali prima di ogni soggiorno.","process.kicker":"Come funziona","process.title":"Coordinamento calmo, con una vera presenza locale.","process.text":"Manteniamo il processo chiaro e personale. Il supporto viene costruito intorno alla proprietà.","process.one.title":"Capire la proprietà","process.one.text":"Analizziamo come viene usata la casa, cosa richiede attenzione e cosa conta di più per te.","process.two.title":"Definire il supporto","process.two.text":"Definiamo il giusto livello di assistenza per cura regolare, esigenze stagionali o richieste occasionali.","process.three.title":"Coordinare localmente","process.three.text":"Seguiamo fornitori, visite e questioni pratiche mantenendo una comunicazione chiara.","about.kicker":"Chi siamo","about.title":"Un referente affidabile per proprietari in Liguria.","about.text":"Sunny Hill Solutions nasce per proprietari che cercano un supporto pratico e affidabile per la loro casa in Liguria. Il focus è semplice: presenza locale, coordinamento affidabile e comunicazione chiara.","about.one.title":"Locale e pratico","about.one.text":"Supporto costruito intorno alle vere necessità della proprietà.","about.two.title":"Chiaro e personale","about.two.text":"Un unico referente per aggiornamenti, fornitori e richieste.","about.three.title":"Pensato per seconde case","about.three.text":"Utile per proprietari all’estero, visite stagionali o uso occasionale della casa.","contact.kicker":"Contatti","contact.title":"Parlaci della tua proprietà.","contact.intro":"Condividi qualche dettaglio sulla casa e sul tipo di supporto che cerchi. Ti ricontatteremo con i prossimi passi.","contact.email.label":"Email","contact.phone.label":"Telefono","contact.area.label":"Zona","contact.area.value":"Liguria, Imperia e aree circostanti","form.name":"Il tuo nome","form.email":"La tua email","form.property":"Località o tipo di proprietà","form.message":"Dicci che supporto stai cercando","form.send":"Invia richiesta","contact.note":"Per le urgenze, scrivi URGENTE all’inizio del messaggio."},
+      de:{"brand.sub":"Property Care in Ligurien","nav.services":"Leistungen","nav.about":"Über uns","nav.contact":"Kontakt","nav.login":"Kunden Login","hero.eyebrow":"Lokale Objektbetreuung","hero.title":"Ihr Zuhause in Ligurien, betreut während Sie weg sind.","hero.lead":"Sunny Hill Solutions bietet Eigentümern von Zweitwohnsitzen einen verlässlichen lokalen Kontakt für Inspektionen, Wartungskoordination, Ankunftsvorbereitung und alltägliche Immobilienthemen in Imperia und an der ligurischen Küste.","hero.cta.main":"Unterstützung anfragen","hero.cta.second":"Leistungen ansehen","hero.badge":"Lokale Präsenz für Zweitwohnsitze in Ligurien","hero.note.title":"Klare Updates. Praktische Betreuung.","hero.note.text":"Ein ruhiger und strukturierter Weg, Ihre Immobilie lokal zu betreuen.","signal.one.title":"Inspektionen","signal.one.text":"Regelmäßige Kontrollen und praktische Nachverfolgung.","signal.two.title":"Wartung","signal.two.text":"Koordination mit vertrauenswürdigen lokalen Dienstleistern.","signal.three.title":"Vorbereitung","signal.three.text":"Vor der Ankunft von Eigentümern oder Gästen.","signal.four.title":"Updates","signal.four.text":"Einfache Kommunikation über einen Kontakt.","services.kicker":"Was wir betreuen","services.title":"Immobilienbetreuung einfach gemacht.","services.text":"Der Service kann an die Immobilie, die Saison und den gewünschten lokalen Support angepasst werden.","services.button":"Services öffnen","card.care.tag":"Objektbetreuung","card.care.title":"Kontrollen, Reparaturen und Nachverfolgung","card.care.text":"Regelmäßige Aufmerksamkeit hilft, die Immobilie sicher, ordentlich und bereit zu halten.","card.admin.tag":"Verwaltung","card.admin.title":"Rechnungen und wiederkehrende Themen","card.admin.text":"Unterstützung bei Versorgern, lokalen Dokumenten und laufenden Aufgaben.","card.projects.tag":"Projekte","card.projects.title":"Arbeiten und Dienstleisterkoordination","card.projects.text":"Ein klarerer Weg, Handwerker, Angebote und lokale Fortschritte zu koordinieren.","card.ready.tag":"Ankunft","card.ready.title":"Vorbereitung für Eigentümer und Gäste","card.ready.text":"Housekeeping, Vorbereitung und lokale Anfragen vor jedem Aufenthalt.","process.kicker":"So funktioniert es","process.title":"Ruhige Koordination mit echter lokaler Präsenz.","process.text":"Wir halten den Prozess klar und persönlich. Die Unterstützung wird an die Immobilie angepasst.","process.one.title":"Immobilie verstehen","process.one.text":"Wir betrachten die Nutzung, die relevanten Themen und Ihre Prioritäten.","process.two.title":"Support vereinbaren","process.two.text":"Wir definieren den passenden Umfang für regelmäßige Betreuung, saisonale Bedürfnisse oder einzelne Anfragen.","process.three.title":"Lokal koordinieren","process.three.text":"Wir verfolgen Lieferanten, Besuche und praktische Themen mit klarer Kommunikation.","about.kicker":"Über Sunny Hill","about.title":"Ein verlässlicher Kontakt für Eigentümer in Ligurien.","about.text":"Sunny Hill Solutions wurde für Eigentümer geschaffen, die praktische und zuverlässige Unterstützung für ihre Immobilie in Ligurien benötigen.","about.one.title":"Lokal und praktisch","about.one.text":"Unterstützung nach echten Objektanforderungen statt komplizierten Paketen.","about.two.title":"Klar und persönlich","about.two.text":"Ein Kontakt für Updates, Dienstleister und Objektanfragen.","about.three.title":"Für Zweitwohnsitze","about.three.text":"Nützlich für Eigentümer im Ausland, saisonale Aufenthalte oder gelegentliche Nutzung.","contact.kicker":"Kontakt","contact.title":"Erzählen Sie uns von Ihrer Immobilie.","contact.intro":"Teilen Sie einige Details zum Haus und zur gewünschten Unterstützung mit. Wir melden uns mit den nächsten Schritten.","contact.email.label":"E-Mail","contact.phone.label":"Telefon","contact.area.label":"Region","contact.area.value":"Ligurien, Imperia und Umgebung","form.name":"Ihr Name","form.email":"Ihre E-Mail","form.property":"Ort oder Immobilientyp","form.message":"Welche Unterstützung suchen Sie?","form.send":"Anfrage senden","contact.note":"Bei dringenden Anliegen schreiben Sie bitte URGENT am Anfang Ihrer Nachricht."},
+      es:{"brand.sub":"Property Care en Liguria","nav.services":"Servicios","nav.about":"Sobre nosotros","nav.contact":"Contacto","nav.login":"Portal Cliente","hero.eyebrow":"Cuidado local de propiedades","hero.title":"Su casa en Liguria, cuidada mientras está fuera.","hero.lead":"Sunny Hill Solutions ofrece a propietarios de segundas residencias un contacto local fiable para inspecciones, coordinación de mantenimiento, preparación de llegadas y asuntos diarios de la propiedad en Imperia y la costa de Liguria.","hero.cta.main":"Solicitar apoyo","hero.cta.second":"Ver servicios","hero.badge":"Presencia local para segundas residencias en Liguria","hero.note.title":"Actualizaciones claras. Cuidado práctico.","hero.note.text":"Una forma tranquila y estructurada de mantener su propiedad atendida localmente.","signal.one.title":"Inspecciones","signal.one.text":"Revisiones regulares y seguimiento práctico.","signal.two.title":"Mantenimiento","signal.two.text":"Coordinación con proveedores locales de confianza.","signal.three.title":"Preparación","signal.three.text":"Antes de la llegada de propietarios o invitados.","signal.four.title":"Actualizaciones","signal.four.text":"Comunicación sencilla desde un único contacto.","services.kicker":"Qué gestionamos","services.title":"Apoyo a la propiedad de forma sencilla.","services.text":"El servicio puede adaptarse a la propiedad, la temporada y el apoyo local deseado.","services.button":"Abrir servicios","card.care.tag":"Cuidado","card.care.title":"Revisiones, reparaciones y seguimiento","card.care.text":"La atención regular ayuda a mantener la propiedad segura, ordenada y lista.","card.admin.tag":"Administración","card.admin.title":"Facturas y asuntos recurrentes","card.admin.text":"Apoyo para suministros, documentos locales y responsabilidades recurrentes.","card.projects.tag":"Proyectos","card.projects.title":"Trabajos y coordinación de proveedores","card.projects.text":"Una forma más clara de coordinar profesionales, presupuestos y avances locales.","card.ready.tag":"Llegadas","card.ready.title":"Preparación para propietarios e invitados","card.ready.text":"Limpieza, preparación y solicitudes locales antes de cada estancia.","process.kicker":"Cómo funciona","process.title":"Coordinación tranquila con verdadera presencia local.","process.text":"Mantenemos el proceso claro y personal. El apoyo se adapta a la propiedad.","process.one.title":"Entender la propiedad","process.one.text":"Vemos cómo se usa la casa, qué necesita atención y qué es más importante para usted.","process.two.title":"Acordar el apoyo","process.two.text":"Definimos el nivel adecuado para cuidado regular, necesidades estacionales o solicitudes puntuales.","process.three.title":"Coordinar localmente","process.three.text":"Damos seguimiento a proveedores, visitas y asuntos prácticos con comunicación clara.","about.kicker":"Sobre Sunny Hill","about.title":"Un contacto fiable para propietarios en Liguria.","about.text":"Sunny Hill Solutions fue creado para propietarios que necesitan apoyo práctico y fiable para su propiedad en Liguria.","about.one.title":"Local y práctico","about.one.text":"Apoyo diseñado alrededor de necesidades reales de la propiedad.","about.two.title":"Claro y personal","about.two.text":"Un contacto para actualizaciones, proveedores y solicitudes.","about.three.title":"Pensado para segundas residencias","about.three.text":"Útil para propietarios en el extranjero, visitas de temporada o uso ocasional.","contact.kicker":"Contacto","contact.title":"Cuéntenos sobre su propiedad.","contact.intro":"Comparta algunos detalles sobre la casa y el apoyo que busca. Le responderemos con los próximos pasos.","contact.email.label":"Email","contact.phone.label":"Teléfono","contact.area.label":"Zona","contact.area.value":"Liguria, Imperia y alrededores","form.name":"Su nombre","form.email":"Su email","form.property":"Ubicación o tipo de propiedad","form.message":"Qué apoyo necesita","form.send":"Enviar solicitud","contact.note":"Para asuntos urgentes, escriba URGENTE al inicio del mensaje."}
     };
-
-    const LANG_META = {
-      en: { flag: "images/flags/gb.svg", label: "English" },
-      it: { flag: "images/flags/it.svg", label: "Italiano" },
-      de: { flag: "images/flags/de.svg", label: "Deutsch" }
-    };
-
-    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
-
-    function resolveInitialLang(){
-      const urlLang = new URLSearchParams(window.location.search).get("lang");
-      if(urlLang && I18N[urlLang]) return urlLang;
-
-      const saved = localStorage.getItem("lang");
-      if(saved && I18N[saved]) return saved;
-
-      const browserLang = (navigator.language || "en").slice(0,2);
-      return I18N[browserLang] ? browserLang : "en";
-    }
-
-    function setLangUI(lang){
-      const meta = LANG_META[lang] || LANG_META.en;
-      const flag = document.getElementById("langFlag");
-
-      if(flag){
-        flag.src = meta.flag;
-        flag.alt = meta.label;
-      }
-
-      $$("#langMenu .lang-item").forEach((button) => {
-        button.setAttribute("aria-selected", String(button.dataset.lang === lang));
-      });
-    }
-
-    function applyTranslations(lang){
-      const activeLang = I18N[lang] ? lang : "en";
-      const dict = I18N[activeLang];
-
-      $$("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        if(dict[key]) element.textContent = dict[key];
-      });
-
-      $$("[data-i18n-placeholder]").forEach((element) => {
-        const key = element.getAttribute("data-i18n-placeholder");
-        if(dict[key]) element.setAttribute("placeholder", dict[key]);
-      });
-
-      document.documentElement.setAttribute("lang", activeLang);
-      localStorage.setItem("lang", activeLang);
-      setLangUI(activeLang);
-    }
-
-    function setupReveal(){
-      const revealElements = document.querySelectorAll(".reveal");
-
-      if(!("IntersectionObserver" in window)){
-        revealElements.forEach((element) => element.classList.add("in-view"));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if(entry.isIntersecting){
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold:.14,
-        rootMargin:"0px 0px -8% 0px"
-      });
-
-      revealElements.forEach((element) => observer.observe(element));
-    }
-
+    const LANG_META={en:{flag:"images/flags/gb.svg",label:"English"},it:{flag:"images/flags/it.svg",label:"Italiano"},de:{flag:"images/flags/de.svg",label:"Deutsch"},es:{flag:"images/flags/es.svg",label:"Español"}};
+    const $$=(selector)=>Array.from(document.querySelectorAll(selector));
+    function resolveInitialLang(){const u=new URLSearchParams(window.location.search).get("lang");if(u&&I18N[u])return u;const s=localStorage.getItem("lang");if(s&&I18N[s])return s;const b=(navigator.language||"en").slice(0,2);return I18N[b]?b:"en"}
+    function setLangUI(lang){const meta=LANG_META[lang]||LANG_META.en;const flag=document.getElementById("langFlag");if(flag){flag.src=meta.flag;flag.alt=meta.label} $$("#langMenu .lang-item").forEach(btn=>btn.setAttribute("aria-selected",String(btn.dataset.lang===lang)))}
+    function applyTranslations(lang){const active=I18N[lang]?lang:"en";const dict=I18N[active];$$('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(dict[key])el.textContent=dict[key]});$$('[data-i18n-placeholder]').forEach(el=>{const key=el.getAttribute('data-i18n-placeholder');if(dict[key])el.setAttribute('placeholder',dict[key])});document.documentElement.setAttribute('lang',active);localStorage.setItem('lang',active);setLangUI(active)}
+    function setupReveal(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver'in window)){els.forEach(el=>el.classList.add('in-view'));return}const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');obs.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});els.forEach(el=>obs.observe(el))}
     function setupParallax(){
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if(reduceMotion) return;
-
-      const heroBg = document.getElementById("homeHeroBg");
-      const servicesBg = document.getElementById("servicesBg");
-      const featureImage = document.getElementById("homeFeatureImage");
-
-      let ticking = false;
-
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      const card=document.querySelector('.image-card');
+      if(!card)return;
+      let ticking=false;
       function update(){
-        const scrollY = window.scrollY || 0;
-
-        if(heroBg){
-          heroBg.style.transform = `scale(1.06) translate3d(0, ${scrollY * 0.08}px, 0)`;
-        }
-
-        if(servicesBg && servicesBg.parentElement){
-          const rect = servicesBg.parentElement.getBoundingClientRect();
-          servicesBg.style.transform = `scale(1.08) translate3d(0, ${rect.top * -0.075}px, 0)`;
-        }
-
-        if(featureImage && featureImage.parentElement){
-          const rect = featureImage.parentElement.getBoundingClientRect();
-          featureImage.style.transform = `scale(1.06) translate3d(0, ${rect.top * -0.045}px, 0)`;
-        }
-
-        ticking = false;
+        const rect=card.getBoundingClientRect();
+        const viewport=window.innerHeight||document.documentElement.clientHeight;
+        const progress=(rect.top+rect.height/2-viewport/2)/viewport;
+        const y=Math.max(-18,Math.min(18,progress*-18));
+        card.style.setProperty('--parallax-y',`${y.toFixed(2)}px`);
+        ticking=false;
       }
-
-      function requestTick(){
-        if(!ticking){
-          requestAnimationFrame(update);
-          ticking = true;
-        }
-      }
-
+      function request(){if(!ticking){requestAnimationFrame(update);ticking=true}}
       update();
-      window.addEventListener("scroll", requestTick, { passive:true });
-      window.addEventListener("resize", requestTick);
+      window.addEventListener('scroll',request,{passive:true});
+      window.addEventListener('resize',request);
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const year = document.getElementById("year");
-      const dd = document.getElementById("langDd");
-      const trigger = document.getElementById("langTrigger");
-      const menu = document.getElementById("langMenu");
-      const menuBtn = document.getElementById("menuBtn");
-
-      if(year) year.textContent = new Date().getFullYear();
-
-      function closeLangMenu(){
-        dd?.classList.remove("open");
-        trigger?.setAttribute("aria-expanded", "false");
-      }
-
-      function closeMenu(){
-        document.body.classList.remove("mobile-open");
-        menuBtn?.setAttribute("aria-expanded", "false");
-      }
-
-      window.closeMenu = closeMenu;
-
-      applyTranslations(resolveInitialLang());
-      setupReveal();
-      setupParallax();
-
-      trigger?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const isOpen = dd?.classList.toggle("open");
-        trigger.setAttribute("aria-expanded", String(isOpen));
-        closeMenu();
-      });
-
-      menu?.addEventListener("click", (event) => {
-        const button = event.target.closest(".lang-item");
-        if(!button) return;
-
-        const lang = button.dataset.lang;
-        if(!lang || !I18N[lang]) return;
-
-        applyTranslations(lang);
-        closeLangMenu();
-      });
-
-      menuBtn?.addEventListener("click", () => {
-        const open = document.body.classList.toggle("mobile-open");
-        menuBtn.setAttribute("aria-expanded", String(open));
-        closeLangMenu();
-      });
-
-      document.addEventListener("click", (event) => {
-        if(!event.target.closest("#langDd")) closeLangMenu();
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if(event.key === "Escape"){
-          closeLangMenu();
-          closeMenu();
-        }
-      });
-
-      document.querySelectorAll('a[href^="#"], .mobile-panel a').forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-    });
+    document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('year');const dd=document.getElementById('langDd');const trigger=document.getElementById('langTrigger');const menu=document.getElementById('langMenu');const menuBtn=document.getElementById('menuBtn');if(year)year.textContent=new Date().getFullYear();function closeLang(){dd?.classList.remove('open');trigger?.setAttribute('aria-expanded','false')}function closeMenu(){document.body.classList.remove('mobile-open');menuBtn?.setAttribute('aria-expanded','false')}applyTranslations(resolveInitialLang());setupReveal();setupParallax();trigger?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const open=dd?.classList.toggle('open');trigger.setAttribute('aria-expanded',String(open));closeMenu()});menu?.addEventListener('click',e=>{const btn=e.target.closest('.lang-item');if(!btn)return;const lang=btn.dataset.lang;if(!lang||!I18N[lang])return;applyTranslations(lang);closeLang()});menuBtn?.addEventListener('click',()=>{const open=document.body.classList.toggle('mobile-open');menuBtn.setAttribute('aria-expanded',String(open));closeLang()});document.addEventListener('click',e=>{if(!e.target.closest('#langDd'))closeLang()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLang();closeMenu()}});document.querySelectorAll('a[href^="#"],.mobile-panel a').forEach(link=>link.addEventListener('click',closeMenu))});
   </script>
 </body>
 </html>
